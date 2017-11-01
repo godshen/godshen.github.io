@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next pisces use-motion" lang="zh-Hans">
 <head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -96,7 +96,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Pisces',
     version: '5.1.3',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -190,12 +190,42 @@
         </li>
       
         
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
             归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
+            
+            日程表
           </a>
         </li>
       
@@ -325,44 +355,17 @@
       
         
           
-            <span>$s = x * y$</span><!-- Has MathJax -->
-<h1 id="前言-E-mc-2"><a href="#前言-E-mc-2" class="headerlink" title="前言 $E = mc^2$"></a>前言 $E = mc^2$</h1><h3 id="2017-10-31"><a href="#2017-10-31" class="headerlink" title="2017-10-31"></a>2017-10-31</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">无论怎么学习, 原作者的github的README都是最好的参考资料</div><div class="line">尽管作者已经停止了维护, 但是还是有许多前赴后继者前来讨论心得</div></pre></td></tr></table></figure>
-<p><a href="https://github.com/hexojs/hexo-math" target="_blank" rel="external">原作者github传送门</a></p>
-<h3 id="2017-10-31-1"><a href="#2017-10-31-1" class="headerlink" title="2017-10-31"></a>2017-10-31</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">对于在Hexo框架中插入数学公式, 可谓是山高坑大, 艰难险阻, 苦难重重</div><div class="line">虽然现在预期的功能已经实现了, 但是仍旧有许多未解之谜, 笔者会随着自己的学习和领悟, 慢慢更新这篇日志</div><div class="line"></div><div class="line">PS: 之所以写成这样的形式, 是因为大多数经验和教程, 都是一步到位了</div><div class="line">并没有考虑使用者在开发过程中出现的各种问题</div></pre></td></tr></table></figure>
-<h2 id="Let’s-go"><a href="#Let’s-go" class="headerlink" title="Let’s go !"></a>Let’s go !</h2><p>首先贴上最终成果, 省得各位看官心急</p>
-<ul>
-<li><p>最普通的等式 $a = b + c$.</p>
-</li>
-<li><p>带下标的概率关系 $P_1P_2=\bar{P_3}P_4$</p>
-</li>
-<li><p>公式块+分段函数</p>
-<script type="math/tex; mode=display">
-f(x)=\begin{cases}
-0, & \text{if $ x<=0 $}\\
-e^x, & \text{else}
-\end{cases}</script></li>
-</ul>
-<h3 id="初探"><a href="#初探" class="headerlink" title="初探"></a>初探</h3><p>第一次的尝试呢, 分为了以下几步</p>
-<ol>
-<li>安装hexo-math插件, 指令为<code>npm install hexo-math --save</code> 其中—save 是自动把模块和版本号添加到dependencies部分, 即根目录下的<code>package.json</code>文件中</li>
-<li>在<code>_config.yml</code>中加入<code>plugin: - hexo-math</code></li>
-<li>在你的文章的<code>*.md</code>文件中开启开关<code>mathjax: true</code></li>
-<li>查看<code>package.json</code>文件, 会发现已经有了<code>3.0.4</code>版的的插件安装好了</li>
-</ol>
-<p>按照<strong>大多数人</strong>的经验介绍, 和<strong>老版本</strong>的插件特性, 写到这里就已经算是成功了, 但是无数小白都在这里折戟沉沙, 我们可以以<em>2017-04-19</em>为日期分割线, 因为原作者在这里进行了一次更新, 插件进入到了3.0.0的时代, 具体发生了神马变化可以自行参考上面的传送门</p>
-<h3 id="回溯"><a href="#回溯" class="headerlink" title="回溯"></a>回溯</h3><p>上回书说道, 新版本的插件对于我们不奏效, 为了解决这个问题, 正常人都会顺理成章的产生两个思路</p>
-<ul>
-<li>探索新版的下的使用方法</li>
-<li>安装旧版本, 因为教程和经验多啊, 广大学习python的小白有多少是因为教程和例程只适用于2.7和放弃了研究3.x啊hhhhhh</li>
-</ul>
-<p>如果想继续使用老版本可以如下</p>
-<ol>
-<li>卸载一波刚刚安装的插件, <code>npm uninstall hexo-math --save</code></li>
-<li>按照版本号安装对应的hexo-math插件, 例如笔者选择了<code>1.0.8</code>版本, 指令即为<code>npm install hexo-math@^1.0.8 --save</code></li>
-</ol>
-<p>笔者亲测有效</p>
-
-          
+          前言 $E = mc^2$2017-10-3112无论怎么学习, 原作者的github的README都是最好的参考资料尽管作者已经停止了维护, 但是还是有许多前赴后继者前来讨论心得
+原作者github传送门
+2017-10-3112345对于在Hexo框架中插入数学公式, 可谓是山高坑大, 艰难险阻, 苦难重重虽然现在预期的功能已经实现了, 但是仍旧有许多未解之谜, 笔者会随着自己的学习和领悟, 慢慢更新这篇日志PS: 之所以写成这样的形式, 是因为大多数经验和教程, 都是一步到位了并没有考虑使
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/10/31/exploreMathjax/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -502,17 +505,16 @@ e^x, & \text{else}
       
         
           
-            <h3 id="这篇是初始化Hexo时候，自动生成的，并且安利了一波如何新建"><a href="#这篇是初始化Hexo时候，自动生成的，并且安利了一波如何新建" class="headerlink" title="这篇是初始化Hexo时候，自动生成的，并且安利了一波如何新建"></a>这篇是初始化Hexo时候，自动生成的，并且安利了一波如何新建</h3><p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-          
+          这篇是初始化Hexo时候，自动生成的，并且安利了一波如何新建Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
+Quick StartCreate a new p
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/10/27/hello-world/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -652,10 +654,17 @@ e^x, & \text{else}
       
         
           
-            <h3 id="这篇用来测试如何放置图片"><a href="#这篇用来测试如何放置图片" class="headerlink" title="这篇用来测试如何放置图片"></a>这篇用来测试如何放置图片</h3><h2 id="热烈欢迎王大海归国！"><a href="#热烈欢迎王大海归国！" class="headerlink" title="热烈欢迎王大海归国！"></a>热烈欢迎王大海归国！</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> wangdahai</div><div class="line"><span class="keyword">print</span>  <span class="string">"welcome wangdahai to Shanghai,China"</span> </div></pre></td></tr></table></figure>
-<p><img src="/2017/10/26/welcome-WangDahai/welcome.jpg" alt="小刚几欢迎你"></p>
+          这篇用来测试如何放置图片热烈欢迎王大海归国！12import wangdahaiprint  "welcome wangdahai to Shanghai,China" 
+
 
           
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/10/26/welcome-WangDahai/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -745,10 +754,10 @@ e^x, & \text{else}
               
               
               <div class="site-state-item site-state-categories">
-                
+                <a href="/categories/index.html">
                   <span class="site-state-item-count">1</span>
                   <span class="site-state-item-name">分类</span>
-                
+                </a>
               </div>
             
 
@@ -756,10 +765,10 @@ e^x, & \text{else}
               
               
               <div class="site-state-item site-state-tags">
-                
+                <a href="/tags/index.html">
                   <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">标签</span>
-                
+                </a>
               </div>
             
 
@@ -768,6 +777,20 @@ e^x, & \text{else}
           
 
           <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/godshen" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:shenzh0713@gmail.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
             
           </div>
 
@@ -806,15 +829,11 @@ e^x, & \text{else}
 </div>
 
 
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 框架支持</div>
 
 
 
-  <span class="post-meta-divider">|</span>
 
-
-
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
 
 
 
@@ -913,6 +932,13 @@ e^x, & \text{else}
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
 
   
 
