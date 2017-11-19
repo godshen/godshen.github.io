@@ -330,6 +330,17 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/10/31/exploreMathjax/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/10/31/exploreMathjax/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -533,6 +544,16 @@ e^x, & \text{else}
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
 
   
 
@@ -838,12 +859,32 @@ e^x, & \text{else}
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
 
 
 
   
 
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://godshen.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://godshen.github.io/2017/10/31/exploreMathjax/';
+          this.page.identifier = '2017/10/31/exploreMathjax/';
+          this.page.title = '探索在Hexo下使用Mathjax的经验';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://godshen.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
 
   
 
@@ -859,10 +900,6 @@ e^x, & \text{else}
   
 
 
-
-
-
-  
 
 
 
@@ -923,6 +960,6 @@ e^x, & \text{else}
 </script>
 
 <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </body>
 </html>

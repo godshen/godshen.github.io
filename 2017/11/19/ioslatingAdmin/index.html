@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="中浩昊号皓的领域">
 <meta property="og:description" content="缘由由于hexo框架在执行了generate以及deploy之后, 上传到远端仓库的仅仅是渲染出来的html, 而可运行的工程文件夹还保存在本地无法灵活增删改 选择 有大神选择使用APS在线搞了一套git的交互界面, 通过hook等技术, 同步远端和本地, 使我们无论是在PC端, 还是在云端都可以自由编辑; 但是其局限性也很明显—壕, APS不是每个人都有条件搞的; 另外一波大神提供了这个思路,">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-19T08:29:12.768Z">
+<meta property="og:updated_time" content="2017-11-19T14:54:28.187Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo前后端分离并存git仓库">
 <meta name="twitter:description" content="缘由由于hexo框架在执行了generate以及deploy之后, 上传到远端仓库的仅仅是渲染出来的html, 而可运行的工程文件夹还保存在本地无法灵活增删改 选择 有大神选择使用APS在线搞了一套git的交互界面, 通过hook等技术, 同步远端和本地, 使我们无论是在PC端, 还是在云端都可以自由编辑; 但是其局限性也很明显—壕, APS不是每个人都有条件搞的; 另外一波大神提供了这个思路,">
@@ -306,6 +306,17 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/11/19/ioslatingAdmin/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/11/19/ioslatingAdmin/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -423,6 +434,16 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
 
   
 
@@ -728,12 +749,32 @@
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
 
 
 
   
 
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://godshen.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://godshen.github.io/2017/11/19/ioslatingAdmin/';
+          this.page.identifier = '2017/11/19/ioslatingAdmin/';
+          this.page.title = 'hexo前后端分离并存git仓库';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://godshen.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
 
   
 
@@ -749,10 +790,6 @@
   
 
 
-
-
-
-  
 
 
 
@@ -813,6 +850,6 @@
 </script>
 
 <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </body>
 </html>
