@@ -25,6 +25,6 @@ cotagries:
 5. git rm 删除掉所有关于页面的
 6. 把执行hexo init时候生成的那个文件夹, 除去.deploy_git这个文件夹, 统统复制粘贴过来
 7. git add 所有的内容, 第一次可能很慢
-8. git comment
+8. git commit
 9. git push
 10. done!
