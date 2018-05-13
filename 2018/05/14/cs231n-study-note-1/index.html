@@ -79,18 +79,27 @@
 
 
 
-<meta name="description" content="学习内容 Data Driven Approach 数据驱动的方法 KNN K最近邻算法 Linear classifiers 线性分类器 Loss function 损失函数 Optimization 优化 Back propagation 反向传播 Neural Networks 神经网络 工作中遇到的机器学习内容  数据驱动dataset: labels —&amp;gt; train —&amp;gt;">
+<meta name="description" content="学习内容 Data Driven Approach 数据驱动的方法 KNN K最近邻算法 Linear classifiers 线性分类器 Loss function 损失函数 Optimization 优化 Back propagation 反向传播 Neural Networks 神经网络  1. 数据驱动1.1 思路dataset: labels —&amp;gt; train —&amp;gt; pred">
 <meta name="keywords" content="Machine Learning,cs231n">
 <meta property="og:type" content="article">
 <meta property="og:title" content="cs231n study note 1">
 <meta property="og:url" content="http://godshen.github.io/2018/05/14/cs231n-study-note-1/index.html">
 <meta property="og:site_name" content="中浩昊号皓的领域">
-<meta property="og:description" content="学习内容 Data Driven Approach 数据驱动的方法 KNN K最近邻算法 Linear classifiers 线性分类器 Loss function 损失函数 Optimization 优化 Back propagation 反向传播 Neural Networks 神经网络 工作中遇到的机器学习内容  数据驱动dataset: labels —&amp;gt; train —&amp;gt;">
+<meta property="og:description" content="学习内容 Data Driven Approach 数据驱动的方法 KNN K最近邻算法 Linear classifiers 线性分类器 Loss function 损失函数 Optimization 优化 Back propagation 反向传播 Neural Networks 神经网络  1. 数据驱动1.1 思路dataset: labels —&amp;gt; train —&amp;gt; pred">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-13T19:55:35.690Z">
+<meta property="og:image" content="http://godshen.github.io/2018/05/14/cs231n-study-note-1/cifar10.png">
+<meta property="og:image" content="http://godshen.github.io/2018/05/14/cs231n-study-note-1/same.jpg">
+<meta property="og:image" content="http://godshen.github.io/2018/05/14/cs231n-study-note-1/knnCrash.jpg">
+<meta property="og:image" content="http://godshen.github.io/2018/05/14/cs231n-study-note-1/linearCla.jpg">
+<meta property="og:image" content="http://godshen.github.io/2018/05/14/cs231n-study-note-1/hardTodo.jpg">
+<meta property="og:image" content="http://godshen.github.io/2018/05/14/cs231n-study-note-1/lossfun.jpg">
+<meta property="og:image" content="http://godshen.github.io/2018/05/14/cs231n-study-note-1/compuGraph.jpg">
+<meta property="og:image" content="http://godshen.github.io/2018/05/14/cs231n-study-note-1/complex.jpg">
+<meta property="og:updated_time" content="2018-05-13T22:03:20.185Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="cs231n study note 1">
-<meta name="twitter:description" content="学习内容 Data Driven Approach 数据驱动的方法 KNN K最近邻算法 Linear classifiers 线性分类器 Loss function 损失函数 Optimization 优化 Back propagation 反向传播 Neural Networks 神经网络 工作中遇到的机器学习内容  数据驱动dataset: labels —&amp;gt; train —&amp;gt;">
+<meta name="twitter:description" content="学习内容 Data Driven Approach 数据驱动的方法 KNN K最近邻算法 Linear classifiers 线性分类器 Loss function 损失函数 Optimization 优化 Back propagation 反向传播 Neural Networks 神经网络  1. 数据驱动1.1 思路dataset: labels —&amp;gt; train —&amp;gt; pred">
+<meta name="twitter:image" content="http://godshen.github.io/2018/05/14/cs231n-study-note-1/cifar10.png">
 
 
 
@@ -365,10 +374,73 @@
 <li>Optimization 优化</li>
 <li>Back propagation 反向传播</li>
 <li>Neural Networks 神经网络</li>
-<li>工作中遇到的机器学习内容</li>
 </ol>
-<h2 id="数据驱动"><a href="#数据驱动" class="headerlink" title="数据驱动"></a>数据驱动</h2><p>dataset: labels —&gt; train —&gt; predict</p>
-<h2 id="K最近邻算法"><a href="#K最近邻算法" class="headerlink" title="K最近邻算法"></a>K最近邻算法</h2><h2 id="线性分类器"><a href="#线性分类器" class="headerlink" title="线性分类器"></a>线性分类器</h2>
+<h2 id="1-数据驱动"><a href="#1-数据驱动" class="headerlink" title="1. 数据驱动"></a>1. 数据驱动</h2><h3 id="1-1-思路"><a href="#1-1-思路" class="headerlink" title="1.1 思路"></a>1.1 思路</h3><p>dataset: labels —&gt; train —&gt; predict</p>
+<h3 id="1-2-CIFAR-10数据集"><a href="#1-2-CIFAR-10数据集" class="headerlink" title="1.2 CIFAR-10数据集"></a>1.2 CIFAR-10数据集</h3><p>该数据集共有60000张彩色图像，这些图像是32*32，分为10个类，每类6000张图。这里面有50000张用于训练，构成了5个训练批，每一批10000张图；另外10000用于测试，单独构成一批。测试批的数据里，取自10类中的每一类，每一类随机取1000张。抽剩下的就随机排列组成了训练批。注意一个训练批中的各类图像并不一定数量相同，总的来看训练批，每一类都有5000张图。<br><img src="/2018/05/14/cs231n-study-note-1/cifar10.png" alt=""></p>
+<ul>
+<li><p>Data</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">一个10000*3072的numpy数组, 数据类型是无符号整形uint8. 这个数组的每一行存储了32*32大小的彩色图像(32*32*3通道=3072). </div><div class="line">按1024分组, 分别是red,green,blue通道. 图像是以行的顺序存储, 即前32个数是该图的像素矩阵的第一行.</div></pre></td></tr></table></figure>
+</li>
+<li><p>Labels</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">一个范围在0-9的含有10000个数的列表（一维的数组）。第i个数就是第i个图像的类标.</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="2-K最近邻算法"><a href="#2-K最近邻算法" class="headerlink" title="2. K最近邻算法"></a>2. K最近邻算法</h2><ul>
+<li>分类器中最简单的例子</li>
+<li>在dataset中寻找与input最相似的</li>
+</ul>
+<h3 id="2-1-L1-distance-Manhatton-distance"><a href="#2-1-L1-distance-Manhatton-distance" class="headerlink" title="2.1 L1 distance / Manhatton distance"></a>2.1 L1 distance / Manhatton distance</h3><script type="math/tex; mode=display">
+d_1(I_1, I_2) = \sum_p|I_1^p - I_2^p|</script><h3 id="2-2-复杂度分析"><a href="#2-2-复杂度分析" class="headerlink" title="2.2 复杂度分析"></a>2.2 复杂度分析</h3><p>Train         — O(1)<br>Predict         — O(n)<br><code>结论: 不理想 (VS CNN)</code></p>
+<h3 id="2-3-图像之间的视觉判断"><a href="#2-3-图像之间的视觉判断" class="headerlink" title="2.3 图像之间的视觉判断"></a>2.3 图像之间的视觉判断</h3><p><code>不同的图片, 使用KNN可以得到的结论是相同 PS某种情况下也是优势</code><br><img src="/2018/05/14/cs231n-study-note-1/same.jpg" alt=""></p>
+<h3 id="2-4-维度灾难"><a href="#2-4-维度灾难" class="headerlink" title="2.4 维度灾难"></a>2.4 维度灾难</h3><p><code>随着维度的上升, 复杂度指数级增长</code><br><img src="/2018/05/14/cs231n-study-note-1/knnCrash.jpg" alt=""></p>
+<h2 id="3-线性分类器"><a href="#3-线性分类器" class="headerlink" title="3. 线性分类器"></a>3. 线性分类器</h2><h3 id="3-1-参数模型中最简单的实例"><a href="#3-1-参数模型中最简单的实例" class="headerlink" title="3.1 参数模型中最简单的实例"></a>3.1 参数模型中最简单的实例</h3><h3 id="3-2-简单表达式"><a href="#3-2-简单表达式" class="headerlink" title="3.2 简单表达式:"></a>3.2 简单表达式:</h3><script type="math/tex; mode=display">
+f(x,W) = Wx + b</script><h3 id="3-3-示例图"><a href="#3-3-示例图" class="headerlink" title="3.3 示例图"></a>3.3 示例图</h3><p><img src="/2018/05/14/cs231n-study-note-1/linearCla.jpg" alt="CIFAR-10数据集实例"></p>
+<h3 id="3-4-线性分类器的劣势"><a href="#3-4-线性分类器的劣势" class="headerlink" title="3.4 线性分类器的劣势"></a>3.4 线性分类器的劣势</h3><p><img src="/2018/05/14/cs231n-study-note-1/hardTodo.jpg" alt=""></p>
+<h3 id="3-4-两种解释方法"><a href="#3-4-两种解释方法" class="headerlink" title="3.4 两种解释方法"></a>3.4 两种解释方法</h3><ol>
+<li>每个种类的学习模板</li>
+<li>学习像素在高纬度空间的一个线性决策边界</li>
+</ol>
+<h2 id="4-损失函数"><a href="#4-损失函数" class="headerlink" title="4. 损失函数"></a>4. 损失函数</h2><ul>
+<li>dataset.  $ \langle x_i,y_i \rangle  _i^N = 1 $</li>
+<li>$ L = \frac{1}{N} \sum_iL_i(f(x_i,W),y_i) $<br><code>目的是寻找一个合适的W, 使得L最小</code> find:  <script type="math/tex; mode=display">L_{min}</script></li>
+</ul>
+<h3 id="4-1-multiclass-SVN-loss"><a href="#4-1-multiclass-SVN-loss" class="headerlink" title="4.1 multiclass SVN loss"></a>4.1 multiclass SVN loss</h3><script type="math/tex; mode=display">L_i = \sum_{j \neq y} max(0,s_j-s_{yj}+1)</script><ol>
+<li>$L_i  \in (0, +\infty)$</li>
+<li>$ s\approx0 =&gt; L = c - 1 $</li>
+<li>如果求和中不排除相当的情况, 则L++</li>
+<li>使得L=0(L最小)的情况的W并不唯一, exp:2W</li>
+<li>如何在诸多使得L=0的W中选择最合适的</li>
+</ol>
+<ul>
+<li>最简约</li>
+<li>奥卡姆剃须刀</li>
+<li>Regularization: model should be simple so it works on test data</li>
+<li>正则化<script type="math/tex; mode=display">
+L(W) = \frac{1}{N} \sum_{i=1}^N L_i (f(x_i,W),y_i) + \lambda R(W)</script></li>
+<li>R(W)分类</li>
+</ul>
+<ol>
+<li>L2  ==&gt; <script type="math/tex">R(W) = \sum_k \sum_l W_{k,l}^2</script></li>
+<li>L1  ==&gt; <script type="math/tex">R(W) = \sum_k \sum_l |W_{k,l}|</script></li>
+<li>Elastic net (L1+L2)</li>
+<li>Max norm</li>
+<li>Dropout</li>
+</ol>
+<h3 id="4-2-multinormial-logistic-regression"><a href="#4-2-multinormial-logistic-regression" class="headerlink" title="4.2 multinormial logistic regression"></a>4.2 multinormial logistic regression</h3><h3 id="多项逻辑斯蒂回归"><a href="#多项逻辑斯蒂回归" class="headerlink" title="多项逻辑斯蒂回归"></a>多项逻辑斯蒂回归</h3><h3 id="softmax-loss"><a href="#softmax-loss" class="headerlink" title="softmax loss"></a>softmax loss</h3><script type="math/tex; mode=display">
+P(Y=k|X=x_i) = \frac{e^{sk}}{\sum_j e^{sj}} where s=f(x_i;W)</script><script type="math/tex; mode=display">
+L = -log P(Y=k|X=x_i)</script><p><img src="/2018/05/14/cs231n-study-note-1/lossfun.jpg" alt=""></p>
+<h2 id="5-优化"><a href="#5-优化" class="headerlink" title="5. 优化"></a>5. 优化</h2><h3 id="5-1-梯度下降-Gradient-Descent"><a href="#5-1-梯度下降-Gradient-Descent" class="headerlink" title="5.1 梯度下降 Gradient Descent"></a>5.1 梯度下降 Gradient Descent</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">while true:</div><div class="line">	weights_grad = evaluate_gradient(loss_fun, data, weights)</div><div class="line">	weights += -step_size * weights_grad</div></pre></td></tr></table></figure>
+<p>step_size <code>步长</code> <code>学习率</code> <code>超参数</code> <code>优化第一步</code></p>
+<h3 id="5-2-Stochastic-Gradient-Descent-SGD"><a href="#5-2-Stochastic-Gradient-Descent-SGD" class="headerlink" title="5.2 Stochastic Gradient Descent(SGD)"></a>5.2 Stochastic Gradient Descent(SGD)</h3><script type="math/tex; mode=display">
+\nabla w L(W) = \frac{1}{N} \sum_{i=1}^N \nabla w L_i (f(x_i,W),y_i) + \lambda \nabla w R(W)</script><p><code>随机</code> <code>minibatch小批量</code> <code>蒙特卡洛估计</code></p>
+<ol>
+<li>数值计算 — 反向传播</li>
+<li>解析计算</li>
+</ol>
+<h2 id="6-反向传播"><a href="#6-反向传播" class="headerlink" title="6. 反向传播"></a>6. 反向传播</h2><h3 id="6-1-导数-梯度过于复杂无法计算"><a href="#6-1-导数-梯度过于复杂无法计算" class="headerlink" title="6.1 导数/梯度过于复杂无法计算"></a>6.1 导数/梯度过于复杂无法计算</h3><h3 id="6-2-链式法则"><a href="#6-2-链式法则" class="headerlink" title="6.2 链式法则"></a>6.2 链式法则</h3><h3 id="6-3-计算图"><a href="#6-3-计算图" class="headerlink" title="6.3 计算图"></a>6.3 计算图</h3><p><img src="/2018/05/14/cs231n-study-note-1/compuGraph.jpg" alt=""></p>
+<h3 id="6-4-例证"><a href="#6-4-例证" class="headerlink" title="6.4 例证"></a>6.4 例证</h3><script type="math/tex; mode=display">f(x,y,z) = (x+y)z</script><p>VS</p>
+<script type="math/tex; mode=display">f(w,x) = \frac{1}{1+e^{-w_0x_0+w_1x_1+w_2}}</script><p><img src="/2018/05/14/cs231n-study-note-1/complex.jpg" alt=""></p>
+<h3 id="向量-雅可比矩阵"><a href="#向量-雅可比矩阵" class="headerlink" title="向量-雅可比矩阵"></a>向量-雅可比矩阵</h3><h2 id="6-神经网络初步"><a href="#6-神经网络初步" class="headerlink" title="6. 神经网络初步"></a>6. 神经网络初步</h2><h1 id="工作相关"><a href="#工作相关" class="headerlink" title="工作相关"></a>工作相关</h1>
       
     </div>
     
@@ -578,7 +650,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#学习内容"><span class="nav-number">1.</span> <span class="nav-text">学习内容</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据驱动"><span class="nav-number">1.1.</span> <span class="nav-text">数据驱动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#K最近邻算法"><span class="nav-number">1.2.</span> <span class="nav-text">K最近邻算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线性分类器"><span class="nav-number">1.3.</span> <span class="nav-text">线性分类器</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#学习内容"><span class="nav-number">1.</span> <span class="nav-text">学习内容</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-数据驱动"><span class="nav-number">1.1.</span> <span class="nav-text">1. 数据驱动</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-思路"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1 思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-CIFAR-10数据集"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.2 CIFAR-10数据集</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-K最近邻算法"><span class="nav-number">1.2.</span> <span class="nav-text">2. K最近邻算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-L1-distance-Manhatton-distance"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 L1 distance / Manhatton distance</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-复杂度分析"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 复杂度分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-图像之间的视觉判断"><span class="nav-number">1.2.3.</span> <span class="nav-text">2.3 图像之间的视觉判断</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-维度灾难"><span class="nav-number">1.2.4.</span> <span class="nav-text">2.4 维度灾难</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-线性分类器"><span class="nav-number">1.3.</span> <span class="nav-text">3. 线性分类器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-参数模型中最简单的实例"><span class="nav-number">1.3.1.</span> <span class="nav-text">3.1 参数模型中最简单的实例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-简单表达式"><span class="nav-number">1.3.2.</span> <span class="nav-text">3.2 简单表达式:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-示例图"><span class="nav-number">1.3.3.</span> <span class="nav-text">3.3 示例图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-线性分类器的劣势"><span class="nav-number">1.3.4.</span> <span class="nav-text">3.4 线性分类器的劣势</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-两种解释方法"><span class="nav-number">1.3.5.</span> <span class="nav-text">3.4 两种解释方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-损失函数"><span class="nav-number">1.4.</span> <span class="nav-text">4. 损失函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-multiclass-SVN-loss"><span class="nav-number">1.4.1.</span> <span class="nav-text">4.1 multiclass SVN loss</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-multinormial-logistic-regression"><span class="nav-number">1.4.2.</span> <span class="nav-text">4.2 multinormial logistic regression</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多项逻辑斯蒂回归"><span class="nav-number">1.4.3.</span> <span class="nav-text">多项逻辑斯蒂回归</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#softmax-loss"><span class="nav-number">1.4.4.</span> <span class="nav-text">softmax loss</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-优化"><span class="nav-number">1.5.</span> <span class="nav-text">5. 优化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-梯度下降-Gradient-Descent"><span class="nav-number">1.5.1.</span> <span class="nav-text">5.1 梯度下降 Gradient Descent</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-Stochastic-Gradient-Descent-SGD"><span class="nav-number">1.5.2.</span> <span class="nav-text">5.2 Stochastic Gradient Descent(SGD)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-反向传播"><span class="nav-number">1.6.</span> <span class="nav-text">6. 反向传播</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-1-导数-梯度过于复杂无法计算"><span class="nav-number">1.6.1.</span> <span class="nav-text">6.1 导数/梯度过于复杂无法计算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-2-链式法则"><span class="nav-number">1.6.2.</span> <span class="nav-text">6.2 链式法则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-3-计算图"><span class="nav-number">1.6.3.</span> <span class="nav-text">6.3 计算图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-4-例证"><span class="nav-number">1.6.4.</span> <span class="nav-text">6.4 例证</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#向量-雅可比矩阵"><span class="nav-number">1.6.5.</span> <span class="nav-text">向量-雅可比矩阵</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-神经网络初步"><span class="nav-number">1.7.</span> <span class="nav-text">6. 神经网络初步</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#工作相关"><span class="nav-number">2.</span> <span class="nav-text">工作相关</span></a></li></ol></div>
             
 
           </div>
@@ -741,7 +813,7 @@
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 
@@ -826,6 +898,6 @@
 </script>
 
 <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</script>
 </body>
 </html>
