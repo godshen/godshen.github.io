@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="机械键盘,青轴,樱桃,闲鱼," />
+  <meta name="keywords" content="Machine Learning,cs231n," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="2017-11-18 15:00:00哎呀妈呀太爽了 2017-11-18 23:00:00经过了一个晚上的测试, 已经爽到天上去了 2017-11-19 16:13:00 关于我的第一款机械键盘,有如下几个参数 樱桃轴 青轴 87键 keycool凯酷 W.Y.W.K二手 75元  其余内容, 等我使用一段时间之后再做详细展开">
-<meta name="keywords" content="机械键盘,青轴,樱桃,闲鱼">
+<meta name="description" content="学习内容 Data Driven Approach 数据驱动的方法 KNN K最近邻算法 Linear classifiers 线性分类器 Loss function 损失函数 Optimization 优化 Back propagation 反向传播 Neural Networks 神经网络 工作中遇到的机器学习内容  数据驱动dataset: labels —&amp;gt; train —&amp;gt;">
+<meta name="keywords" content="Machine Learning,cs231n">
 <meta property="og:type" content="article">
-<meta property="og:title" content="初探机械键盘">
-<meta property="og:url" content="http://godshen.github.io/2017/11/18/mechanicalKeyboard/index.html">
+<meta property="og:title" content="cs231n study note 1">
+<meta property="og:url" content="http://godshen.github.io/2018/05/14/cs231n-study-note-1/index.html">
 <meta property="og:site_name" content="中浩昊号皓的领域">
-<meta property="og:description" content="2017-11-18 15:00:00哎呀妈呀太爽了 2017-11-18 23:00:00经过了一个晚上的测试, 已经爽到天上去了 2017-11-19 16:13:00 关于我的第一款机械键盘,有如下几个参数 樱桃轴 青轴 87键 keycool凯酷 W.Y.W.K二手 75元  其余内容, 等我使用一段时间之后再做详细展开">
+<meta property="og:description" content="学习内容 Data Driven Approach 数据驱动的方法 KNN K最近邻算法 Linear classifiers 线性分类器 Loss function 损失函数 Optimization 优化 Back propagation 反向传播 Neural Networks 神经网络 工作中遇到的机器学习内容  数据驱动dataset: labels —&amp;gt; train —&amp;gt;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-13T19:28:22.688Z">
+<meta property="og:updated_time" content="2018-05-13T19:55:35.690Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="初探机械键盘">
-<meta name="twitter:description" content="2017-11-18 15:00:00哎呀妈呀太爽了 2017-11-18 23:00:00经过了一个晚上的测试, 已经爽到天上去了 2017-11-19 16:13:00 关于我的第一款机械键盘,有如下几个参数 樱桃轴 青轴 87键 keycool凯酷 W.Y.W.K二手 75元  其余内容, 等我使用一段时间之后再做详细展开">
+<meta name="twitter:title" content="cs231n study note 1">
+<meta name="twitter:description" content="学习内容 Data Driven Approach 数据驱动的方法 KNN K最近邻算法 Linear classifiers 线性分类器 Loss function 损失函数 Optimization 优化 Back propagation 反向传播 Neural Networks 神经网络 工作中遇到的机器学习内容  数据驱动dataset: labels —&amp;gt; train —&amp;gt;">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://godshen.github.io/2017/11/18/mechanicalKeyboard/"/>
+  <link rel="canonical" href="http://godshen.github.io/2018/05/14/cs231n-study-note-1/"/>
 
 
 
 
 
-  <title>初探机械键盘 | 中浩昊号皓的领域</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>cs231n study note 1 | 中浩昊号皓的领域</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -263,7 +263,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://godshen.github.io/2017/11/18/mechanicalKeyboard/">
+    <link itemprop="mainEntityOfPage" href="http://godshen.github.io/2018/05/14/cs231n-study-note-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="godshen">
@@ -280,7 +280,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">初探机械键盘</h1>
+          <h1 class="post-title" itemprop="name headline">cs231n study note 1</h1>
         
 
         <div class="post-meta">
@@ -292,8 +292,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-18T14:55:45+08:00">
-                2017-11-18
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-14T03:29:41+08:00">
+                2018-05-14
               </time>
             
 
@@ -315,8 +315,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/生活/" itemprop="url" rel="index">
-                    <span itemprop="name">生活</span>
+                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习笔记</span>
                   </a>
                 </span>
 
@@ -357,19 +357,18 @@
       
 
       
-        <p><code>2017-11-18 15:00:00</code><br>哎呀妈呀太爽了</p>
-<p><code>2017-11-18 23:00:00</code><br>经过了一个晚上的测试, 已经爽到天上去了</p>
-<p><code>2017-11-19 16:13:00</code></p>
-<h4 id="关于我的第一款机械键盘-有如下几个参数"><a href="#关于我的第一款机械键盘-有如下几个参数" class="headerlink" title="关于我的第一款机械键盘,有如下几个参数"></a>关于我的第一款机械键盘,有如下几个参数</h4><ul>
-<li>樱桃轴</li>
-<li>青轴</li>
-<li>87键</li>
-<li>keycool凯酷</li>
-<li>W.Y.W.K二手</li>
-<li>75元</li>
-</ul>
-<p><code>其余内容, 等我使用一段时间之后再做详细展开</code></p>
-
+        <h1 id="学习内容"><a href="#学习内容" class="headerlink" title="学习内容"></a>学习内容</h1><ol>
+<li>Data Driven Approach 数据驱动的方法</li>
+<li>KNN K最近邻算法</li>
+<li>Linear classifiers 线性分类器</li>
+<li>Loss function 损失函数</li>
+<li>Optimization 优化</li>
+<li>Back propagation 反向传播</li>
+<li>Neural Networks 神经网络</li>
+<li>工作中遇到的机器学习内容</li>
+</ol>
+<h2 id="数据驱动"><a href="#数据驱动" class="headerlink" title="数据驱动"></a>数据驱动</h2><p>dataset: labels —&gt; train —&gt; predict</p>
+<h2 id="K最近邻算法"><a href="#K最近邻算法" class="headerlink" title="K最近邻算法"></a>K最近邻算法</h2><h2 id="线性分类器"><a href="#线性分类器" class="headerlink" title="线性分类器"></a>线性分类器</h2>
       
     </div>
     
@@ -386,13 +385,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/机械键盘/" rel="tag"># 机械键盘</a>
+            <a href="/tags/Machine-Learning/" rel="tag"># Machine Learning</a>
           
-            <a href="/tags/青轴/" rel="tag"># 青轴</a>
-          
-            <a href="/tags/樱桃/" rel="tag"># 樱桃</a>
-          
-            <a href="/tags/闲鱼/" rel="tag"># 闲鱼</a>
+            <a href="/tags/cs231n/" rel="tag"># cs231n</a>
           
         </div>
       
@@ -405,8 +400,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/11/05/tryBitCoin/" rel="next" title="操盘比特币的经验浅谈">
-                <i class="fa fa-chevron-left"></i> 操盘比特币的经验浅谈
+              <a href="/2017/11/19/ioslatingAdmin/" rel="next" title="hexo前后端分离并存git仓库">
+                <i class="fa fa-chevron-left"></i> hexo前后端分离并存git仓库
               </a>
             
           </div>
@@ -414,10 +409,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/11/19/ioslatingAdmin/" rel="prev" title="hexo前后端分离并存git仓库">
-                hexo前后端分离并存git仓库 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -587,7 +578,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#关于我的第一款机械键盘-有如下几个参数"><span class="nav-number">1.</span> <span class="nav-text">关于我的第一款机械键盘,有如下几个参数</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#学习内容"><span class="nav-number">1.</span> <span class="nav-text">学习内容</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据驱动"><span class="nav-number">1.1.</span> <span class="nav-text">数据驱动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#K最近邻算法"><span class="nav-number">1.2.</span> <span class="nav-text">K最近邻算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线性分类器"><span class="nav-number">1.3.</span> <span class="nav-text">线性分类器</span></a></li></ol></li></ol></div>
             
 
           </div>
