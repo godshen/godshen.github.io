@@ -79,13 +79,13 @@
 
 
 
-<meta name="description" content="一. 学习内容 前馈神经网络 Feedforward Neural Network 卷积神经网络 Converlutional Neural Network hsbzd  1. 前馈神经网络这里用depth只有1的灰度图来举例。 想要完成的任务是：在宽长为4x4的图片中识别是否有下图所示的“横折”。 图中，黄色圆点表示值为0的像素，深色圆点表示值为1的像素。 我们知道不管这个横折在图片中的什么位置">
+<meta name="description" content="一. 学习内容 前馈神经网络 Feedforward Neural Network 卷积神经网络 Convolutional Neural Network.    激活函数 Activation Function  1. 前馈神经网络这里用depth只有1的灰度图来举例。 想要完成的任务是：在宽长为4x4的图片中识别是否有下图所示的“横折”。 图中，黄色圆点表示值为0的像素，深色圆点表示值为1的像">
 <meta name="keywords" content="cnn,activation function">
 <meta property="og:type" content="article">
 <meta property="og:title" content="cs231n study note 2">
 <meta property="og:url" content="http://godshen.github.io/2018/05/14/cs231n-study-note-2/index.html">
 <meta property="og:site_name" content="中浩昊号皓的领域">
-<meta property="og:description" content="一. 学习内容 前馈神经网络 Feedforward Neural Network 卷积神经网络 Converlutional Neural Network hsbzd  1. 前馈神经网络这里用depth只有1的灰度图来举例。 想要完成的任务是：在宽长为4x4的图片中识别是否有下图所示的“横折”。 图中，黄色圆点表示值为0的像素，深色圆点表示值为1的像素。 我们知道不管这个横折在图片中的什么位置">
+<meta property="og:description" content="一. 学习内容 前馈神经网络 Feedforward Neural Network 卷积神经网络 Convolutional Neural Network.    激活函数 Activation Function  1. 前馈神经网络这里用depth只有1的灰度图来举例。 想要完成的任务是：在宽长为4x4的图片中识别是否有下图所示的“横折”。 图中，黄色圆点表示值为0的像素，深色圆点表示值为1的像">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://godshen.github.io/2018/05/14/cs231n-study-note-2/ffnn1.jpg">
 <meta property="og:image" content="http://godshen.github.io/2018/05/14/cs231n-study-note-2/ffnn2.jpg">
@@ -112,10 +112,12 @@
 <meta property="og:image" content="http://godshen.github.io/2018/05/14/cs231n-study-note-2/max3.jpg">
 <meta property="og:image" content="http://godshen.github.io/2018/05/14/cs231n-study-note-2/all1.jpg">
 <meta property="og:image" content="http://godshen.github.io/2018/05/14/cs231n-study-note-2/all2.jpg">
-<meta property="og:updated_time" content="2018-05-30T19:11:23.897Z">
+<meta property="og:image" content="http://godshen.github.io/2018/05/14/cs231n-study-note-2/actFun1.png">
+<meta property="og:image" content="http://godshen.github.io/2018/05/14/cs231n-study-note-2/actFun2.png">
+<meta property="og:updated_time" content="2018-05-30T19:22:34.446Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="cs231n study note 2">
-<meta name="twitter:description" content="一. 学习内容 前馈神经网络 Feedforward Neural Network 卷积神经网络 Converlutional Neural Network hsbzd  1. 前馈神经网络这里用depth只有1的灰度图来举例。 想要完成的任务是：在宽长为4x4的图片中识别是否有下图所示的“横折”。 图中，黄色圆点表示值为0的像素，深色圆点表示值为1的像素。 我们知道不管这个横折在图片中的什么位置">
+<meta name="twitter:description" content="一. 学习内容 前馈神经网络 Feedforward Neural Network 卷积神经网络 Convolutional Neural Network.    激活函数 Activation Function  1. 前馈神经网络这里用depth只有1的灰度图来举例。 想要完成的任务是：在宽长为4x4的图片中识别是否有下图所示的“横折”。 图中，黄色圆点表示值为0的像素，深色圆点表示值为1的像">
 <meta name="twitter:image" content="http://godshen.github.io/2018/05/14/cs231n-study-note-2/ffnn1.jpg">
 
 
@@ -385,8 +387,7 @@
       
         <h1 id="一-学习内容"><a href="#一-学习内容" class="headerlink" title="一. 学习内容"></a>一. 学习内容</h1><ol>
 <li>前馈神经网络 Feedforward Neural Network</li>
-<li>卷积神经网络 Converlutional Neural Network</li>
-<li>hsbzd</li>
+<li>卷积神经网络 Convolutional Neural Network<br>.    激活函数 Activation Function</li>
 </ol>
 <h2 id="1-前馈神经网络"><a href="#1-前馈神经网络" class="headerlink" title="1. 前馈神经网络"></a>1. 前馈神经网络</h2><p>这里用depth只有1的灰度图来举例。 想要完成的任务是：在宽长为4x4的图片中识别是否有下图所示的“横折”。 图中，黄色圆点表示值为0的像素，深色圆点表示值为1的像素。 我们知道不管这个横折在图片中的什么位置，都会被认为是相同的横折。<br><img src="/2018/05/14/cs231n-study-note-2/ffnn1.jpg" alt=""><br>若训练前馈神经网络来完成该任务，那么表达图像的三维张量将会被摊平成一个向量，作为网络的输入，即(width, height, depth)为(4, 4, 1)的图片会被展成维度为16的向量作为网络的输入层。再经过几层不同节点个数的隐藏层，最终输出两个节点，分别表示“有横折的概率”和“没有横折的概率”，如下图所示。<br><img src="/2018/05/14/cs231n-study-note-2/ffnn2.jpg" alt=""><br>下面我们用数字（16进制）对图片中的每一个像素点（pixel）进行编号。 当使用右侧那种物体位于中间的训练数据来训练网络时，网络就只会对编号为5,6,9,a的节点的权重进行调节。 若让该网络识别位于右下角的“横折”时，则无法识别。<br><img src="/2018/05/14/cs231n-study-note-2/ffnn3.jpg" alt=""><br>解决办法是用大量物体位于不同位置的数据训练，同时增加网络的隐藏层个数从而扩大网络学习这些变体的能力。</p>
 <p>然而这样做十分不效率，因为我们知道在左侧的“横折”也好，还是在右侧的“横折”也罢，大家都是“横折”。 为什么相同的东西在位置变了之后要重新学习？有没有什么方法可以将中间所学到的规律也运用在其他的位置？ 换句话说，也就是<strong>让不同位置用相同的权重</strong>。</p>
@@ -510,6 +511,13 @@ X_{col}</script><p>则也需要逐步的局部滑动图片，最后堆叠构成�
 <li>Inception（稍后会对其中的细节进行说明）</li>
 <li>跳层连接</li>
 </ul>
+<h2 id="3-激活函数"><a href="#3-激活函数" class="headerlink" title="3. 激活函数"></a>3. 激活函数</h2><h3 id="激活函数通常有如下一些性质："><a href="#激活函数通常有如下一些性质：" class="headerlink" title="激活函数通常有如下一些性质："></a>激活函数通常有如下一些性质：</h3><p><strong>非线性：</strong> 当激活函数是线性的时候，一个两层的神经网络就可以逼近基本上所有的函数了。但是，如果激活函数是恒等激活函数的时候（即f(x)=x），就不满足这个性质了，而且如果MLP使用的是恒等激活函数，那么其实整个网络跟单层神经网络是等价的。</p>
+<p><strong>可微性：</strong> 当优化方法是基于梯度的时候，这个性质是必须的。</p>
+<p><strong>单调性： </strong>当激活函数是单调的时候，单层网络能够保证是凸函数。</p>
+<p><strong>f(x)≈x：</strong> 当激活函数满足这个性质的时候，如果参数的初始化是random的很小的值，那么神经网络的训练将会很高效；如果不满足这个性质，那么就需要很用心的去设置初始值。</p>
+<p><strong>输出值的范围：</strong> 当激活函数输出值是 有限 的时候，基于梯度的优化方法会更加 稳定，因为特征的表示受有限权值的影响更显著；当激活函数的输出是 无限 的时候，模型的训练会更加高效，不过在这种情况小，一般需要更小的learning rate.</p>
+<h3 id="Sigmoid"><a href="#Sigmoid" class="headerlink" title="Sigmoid"></a>Sigmoid</h3><p><img src="/2018/05/14/cs231n-study-note-2/actFun1.png" alt=""></p>
+<h3 id="ReLU"><a href="#ReLU" class="headerlink" title="ReLU"></a>ReLU</h3><p><img src="/2018/05/14/cs231n-study-note-2/actFun2.png" alt=""></p>
 <h1 id="二-工作相关"><a href="#二-工作相关" class="headerlink" title="二. 工作相关"></a>二. 工作相关</h1><h3 id="遗传算法"><a href="#遗传算法" class="headerlink" title="遗传算法"></a>遗传算法</h3><ol>
 <li>遗传算法与机器学习-不确定性优化</li>
 <li>遗传算法原理简述</li>
@@ -726,7 +734,7 @@ X_{col}</script><p>则也需要逐步的局部滑动图片，最后堆叠构成�
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一-学习内容"><span class="nav-number">1.</span> <span class="nav-text">一. 学习内容</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-前馈神经网络"><span class="nav-number">1.1.</span> <span class="nav-text">1. 前馈神经网络</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-卷积神经网络"><span class="nav-number">1.2.</span> <span class="nav-text">2. 卷积神经网络</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#局部连接"><span class="nav-number">1.2.1.</span> <span class="nav-text">局部连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#空间共享"><span class="nav-number">1.2.2.</span> <span class="nav-text">空间共享</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输出表达"><span class="nav-number">1.2.3.</span> <span class="nav-text">输出表达</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Depth维的处理"><span class="nav-number">1.2.4.</span> <span class="nav-text">Depth维的处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Zero-padding"><span class="nav-number">1.2.5.</span> <span class="nav-text">Zero padding</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#形状、概念抓取"><span class="nav-number">1.2.6.</span> <span class="nav-text">形状、概念抓取</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多filters"><span class="nav-number">1.2.7.</span> <span class="nav-text">多filters</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#加入非线性"><span class="nav-number">1.2.8.</span> <span class="nav-text">加入非线性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输出长方体"><span class="nav-number">1.2.9.</span> <span class="nav-text">输出长方体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#矩阵乘法执行卷积"><span class="nav-number">1.2.10.</span> <span class="nav-text">矩阵乘法执行卷积</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Max-pooling"><span class="nav-number">1.2.11.</span> <span class="nav-text">Max pooling</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#全连接层"><span class="nav-number">1.2.12.</span> <span class="nav-text">全连接层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结构发展"><span class="nav-number">1.2.13.</span> <span class="nav-text">结构发展</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二-工作相关"><span class="nav-number">2.</span> <span class="nav-text">二. 工作相关</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#遗传算法"><span class="nav-number">2.0.1.</span> <span class="nav-text">遗传算法</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一-学习内容"><span class="nav-number">1.</span> <span class="nav-text">一. 学习内容</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-前馈神经网络"><span class="nav-number">1.1.</span> <span class="nav-text">1. 前馈神经网络</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-卷积神经网络"><span class="nav-number">1.2.</span> <span class="nav-text">2. 卷积神经网络</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#局部连接"><span class="nav-number">1.2.1.</span> <span class="nav-text">局部连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#空间共享"><span class="nav-number">1.2.2.</span> <span class="nav-text">空间共享</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输出表达"><span class="nav-number">1.2.3.</span> <span class="nav-text">输出表达</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Depth维的处理"><span class="nav-number">1.2.4.</span> <span class="nav-text">Depth维的处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Zero-padding"><span class="nav-number">1.2.5.</span> <span class="nav-text">Zero padding</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#形状、概念抓取"><span class="nav-number">1.2.6.</span> <span class="nav-text">形状、概念抓取</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多filters"><span class="nav-number">1.2.7.</span> <span class="nav-text">多filters</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#加入非线性"><span class="nav-number">1.2.8.</span> <span class="nav-text">加入非线性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输出长方体"><span class="nav-number">1.2.9.</span> <span class="nav-text">输出长方体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#矩阵乘法执行卷积"><span class="nav-number">1.2.10.</span> <span class="nav-text">矩阵乘法执行卷积</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Max-pooling"><span class="nav-number">1.2.11.</span> <span class="nav-text">Max pooling</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#全连接层"><span class="nav-number">1.2.12.</span> <span class="nav-text">全连接层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结构发展"><span class="nav-number">1.2.13.</span> <span class="nav-text">结构发展</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-激活函数"><span class="nav-number">1.3.</span> <span class="nav-text">3. 激活函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#激活函数通常有如下一些性质："><span class="nav-number">1.3.1.</span> <span class="nav-text">激活函数通常有如下一些性质：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sigmoid"><span class="nav-number">1.3.2.</span> <span class="nav-text">Sigmoid</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ReLU"><span class="nav-number">1.3.3.</span> <span class="nav-text">ReLU</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二-工作相关"><span class="nav-number">2.</span> <span class="nav-text">二. 工作相关</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#遗传算法"><span class="nav-number">2.0.1.</span> <span class="nav-text">遗传算法</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
