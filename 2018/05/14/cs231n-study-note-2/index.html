@@ -79,13 +79,13 @@
 
 
 
-<meta name="description" content="一、学习内容 前馈神经网络 Feedforward Neural Network 卷积神经网络 Converlutional Neural Network hsbzd  1. 前馈神经网络这里用depth只有1的灰度图来举例。 想要完成的任务是：在宽长为4x4的图片中识别是否有下图所示的“横折”。 图中，黄色圆点表示值为0的像素，深色圆点表示值为1的像素。 我们知道不管这个横折在图片中的什么位置，">
+<meta name="description" content="一. 学习内容 前馈神经网络 Feedforward Neural Network 卷积神经网络 Converlutional Neural Network hsbzd  1. 前馈神经网络这里用depth只有1的灰度图来举例。 想要完成的任务是：在宽长为4x4的图片中识别是否有下图所示的“横折”。 图中，黄色圆点表示值为0的像素，深色圆点表示值为1的像素。 我们知道不管这个横折在图片中的什么位置">
 <meta name="keywords" content="cnn,activation function">
 <meta property="og:type" content="article">
 <meta property="og:title" content="cs231n study note 2">
 <meta property="og:url" content="http://godshen.github.io/2018/05/14/cs231n-study-note-2/index.html">
 <meta property="og:site_name" content="中浩昊号皓的领域">
-<meta property="og:description" content="一、学习内容 前馈神经网络 Feedforward Neural Network 卷积神经网络 Converlutional Neural Network hsbzd  1. 前馈神经网络这里用depth只有1的灰度图来举例。 想要完成的任务是：在宽长为4x4的图片中识别是否有下图所示的“横折”。 图中，黄色圆点表示值为0的像素，深色圆点表示值为1的像素。 我们知道不管这个横折在图片中的什么位置，">
+<meta property="og:description" content="一. 学习内容 前馈神经网络 Feedforward Neural Network 卷积神经网络 Converlutional Neural Network hsbzd  1. 前馈神经网络这里用depth只有1的灰度图来举例。 想要完成的任务是：在宽长为4x4的图片中识别是否有下图所示的“横折”。 图中，黄色圆点表示值为0的像素，深色圆点表示值为1的像素。 我们知道不管这个横折在图片中的什么位置">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://godshen.github.io/2018/05/14/cs231n-study-note-2/ffnn1.jpg">
 <meta property="og:image" content="http://godshen.github.io/2018/05/14/cs231n-study-note-2/ffnn2.jpg">
@@ -112,10 +112,10 @@
 <meta property="og:image" content="http://godshen.github.io/2018/05/14/cs231n-study-note-2/max3.jpg">
 <meta property="og:image" content="http://godshen.github.io/2018/05/14/cs231n-study-note-2/all1.jpg">
 <meta property="og:image" content="http://godshen.github.io/2018/05/14/cs231n-study-note-2/all2.jpg">
-<meta property="og:updated_time" content="2018-05-30T19:02:10.004Z">
+<meta property="og:updated_time" content="2018-05-30T19:11:23.897Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="cs231n study note 2">
-<meta name="twitter:description" content="一、学习内容 前馈神经网络 Feedforward Neural Network 卷积神经网络 Converlutional Neural Network hsbzd  1. 前馈神经网络这里用depth只有1的灰度图来举例。 想要完成的任务是：在宽长为4x4的图片中识别是否有下图所示的“横折”。 图中，黄色圆点表示值为0的像素，深色圆点表示值为1的像素。 我们知道不管这个横折在图片中的什么位置，">
+<meta name="twitter:description" content="一. 学习内容 前馈神经网络 Feedforward Neural Network 卷积神经网络 Converlutional Neural Network hsbzd  1. 前馈神经网络这里用depth只有1的灰度图来举例。 想要完成的任务是：在宽长为4x4的图片中识别是否有下图所示的“横折”。 图中，黄色圆点表示值为0的像素，深色圆点表示值为1的像素。 我们知道不管这个横折在图片中的什么位置">
 <meta name="twitter:image" content="http://godshen.github.io/2018/05/14/cs231n-study-note-2/ffnn1.jpg">
 
 
@@ -383,7 +383,7 @@
       
 
       
-        <h1 id="一、学习内容"><a href="#一、学习内容" class="headerlink" title="一、学习内容"></a>一、学习内容</h1><ol>
+        <h1 id="一-学习内容"><a href="#一-学习内容" class="headerlink" title="一. 学习内容"></a>一. 学习内容</h1><ol>
 <li>前馈神经网络 Feedforward Neural Network</li>
 <li>卷积神经网络 Converlutional Neural Network</li>
 <li>hsbzd</li>
@@ -510,6 +510,12 @@ X_{col}</script><p>则也需要逐步的局部滑动图片，最后堆叠构成�
 <li>Inception（稍后会对其中的细节进行说明）</li>
 <li>跳层连接</li>
 </ul>
+<h1 id="二-工作相关"><a href="#二-工作相关" class="headerlink" title="二. 工作相关"></a>二. 工作相关</h1><h3 id="遗传算法"><a href="#遗传算法" class="headerlink" title="遗传算法"></a>遗传算法</h3><ol>
+<li>遗传算法与机器学习-不确定性优化</li>
+<li>遗传算法原理简述</li>
+<li>遗传算法解决机器视觉问题</li>
+<li>遗传算法缺点与局限性</li>
+</ol>
 
       
     </div>
@@ -720,7 +726,7 @@ X_{col}</script><p>则也需要逐步的局部滑动图片，最后堆叠构成�
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、学习内容"><span class="nav-number">1.</span> <span class="nav-text">一、学习内容</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-前馈神经网络"><span class="nav-number">1.1.</span> <span class="nav-text">1. 前馈神经网络</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-卷积神经网络"><span class="nav-number">1.2.</span> <span class="nav-text">2. 卷积神经网络</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#局部连接"><span class="nav-number">1.2.1.</span> <span class="nav-text">局部连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#空间共享"><span class="nav-number">1.2.2.</span> <span class="nav-text">空间共享</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输出表达"><span class="nav-number">1.2.3.</span> <span class="nav-text">输出表达</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Depth维的处理"><span class="nav-number">1.2.4.</span> <span class="nav-text">Depth维的处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Zero-padding"><span class="nav-number">1.2.5.</span> <span class="nav-text">Zero padding</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#形状、概念抓取"><span class="nav-number">1.2.6.</span> <span class="nav-text">形状、概念抓取</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多filters"><span class="nav-number">1.2.7.</span> <span class="nav-text">多filters</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#加入非线性"><span class="nav-number">1.2.8.</span> <span class="nav-text">加入非线性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输出长方体"><span class="nav-number">1.2.9.</span> <span class="nav-text">输出长方体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#矩阵乘法执行卷积"><span class="nav-number">1.2.10.</span> <span class="nav-text">矩阵乘法执行卷积</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Max-pooling"><span class="nav-number">1.2.11.</span> <span class="nav-text">Max pooling</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#全连接层"><span class="nav-number">1.2.12.</span> <span class="nav-text">全连接层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结构发展"><span class="nav-number">1.2.13.</span> <span class="nav-text">结构发展</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一-学习内容"><span class="nav-number">1.</span> <span class="nav-text">一. 学习内容</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-前馈神经网络"><span class="nav-number">1.1.</span> <span class="nav-text">1. 前馈神经网络</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-卷积神经网络"><span class="nav-number">1.2.</span> <span class="nav-text">2. 卷积神经网络</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#局部连接"><span class="nav-number">1.2.1.</span> <span class="nav-text">局部连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#空间共享"><span class="nav-number">1.2.2.</span> <span class="nav-text">空间共享</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输出表达"><span class="nav-number">1.2.3.</span> <span class="nav-text">输出表达</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Depth维的处理"><span class="nav-number">1.2.4.</span> <span class="nav-text">Depth维的处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Zero-padding"><span class="nav-number">1.2.5.</span> <span class="nav-text">Zero padding</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#形状、概念抓取"><span class="nav-number">1.2.6.</span> <span class="nav-text">形状、概念抓取</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多filters"><span class="nav-number">1.2.7.</span> <span class="nav-text">多filters</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#加入非线性"><span class="nav-number">1.2.8.</span> <span class="nav-text">加入非线性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输出长方体"><span class="nav-number">1.2.9.</span> <span class="nav-text">输出长方体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#矩阵乘法执行卷积"><span class="nav-number">1.2.10.</span> <span class="nav-text">矩阵乘法执行卷积</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Max-pooling"><span class="nav-number">1.2.11.</span> <span class="nav-text">Max pooling</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#全连接层"><span class="nav-number">1.2.12.</span> <span class="nav-text">全连接层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结构发展"><span class="nav-number">1.2.13.</span> <span class="nav-text">结构发展</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二-工作相关"><span class="nav-number">2.</span> <span class="nav-text">二. 工作相关</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#遗传算法"><span class="nav-number">2.0.1.</span> <span class="nav-text">遗传算法</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
