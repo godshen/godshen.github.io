@@ -84,10 +84,10 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="BP homowork">
 <meta property="og:url" content="http://godshen.github.io/2019/04/05/BP练习作业/index.html">
-<meta property="og:site_name" content="中浩昊号皓的领域">
+<meta property="og:site_name" content="沈中皓同学不好学">
 <meta property="og:description" content="通用的三层前馈网络的BP学习算法的推导输入矩阵\boldsymbol{X}_{n \times1} = \left[  \begin{matrix}    x_1 &amp; x_2 &amp; \cdots &amp; x_n   \end{matrix}  \right]^T从输入到隐藏层的参数矩阵\boldsymbol{W}_{m \times n}= \left[  \begin{matrix}    w_{11">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-05T08:00:56.587Z">
+<meta property="og:updated_time" content="2019-04-05T08:12:41.993Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="BP homowork">
 <meta name="twitter:description" content="通用的三层前馈网络的BP学习算法的推导输入矩阵\boldsymbol{X}_{n \times1} = \left[  \begin{matrix}    x_1 &amp; x_2 &amp; \cdots &amp; x_n   \end{matrix}  \right]^T从输入到隐藏层的参数矩阵\boldsymbol{W}_{m \times n}= \left[  \begin{matrix}    w_{11">
@@ -126,7 +126,7 @@
 
 
 
-  <title>BP homowork | 中浩昊号皓的领域</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>BP homowork | 沈中皓同学不好学</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -156,7 +156,7 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">中浩昊号皓的领域</span>
+        <span class="site-title">沈中皓同学不好学</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -272,7 +272,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="中浩昊号皓的领域">
+      <meta itemprop="name" content="沈中皓同学不好学">
     </span>
 
     
@@ -407,12 +407,14 @@ E = {1 \over 2} \sum_{k=1}^l\{d_k-f[\sum_{j=0}^mv_{jk}f(net_j)]\}^2 =  {1 \over 
 {\partial E \over \partial y_k} = -(d_k - y_k)</script><h3 id="对于隐藏层-利用误差公式-E-1-over-2-sum-k-1-l-d-k-f-sum-j-0-mv-jk-h-j-2-可得"><a href="#对于隐藏层-利用误差公式-E-1-over-2-sum-k-1-l-d-k-f-sum-j-0-mv-jk-h-j-2-可得" class="headerlink" title="对于隐藏层, 利用误差公式 $E  = {1 \over 2} \sum{k=1}^l[d_k-f(\sum{j=0}^mv_{jk}h_j)]^2$, 可得"></a>对于隐藏层, 利用误差公式 $E  = {1 \over 2} \sum<em>{k=1}^l[d_k-f(\sum</em>{j=0}^mv_{jk}h_j)]^2$, 可得</h3><script type="math/tex; mode=display">
 {\partial E \over \partial y_k} = - \sum_{k=1}^l(d_k-y_k)f'(net_k)v_{jk}</script><h3 id="将Sigmoid激活函数代入-可以得到"><a href="#将Sigmoid激活函数代入-可以得到" class="headerlink" title="将Sigmoid激活函数代入, 可以得到"></a>将Sigmoid激活函数代入, 可以得到</h3><script type="math/tex; mode=display">\delta_k^y = (d_k-y_k)y_k(1-y_k)​</script><script type="math/tex; mode=display">\delta_j^h = \sum_{k=1}^l(d_k-y_k)f'(net_k)v_{jk}]f'(net_j) = (\sum_{k=1}^l \delta_k^y v_{jk})h_j(1-h_j)</script><h3 id="所以得到三层前馈网络的BP学习算法权值调整计算公式为"><a href="#所以得到三层前馈网络的BP学习算法权值调整计算公式为" class="headerlink" title="所以得到三层前馈网络的BP学习算法权值调整计算公式为"></a>所以得到三层前馈网络的BP学习算法权值调整计算公式为</h3><script type="math/tex; mode=display">
 \Delta v_{jk} = \eta \delta_k^y h_j = \eta \ (d_k-y_k)y_k(1-y_k) \ h_j</script><script type="math/tex; mode=display">
-\Delta w_{ij} = \eta \delta_j^h x_i = \eta \  (\sum_{k=1}^l \delta_k^y v_{jk})h_j(1-h_j) \  x_i</script><h1 id="作业-在此例中"><a href="#作业-在此例中" class="headerlink" title="作业: 在此例中"></a>作业: 在此例中</h1><h3 id="输入层有4个-隐藏层有3个-输出有1个-因此有"><a href="#输入层有4个-隐藏层有3个-输出有1个-因此有" class="headerlink" title="输入层有4个, 隐藏层有3个, 输出有1个, 因此有"></a>输入层有4个, 隐藏层有3个, 输出有1个, 因此有</h3><h3 id="n-4-m-3-l-1-即为"><a href="#n-4-m-3-l-1-即为" class="headerlink" title="n=4, m=3, l=1, 即为:"></a>n=4, m=3, l=1, 即为:</h3><script type="math/tex; mode=display">\boldsymbol{X} =
+\Delta w_{ij} = \eta \delta_j^h x_i = \eta \  (\sum_{k=1}^l \delta_k^y v_{jk})h_j(1-h_j) \  x_i</script><h1 id="作业-在此例中"><a href="#作业-在此例中" class="headerlink" title="作业: 在此例中"></a>作业: 在此例中</h1><h3 id="输入层有4个-隐藏层有3个-输出有1个-因此有"><a href="#输入层有4个-隐藏层有3个-输出有1个-因此有" class="headerlink" title="输入层有4个, 隐藏层有3个, 输出有1个, 因此有"></a>输入层有4个, 隐藏层有3个, 输出有1个, 因此有</h3><h3 id="n-4-m-3-l-1-即为"><a href="#n-4-m-3-l-1-即为" class="headerlink" title="n=4, m=3, l=1, 即为:"></a>n=4, m=3, l=1, 即为:</h3><script type="math/tex; mode=display">
+\boldsymbol{X} =
 \left[
  \begin{matrix}
    x_1 & x_2 & x_3 & x_4
   \end{matrix} 
-\right]^T​</script><script type="math/tex; mode=display">\boldsymbol{W}=
+\right]^T​</script><script type="math/tex; mode=display">
+\boldsymbol{W}=
 \left[
  \begin{matrix}
    w_{11} & w_{12} & w_{13}\\
@@ -420,31 +422,41 @@ E = {1 \over 2} \sum_{k=1}^l\{d_k-f[\sum_{j=0}^mv_{jk}f(net_j)]\}^2 =  {1 \over 
    w_{31} & w_{32} & w_{33}\\
    w_{41} & w_{42} & w_{43}\\
   \end{matrix} 
-\right]^T ​</script><script type="math/tex; mode=display">\boldsymbol{H}
+\right]^T ​</script><script type="math/tex; mode=display">
+\boldsymbol{H}
 =\left[
  \begin{matrix}
    h_1 & h_2 & h_3
   \end{matrix} 
-\right]^T</script><script type="math/tex; mode=display">\boldsymbol{V}
+\right]^T</script><script type="math/tex; mode=display">
+\boldsymbol{V}
 =\left[
  \begin{matrix}
    v_{11} \\ v_{21} \\ v_{31}
   \end{matrix} 
-\right]^T ​</script><script type="math/tex; mode=display">\boldsymbol{Y} = y​</script><script type="math/tex; mode=display">\boldsymbol{D} = d​</script><h3 id="正向推导"><a href="#正向推导" class="headerlink" title="正向推导"></a>正向推导</h3><p>$h<em>1 = w</em>{11}x<em>1 + w</em>{21}x<em>2 + w</em>{31}x<em>3 + w</em>{41}x<em>4 = W</em>{t_1}X $ </p>
-<p>$h<em>2 = w</em>{12}x<em>1 + w</em>{22}x<em>2 + w</em>{32}x<em>3 + w</em>{42}x<em>4 = W</em>{t_2}X $</p>
-<p>$h<em>3 = w</em>{13}x<em>1 + w</em>{23}x<em>2 + w</em>{33}x<em>3 + w</em>{43}x<em>4 = W</em>{t_3}X ​$</p>
-<p>$Y = y = v<em>{11}h_1 + v</em>{21}h<em>2 + v</em>{31}h<em>3 = V \ \left[<br> \begin{matrix}<br>   W</em>{t<em>1}X \ W</em>{t<em>2}X \ W</em>{t_3}X<br>  \end{matrix}<br>\right] = V \ W \ X​$</p>
-<h3 id="误差反向传播"><a href="#误差反向传播" class="headerlink" title="误差反向传播"></a>误差反向传播</h3><script type="math/tex; mode=display">
+\right]^T ​</script><script type="math/tex; mode=display">
+\boldsymbol{Y} = y​</script><script type="math/tex; mode=display">
+\boldsymbol{D} = d​</script><h3 id="正向推导"><a href="#正向推导" class="headerlink" title="正向推导"></a>正向推导</h3><script type="math/tex; mode=display">
+h_1 = w_{11}x_1 + w_{21}x_2 + w_{31}x_3 + w_{41}x_4 = W_{t_1}X</script><script type="math/tex; mode=display">
+h_2 = w_{12}x_1 + w_{22}x_2 + w_{32}x_3 + w_{42}x_4 = W_{t_2}X</script><script type="math/tex; mode=display">
+h_3 = w_{13}x_1 + w_{23}x_2 + w_{33}x_3 + w_{43}x_4 = W_{t_3}X ​</script><script type="math/tex; mode=display">
+Y = y = v_{11}h_1 + v_{21}h_2 + v_{31}h_3 = V \ \left[
+ \begin{matrix}
+   W_{t_1}X \\ W_{t_2}X \\ W_{t_3}X
+  \end{matrix} 
+\right] = V \ W \ X​</script><h3 id="误差反向传播"><a href="#误差反向传播" class="headerlink" title="误差反向传播"></a>误差反向传播</h3><script type="math/tex; mode=display">
 E = {1 \over 2} \sum_{k=1}^1\{d_k-f[\sum_{j=1}^mv_{jk}f(net_j)]\}^2 =  {1 \over 2} \sum_{k=1}^l\{d_k-f[\sum_{j=1}^mv_{jk}f(\sum_{i=1}^nw_{ij}x_i)]\}^2</script><h4 id="代入n-m-l具体数值"><a href="#代入n-m-l具体数值" class="headerlink" title="代入n,m,l具体数值"></a>代入n,m,l具体数值</h4><script type="math/tex; mode=display">
 E = {1 \over 2} \sum_{k=1}^1\{d_k-f[\sum_{j=1}^3v_{jk}f(net_j)]\}^2 =  {1 \over 2} \sum_{k=1}^1\{d_k-f[\sum_{j=1}^3v_{jk}f(\sum_{i=1}^4w_{ij}x_i)]\}^2</script><script type="math/tex; mode=display">
 E = {1 \over 2} \{d_1-f[\sum_{j=1}^3v_{j1}f(\sum_{i=1}^4w_{ij}x_i)]\}^2</script><h4 id="误差为"><a href="#误差为" class="headerlink" title="误差为:"></a>误差为:</h4><script type="math/tex; mode=display">
-\Delta v_{j1} = \eta \delta^y h_j = \eta \ (d_1-y_1)y_1(1-y_1) \ h_j</script><p>$ \Delta v<em>{11} = \eta \ (d_1-y_1)y_1(1-y_1) \ h_1 ​$<br>$ \Delta v</em>{21} = \eta \ (d<em>1-y_1)y_1(1-y_1) \ h_2 $<br>$ \Delta v</em>{31} = \eta \ (d_1-y_1)y_1(1-y_1) \ h_3 $</p>
-<script type="math/tex; mode=display">
-\Delta w_{ij} = \eta \delta_j^h x_i = \eta \  \delta^y v_{j1}h_j(1-h_j) \  x_i</script><p>$ \Delta w<em>{11} =  \eta \  \delta^y v</em>{j1}h_1(1-h_1) \  x_1 $</p>
-<p>$ \Delta w<em>{12} =  \eta \  \delta^y v</em>{j1}h_2(1-h_2) \  x_1 ​$</p>
-<p>$ \Delta w<em>{13} =  \eta \  \delta^y v</em>{j1}h_3(1-h_3) \  x_1 $</p>
-<p>$ \Delta w<em>{21} =  \eta \  \delta^y v</em>{j3}h_1(1-h_1) \  x_2 ​$</p>
-<p>…</p>
+\Delta v_{j1} = \eta \delta^y h_j = \eta \ (d_1-y_1)y_1(1-y_1) \ h_j</script><script type="math/tex; mode=display">
+ \Delta v_{11} = \eta \ (d_1-y_1)y_1(1-y_1) \ h_1 ​</script><script type="math/tex; mode=display">
+ \Delta v_{21} = \eta \ (d_1-y_1)y_1(1-y_1) \ h_2</script><script type="math/tex; mode=display">
+ \Delta v_{31} = \eta \ (d_1-y_1)y_1(1-y_1) \ h_3</script><script type="math/tex; mode=display">
+\Delta w_{ij} = \eta \delta_j^h x_i = \eta \  \delta^y v_{j1}h_j(1-h_j) \  x_i</script><script type="math/tex; mode=display">
+ \Delta w_{11} =  \eta \  \delta^y v_{j1}h_1(1-h_1) \  x_1</script><script type="math/tex; mode=display">
+ \Delta w_{12} =  \eta \  \delta^y v_{j1}h_2(1-h_2) \  x_1 ​</script><script type="math/tex; mode=display">
+ \Delta w_{13} =  \eta \  \delta^y v_{j1}h_3(1-h_3) \  x_1</script><script type="math/tex; mode=display">
+ \Delta w_{21} =  \eta \  \delta^y v_{j3}h_1(1-h_1) \  x_2 ​</script><p>…</p>
 <p>…</p>
 
       
