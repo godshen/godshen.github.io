@@ -1,5 +1,5 @@
 ---
-title: BP homowork
+title: 反向传播计算的作业
 date: 2019-04-05 03:29:41
 tags:
 - deep learning
