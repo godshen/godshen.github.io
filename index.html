@@ -14,7 +14,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next gemini use-motion" lang="en">
 <head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -70,7 +70,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Gemini',
     version: '7.1.0',
     sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
     back2top: true,
@@ -102,7 +102,7 @@
 <meta property="og:url" content="http://godshen.github.io/index.html">
 <meta property="og:site_name" content="沈中皓同学不好学">
 <meta property="og:description" content="Dangge Chihuo Zuoge Shabi">
-<meta property="og:locale" content="zh-Hans">
+<meta property="og:locale" content="en">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="沈中皓同学不好学">
 <meta name="twitter:description" content="Dangge Chihuo Zuoge Shabi">
@@ -174,7 +174,7 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
 
   
   
@@ -206,7 +206,7 @@
   </div>
 
   <div class="site-nav-toggle">
-    <button aria-label="Navigationsleiste an/ausschalten">
+    <button aria-label="Toggle navigation bar">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -234,7 +234,7 @@
 
     
 
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br/>Startseite</a>
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br/>Home</a>
 
   </li>
         
@@ -251,7 +251,7 @@
 
     
 
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br/>Über</a>
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br/>About</a>
 
   </li>
         
@@ -268,7 +268,7 @@
 
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br/>Schlagwörter</a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br/>Tags</a>
 
   </li>
         
@@ -285,7 +285,7 @@
 
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br/>Kategorien</a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br/>Categories</a>
 
   </li>
         
@@ -302,7 +302,7 @@
 
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>Archiv</a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>Archives</a>
 
   </li>
         
@@ -319,7 +319,7 @@
 
     
 
-    <a href="/schedule/" rel="section"><i class="menu-item-icon fa fa-fw fa-calendar"></i> <br/>Zeitplan</a>
+    <a href="/schedule/" rel="section"><i class="menu-item-icon fa fa-fw fa-calendar"></i> <br/>Schedule</a>
 
   </li>
 
@@ -327,9 +327,6 @@
       
     </ul>
   
-
-  
-    
 
   
 
@@ -358,6 +355,9 @@
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
+            
+
           
           <div id="content" class="content">
             
@@ -416,14 +416,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Erstellt: 2019-04-05 03:29:41 / Geändert am: 16:20:03" itemprop="dateCreated datePublished" datetime="2019-04-05T03:29:41+08:00">2019-04-05</time>
+              <time title="Created: 2019-04-05 03:29:41 / Modified: 16:20:03" itemprop="dateCreated datePublished" datetime="2019-04-05T03:29:41+08:00">2019-04-05</time>
             
 
             
@@ -442,7 +442,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">In</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/学习笔记/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a></span>
@@ -482,107 +482,24 @@
       
         
           
-            <h2 id="通用的三层前馈网络的BP学习算法的推导"><a href="#通用的三层前馈网络的BP学习算法的推导" class="headerlink" title="通用的三层前馈网络的BP学习算法的推导"></a>通用的三层前馈网络的BP学习算法的推导</h2><h3 id="输入矩阵"><a href="#输入矩阵" class="headerlink" title="输入矩阵"></a>输入矩阵</h3><script type="math/tex; mode=display">\boldsymbol{X}_{n \times1} =
+            <p>
+              通用的三层前馈网络的BP学习算法的推导输入矩阵\boldsymbol{X}_{n \times1} =
 \left[
  \begin{matrix}
    x_1 & x_2 & \cdots & x_n
   \end{matrix} 
-\right]^T</script><h3 id="从输入到隐藏层的参数矩阵"><a href="#从输入到隐藏层的参数矩阵" class="headerlink" title="从输入到隐藏层的参数矩阵"></a>从输入到隐藏层的参数矩阵</h3><script type="math/tex; mode=display">\boldsymbol{W}_{m \times n}=
-\left[
- \begin{matrix}
-   w_{11} & w_{12} & \cdots & w_{1m}\\
-   w_{21} & w_{22} & \cdots & w_{2m}\\
-   {\vdots} & {\vdots} & {\ddots} & {\vdots} &\\
-   w_{n1} & w_{n2} & \cdots & w_{nm}\\
-  \end{matrix} 
-\right]^T ​</script><h3 id="隐藏层矩阵"><a href="#隐藏层矩阵" class="headerlink" title="隐藏层矩阵"></a>隐藏层矩阵</h3><script type="math/tex; mode=display">\boldsymbol{H}_{m \times 1}
-=\left[
- \begin{matrix}
-   h_1 & h_2 & \cdots & h_m
-  \end{matrix} 
-\right]^T​</script><h3 id="从隐藏层到输出的参数矩阵"><a href="#从隐藏层到输出的参数矩阵" class="headerlink" title="从隐藏层到输出的参数矩阵"></a>从隐藏层到输出的参数矩阵</h3><script type="math/tex; mode=display">\boldsymbol{V}_{l \times m}
-=\left[
- \begin{matrix}
-   v_{11} & v_{12} & \cdots & v_{1l}\\
-   v_{21} & v_{22} & \cdots & v_{2l}\\
-   {\vdots} & {\vdots} & {\ddots} & {\vdots} &\\
-   v_{m1} & v_{m2} & \cdots & v_{ml}\\
-  \end{matrix} 
-\right]^T</script><h3 id="计算输出"><a href="#计算输出" class="headerlink" title="计算输出"></a>计算输出</h3><script type="math/tex; mode=display">\boldsymbol{Y}_{l \times 1}
-=\left[
- \begin{matrix}
-   y_1 & y_2 & \cdots & y_l
-  \end{matrix} 
-\right]^T​</script><h3 id="期望输出"><a href="#期望输出" class="headerlink" title="期望输出"></a>期望输出</h3><script type="math/tex; mode=display">\boldsymbol{D}_{l \times 1}
-=\left[
- \begin{matrix}
-   d_1 & d_2 & \cdots & d_l
-  \end{matrix} 
-\right]^T​</script><h3 id="传递关系"><a href="#传递关系" class="headerlink" title="传递关系"></a>传递关系</h3><script type="math/tex; mode=display">
-\boldsymbol{W} \cdot \boldsymbol{X} = \boldsymbol{H}</script><script type="math/tex; mode=display">
-\boldsymbol{V} \cdot \boldsymbol{H} = \boldsymbol{Y}</script><h3 id="其展开后的求和公式形式为"><a href="#其展开后的求和公式形式为" class="headerlink" title="其展开后的求和公式形式为"></a>其展开后的求和公式形式为</h3><script type="math/tex; mode=display">
-y_k = f(net_k) \quad k=1,2,...,l</script><script type="math/tex; mode=display">
-net_k = \sum_{j=0}^m{v_{jk}h_j} \quad k=1,2,...,l</script><script type="math/tex; mode=display">
-h_j = f(net_j) \quad j=1,2,...,m</script><script type="math/tex; mode=display">
-net_j = \sum_{i=0}^n{w_{ij}x_i} \quad j=1,2,...,m</script><h3 id="单极性sigmoid函数"><a href="#单极性sigmoid函数" class="headerlink" title="单极性sigmoid函数"></a>单极性sigmoid函数</h3><script type="math/tex; mode=display">
-f(x)={1 \over {1+e^{-x}}}</script><h3 id="误差计算"><a href="#误差计算" class="headerlink" title="误差计算"></a>误差计算</h3><script type="math/tex; mode=display">
-E = {1 \over 2} (\boldsymbol{D}-\boldsymbol{Y})^2 = {1 \over 2} \sum_{k=1}^l(d_k-y_k)^2</script><h3 id="将以上误差定义式展开至隐藏层"><a href="#将以上误差定义式展开至隐藏层" class="headerlink" title="将以上误差定义式展开至隐藏层:"></a>将以上误差定义式展开至隐藏层:</h3><script type="math/tex; mode=display">
-E = {1 \over 2} \sum_{k=1}^l[d_k-f(net_k)]^2 = {1 \over 2} \sum_{k=1}^l[d_k-f(\sum_{j=0}^mv_{jk}h_j)]^2</script><h3 id="进一步展开至输入层"><a href="#进一步展开至输入层" class="headerlink" title="进一步展开至输入层:"></a>进一步展开至输入层:</h3><script type="math/tex; mode=display">
-E = {1 \over 2} \sum_{k=1}^l\{d_k-f[\sum_{j=0}^mv_{jk}f(net_j)]\}^2 =  {1 \over 2} \sum_{k=1}^l\{d_k-f[\sum_{j=0}^mv_{jk}f(\sum_{i=0}^nw_{ij}x_i)]\}^2</script><script type="math/tex; mode=display">\Delta v_{jk} = - \eta { \partial E \over \partial v_{jk}} \quad j=0,1,2,…m; k=1,2,..,l​</script><script type="math/tex; mode=display">\Delta w_{ij} = - \eta { \partial E \over \partial w_{ij}} \quad i=0,1,2,…n; j=1,2,..,m</script><h3 id="式中负号表示梯度下降-常数-eta-in-0-1-表示比例系数"><a href="#式中负号表示梯度下降-常数-eta-in-0-1-表示比例系数" class="headerlink" title="式中负号表示梯度下降, 常数$\eta \in (0,1)$ 表示比例系数."></a>式中负号表示梯度下降, 常数$\eta \in (0,1)$ 表示比例系数.</h3><h3 id="对于输出层-上式可写成"><a href="#对于输出层-上式可写成" class="headerlink" title="对于输出层, 上式可写成:"></a>对于输出层, 上式可写成:</h3><script type="math/tex; mode=display">\Delta v_{jk} = - \eta { \partial E \over {v_{jk}}} = - \eta { \partial E \over \partial net_k} \ { \partial net_k \over \partial v_{jk}} ​</script><h3 id="对于隐藏层-上式可写成"><a href="#对于隐藏层-上式可写成" class="headerlink" title="对于隐藏层, 上式可写成:"></a>对于隐藏层, 上式可写成:</h3><script type="math/tex; mode=display">\Delta w_{ij} = - \eta { \partial E \over {w_{ij}}} = - \eta { \partial E \over \partial net_j} \ { \partial net_j \over \partial w_{ij}} ​</script><h3 id="对于输出层和隐藏层各定义一个误差信号-令"><a href="#对于输出层和隐藏层各定义一个误差信号-令" class="headerlink" title="对于输出层和隐藏层各定义一个误差信号, 令"></a>对于输出层和隐藏层各定义一个误差信号, 令</h3><script type="math/tex; mode=display">\delta_k^y = - {\partial E \over \partial net_k }</script><script type="math/tex; mode=display">\delta_j^h = - {\partial E \over \partial net_j }</script><h3 id="代入上式可得到"><a href="#代入上式可得到" class="headerlink" title="代入上式可得到"></a>代入上式可得到</h3><script type="math/tex; mode=display">\Delta v_{jk} = \eta \ \delta_k^y \ h_j</script><script type="math/tex; mode=display">\Delta w_{ij} = \eta \ \delta_j^h \ x_i</script><h3 id="对于输出层-delta-y-可以展开为"><a href="#对于输出层-delta-y-可以展开为" class="headerlink" title="对于输出层, $\delta^y$可以展开为"></a>对于输出层, $\delta^y$可以展开为</h3><script type="math/tex; mode=display">\delta_k^y = - { \partial E \over \partial net_k} = - { \partial E \over \partial y_k} { \partial y_k \over \partial net_k} =  -  { \partial E \over \partial y_k} f'(net_k)​</script><h3 id="对于隐藏层-delta-h-可以展开为"><a href="#对于隐藏层-delta-h-可以展开为" class="headerlink" title="对于隐藏层, $\delta^h$可以展开为"></a>对于隐藏层, $\delta^h$可以展开为</h3><script type="math/tex; mode=display">\delta_k^y = - { \partial E \over \partial net_j} = - { \partial E \over \partial h_j} { \partial h_j \over \partial net_j} =  -  { \partial E \over \partial h_j} f'(net_j)</script><h3 id="对于输出层-利用误差公式-E-1-over-2-sum-k-1-l-d-k-y-k-2-可得"><a href="#对于输出层-利用误差公式-E-1-over-2-sum-k-1-l-d-k-y-k-2-可得" class="headerlink" title="对于输出层, 利用误差公式 $E = {1 \over 2} \sum_{k=1}^l(d_k-y_k)^2$, 可得"></a>对于输出层, 利用误差公式 $E = {1 \over 2} \sum_{k=1}^l(d_k-y_k)^2$, 可得</h3><script type="math/tex; mode=display">
-{\partial E \over \partial y_k} = -(d_k - y_k)</script><h3 id="对于隐藏层-利用误差公式-E-1-over-2-sum-k-1-l-d-k-f-sum-j-0-mv-jk-h-j-2-可得"><a href="#对于隐藏层-利用误差公式-E-1-over-2-sum-k-1-l-d-k-f-sum-j-0-mv-jk-h-j-2-可得" class="headerlink" title="对于隐藏层, 利用误差公式 $E  = {1 \over 2} \sum{k=1}^l[d_k-f(\sum{j=0}^mv_{jk}h_j)]^2$, 可得"></a>对于隐藏层, 利用误差公式 $E  = {1 \over 2} \sum<em>{k=1}^l[d_k-f(\sum</em>{j=0}^mv_{jk}h_j)]^2$, 可得</h3><script type="math/tex; mode=display">
-{\partial E \over \partial y_k} = - \sum_{k=1}^l(d_k-y_k)f'(net_k)v_{jk}</script><h3 id="将Sigmoid激活函数代入-可以得到"><a href="#将Sigmoid激活函数代入-可以得到" class="headerlink" title="将Sigmoid激活函数代入, 可以得到"></a>将Sigmoid激活函数代入, 可以得到</h3><script type="math/tex; mode=display">\delta_k^y = (d_k-y_k)y_k(1-y_k)​</script><script type="math/tex; mode=display">\delta_j^h = \sum_{k=1}^l(d_k-y_k)f'(net_k)v_{jk}]f'(net_j) = (\sum_{k=1}^l \delta_k^y v_{jk})h_j(1-h_j)</script><h3 id="所以得到三层前馈网络的BP学习算法权值调整计算公式为"><a href="#所以得到三层前馈网络的BP学习算法权值调整计算公式为" class="headerlink" title="所以得到三层前馈网络的BP学习算法权值调整计算公式为"></a>所以得到三层前馈网络的BP学习算法权值调整计算公式为</h3><script type="math/tex; mode=display">
-\Delta v_{jk} = \eta \delta_k^y h_j = \eta \ (d_k-y_k)y_k(1-y_k) \ h_j</script><script type="math/tex; mode=display">
-\Delta w_{ij} = \eta \delta_j^h x_i = \eta \  (\sum_{k=1}^l \delta_k^y v_{jk})h_j(1-h_j) \  x_i</script><h2 id="作业-在此例中"><a href="#作业-在此例中" class="headerlink" title="作业: 在此例中"></a>作业: 在此例中</h2><h3 id="输入层有4个-隐藏层有3个-输出有1个-因此有"><a href="#输入层有4个-隐藏层有3个-输出有1个-因此有" class="headerlink" title="输入层有4个, 隐藏层有3个, 输出有1个, 因此有"></a>输入层有4个, 隐藏层有3个, 输出有1个, 因此有</h3><h3 id="n-4-m-3-l-1-即为"><a href="#n-4-m-3-l-1-即为" class="headerlink" title="n=4, m=3, l=1, 即为:"></a>n=4, m=3, l=1, 即为:</h3><script type="math/tex; mode=display">
-\boldsymbol{X} =
-\left[
- \begin{matrix}
-   x_1 & x_2 & x_3 & x_4
-  \end{matrix} 
-\right]^T​</script><script type="math/tex; mode=display">
-\boldsymbol{W}=
-\left[
- \begin{matrix}
-   w_{11} & w_{12} & w_{13}\\
-   w_{21} & w_{22} & w_{23}\\
-   w_{31} & w_{32} & w_{33}\\
-   w_{41} & w_{42} & w_{43}\\
-  \end{matrix} 
-\right]^T ​</script><script type="math/tex; mode=display">
-\boldsymbol{H}
-=\left[
- \begin{matrix}
-   h_1 & h_2 & h_3
-  \end{matrix} 
-\right]^T</script><script type="math/tex; mode=display">
-\boldsymbol{V}
-=\left[
- \begin{matrix}
-   v_{11} \\ v_{21} \\ v_{31}
-  \end{matrix} 
-\right]^T ​</script><script type="math/tex; mode=display">
-\boldsymbol{Y} = y​</script><script type="math/tex; mode=display">
-\boldsymbol{D} = d​</script><h3 id="正向推导"><a href="#正向推导" class="headerlink" title="正向推导"></a>正向推导</h3><script type="math/tex; mode=display">
-h_1 = w_{11}x_1 + w_{21}x_2 + w_{31}x_3 + w_{41}x_4 = W_{t_1}X</script><script type="math/tex; mode=display">
-h_2 = w_{12}x_1 + w_{22}x_2 + w_{32}x_3 + w_{42}x_4 = W_{t_2}X</script><script type="math/tex; mode=display">
-h_3 = w_{13}x_1 + w_{23}x_2 + w_{33}x_3 + w_{43}x_4 = W_{t_3}X ​</script><script type="math/tex; mode=display">
-Y = y = v_{11}h_1 + v_{21}h_2 + v_{31}h_3 = V \ \left[
- \begin{matrix}
-   W_{t_1}X \\ W_{t_2}X \\ W_{t_3}X
-  \end{matrix} 
-\right] = V \ W \ X​</script><h3 id="误差反向传播"><a href="#误差反向传播" class="headerlink" title="误差反向传播"></a>误差反向传播</h3><script type="math/tex; mode=display">
-E = {1 \over 2} \sum_{k=1}^1\{d_k-f[\sum_{j=1}^mv_{jk}f(net_j)]\}^2 =  {1 \over 2} \sum_{k=1}^l\{d_k-f[\sum_{j=1}^mv_{jk}f(\sum_{i=1}^nw_{ij}x_i)]\}^2</script><h4 id="代入n-m-l具体数值"><a href="#代入n-m-l具体数值" class="headerlink" title="代入n,m,l具体数值"></a>代入n,m,l具体数值</h4><script type="math/tex; mode=display">
-E = {1 \over 2} \sum_{k=1}^1\{d_k-f[\sum_{j=1}^3v_{jk}f(net_j)]\}^2 =  {1 \over 2} \sum_{k=1}^1\{d_k-f[\sum_{j=1}^3v_{jk}f(\sum_{i=1}^4w_{ij}x_i)]\}^2</script><script type="math/tex; mode=display">
-E = {1 \over 2} \{d_1-f[\sum_{j=1}^3v_{j1}f(\sum_{i=1}^4w_{ij}x_i)]\}^2</script><h4 id="误差为"><a href="#误差为" class="headerlink" title="误差为:"></a>误差为:</h4><script type="math/tex; mode=display">
-\Delta v_{j1} = \eta \delta^y h_j = \eta \ (d_1-y_1)y_1(1-y_1) \ h_j</script><script type="math/tex; mode=display">
- \Delta v_{11} = \eta \ (d_1-y_1)y_1(1-y_1) \ h_1 ​</script><script type="math/tex; mode=display">
- \Delta v_{21} = \eta \ (d_1-y_1)y_1(1-y_1) \ h_2</script><script type="math/tex; mode=display">
- \Delta v_{31} = \eta \ (d_1-y_1)y_1(1-y_1) \ h_3</script><script type="math/tex; mode=display">
-\Delta w_{ij} = \eta \delta_j^h x_i = \eta \  \delta^y v_{j1}h_j(1-h_j) \  x_i</script><script type="math/tex; mode=display">
- \Delta w_{11} =  \eta \  \delta^y v_{j1}h_1(1-h_1) \  x_1</script><script type="math/tex; mode=display">
- \Delta w_{12} =  \eta \  \delta^y v_{j1}h_2(1-h_2) \  x_1 ​</script><script type="math/tex; mode=display">
- \Delta w_{13} =  \eta \  \delta^y v_{j1}h_3(1-h_3) \  x_1</script><script type="math/tex; mode=display">
- \Delta w_{21} =  \eta \  \delta^y v_{j3}h_1(1-h_1) \  x_2 ​</script>
+\right]^T从输入到隐藏层的参数矩阵\boldsymbo
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/04/05/BP练习作业/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -675,14 +592,14 @@ E = {1 \over 2} \{d_1-f[\sum_{j=1}^3v_{j1}f(\sum_{i=1}^4w_{ij}x_i)]\}^2</script>
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Erstellt: 2018-05-14 21:08:10" itemprop="dateCreated datePublished" datetime="2018-05-14T21:08:10+08:00">2018-05-14</time>
+              <time title="Created: 2018-05-14 21:08:10" itemprop="dateCreated datePublished" datetime="2018-05-14T21:08:10+08:00">2018-05-14</time>
             
 
             
@@ -697,9 +614,9 @@ E = {1 \over 2} \{d_1-f[\sum_{j=1}^3v_{j1}f(\sum_{i=1}^4w_{ij}x_i)]\}^2</script>
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 
-                  <span class="post-meta-item-text">Bearbeitet am</span>
+                  <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Geändert am: 2019-04-05 15:33:47" itemprop="dateModified" datetime="2019-04-05T15:33:47+08:00">2019-04-05</time>
+                <time title="Modified: 2019-04-05 15:33:47" itemprop="dateModified" datetime="2019-04-05T15:33:47+08:00">2019-04-05</time>
               
             
           </span>
@@ -713,7 +630,7 @@ E = {1 \over 2} \{d_1-f[\sum_{j=1}^3v_{j1}f(\sum_{i=1}^4w_{ij}x_i)]\}^2</script>
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">In</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/学习笔记/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a></span>
@@ -753,148 +670,24 @@ E = {1 \over 2} \{d_1-f[\sum_{j=1}^3v_{j1}f(\sum_{i=1}^4w_{ij}x_i)]\}^2</script>
       
         
           
-            <h1 id="一-学习内容"><a href="#一-学习内容" class="headerlink" title="一. 学习内容"></a>一. 学习内容</h1><ol>
-<li>前馈神经网络 Feedforward Neural Network</li>
-<li>卷积神经网络 Convolutional Neural Network</li>
-<li>激活函数 Activation Function</li>
-</ol>
-<h2 id="1-前馈神经网络"><a href="#1-前馈神经网络" class="headerlink" title="1. 前馈神经网络"></a>1. 前馈神经网络</h2><p>这里用depth只有1的灰度图来举例。 想要完成的任务是：在宽长为4x4的图片中识别是否有下图所示的“横折”。 图中，黄色圆点表示值为0的像素，深色圆点表示值为1的像素。 我们知道不管这个横折在图片中的什么位置，都会被认为是相同的横折。<br><img src="/2018/05/14/cs231n-study-note-2/ffnn1.jpg" alt=""><br>若训练前馈神经网络来完成该任务，那么表达图像的三维张量将会被摊平成一个向量，作为网络的输入，即(width, height, depth)为(4, 4, 1)的图片会被展成维度为16的向量作为网络的输入层。再经过几层不同节点个数的隐藏层，最终输出两个节点，分别表示“有横折的概率”和“没有横折的概率”，如下图所示。<br><img src="/2018/05/14/cs231n-study-note-2/ffnn2.jpg" alt=""><br>下面我们用数字（16进制）对图片中的每一个像素点（pixel）进行编号。 当使用右侧那种物体位于中间的训练数据来训练网络时，网络就只会对编号为5,6,9,a的节点的权重进行调节。 若让该网络识别位于右下角的“横折”时，则无法识别。<br><img src="/2018/05/14/cs231n-study-note-2/ffnn3.jpg" alt=""><br>解决办法是用大量物体位于不同位置的数据训练，同时增加网络的隐藏层个数从而扩大网络学习这些变体的能力。</p>
-<p>然而这样做十分不效率，因为我们知道在左侧的“横折”也好，还是在右侧的“横折”也罢，大家都是“横折”。 为什么相同的东西在位置变了之后要重新学习？有没有什么方法可以将中间所学到的规律也运用在其他的位置？ 换句话说，也就是<strong>让不同位置用相同的权重</strong>。</p>
-<h2 id="2-卷积神经网络"><a href="#2-卷积神经网络" class="headerlink" title="2. 卷积神经网络"></a>2. 卷积神经网络</h2><p>卷积神经网络就是让权重在不同位置共享的神经网络。</p>
-<h3 id="局部连接"><a href="#局部连接" class="headerlink" title="局部连接"></a>局部连接</h3><p>在卷积神经网络中，我们先选择一个局部区域，用这个局部区域去扫描整张图片。 局部区域所圈起来的所有节点会被连接到下一层的一个节点上。</p>
-<p>为了更好的和前馈神经网络做比较，我将这些以矩阵排列的节点展成了向量。 下图展示了被红色方框所圈中编号为0,1,4,5的节点是如何通过$w_1,w_2,w_3,w_4$连接到下一层的节点0上的。<br><img src="/2018/05/14/cs231n-study-note-2/cnn1.jpg" alt=""><br>这个带有连接强弱的红色方框就叫做 <strong>filter</strong> 或 <strong>kernel</strong> 或 <strong>feature detector</strong>。 而filter的范围叫做<strong>filter size</strong>，这里所展示的是2x2的filter size。</p>
-<script type="math/tex; mode=display">
-\begin{bmatrix}
-    w_1 & w_2  \\
-    w_3 & w_4  \\
-\end{bmatrix}\tag{1}</script><p>第二层的节点0的数值就是局部区域的线性组合，即被圈中节点的数值乘以对应的权重后相加。 用$x$表示输入值，$y$表示输出值，用图中标注数字表示角标，则下面列出了两种计算编号为0的输出值$y_0$的表达式。</p>
-<p>注：在局部区域的线性组合后，也会和前馈神经网络一样，加上一个偏移量$b_0$ 。</p>
-<script type="math/tex; mode=display">
-y_0 = x_0 * w_1 + x_1 * w_2 + x_4 * w_3 + x_5 * w_4 + b_0</script><script type="math/tex; mode=display">
-y_0 = \begin{bmatrix} w_1 & w_2 & w_3 & w_4 \end{bmatrix} 
- \cdot 
-\begin{bmatrix}
-    x_0  \\
-    x_1  \\
-    x_4  \\
-    x_5  \\
-\end{bmatrix}
-+ b_0
-\tag{2}</script><h3 id="空间共享"><a href="#空间共享" class="headerlink" title="空间共享"></a>空间共享</h3><p>当filter扫到其他位置计算输出节点 $ y_i $ 时，$ w_1,w_2,w_3,w_4 $，包括 $ b_0 $ 是共用的。</p>
-<p>下面这张动态图展示了当filter扫过不同区域时，节点的链接方式。 动态图的最后一帧则显示了所有连接。 可以注意到，每个输出节点并非像前馈神经网络中那样与全部的输入节点连接，而是部分连接。 这也就是为什么大家也叫前馈神经网络（feedforward neural network）为fully-connected neural network。 图中显示的是一步一步的移动filter来扫描全图，一次移动多少叫做stride。<br><img src="/2018/05/14/cs231n-study-note-2/spaceSharing.gif" alt=""></p>
-<blockquote>
-<p>空间共享也就是卷积神经网络所引入的先验知识。</p>
-</blockquote>
-<h3 id="输出表达"><a href="#输出表达" class="headerlink" title="输出表达"></a>输出表达</h3><p>如先前在图像表达中提到的，图片不用向量去表示是为了保留图片平面结构的信息。 同样的，卷积后的输出若用上图的排列方式则丢失了平面结构信息。 所以我们依然用矩阵的方式排列它们，就得到了下图所展示的连接。<br><img src="/2018/05/14/cs231n-study-note-2/output1.jpg" alt=""><br>这也就是你们在网上所看到的下面这张图。在看这张图的时候请结合上图的连接一起理解，即输入（绿色）的每九个节点连接到输出（粉红色）的一个节点上的。<br><img src="/2018/05/14/cs231n-study-note-2/output2.gif" alt=""></p>
-<p>经过一个feature detector计算后得到的粉红色区域也叫做一个<strong>“Convolved Feature”</strong> 或 <strong>“Activation Map” </strong>或<strong> “Feature Map”</strong>。</p>
-<h3 id="Depth维的处理"><a href="#Depth维的处理" class="headerlink" title="Depth维的处理"></a>Depth维的处理</h3><p>现在我们已经知道了depth维度只有1的灰度图是如何处理的。 但前文提过，图片的普遍表达方式是下图这样有3个channels的RGB颜色模型。 当depth为复数的时候，每个feature detector是如何卷积的？<br><img src="/2018/05/14/cs231n-study-note-2/depth1.jpg" alt=""></p>
-<p>现象：2x2所表达的filter size中，一个2表示width维上的局部连接数，另一个2表示height维上的局部连接数，并却没有depth维上的局部连接数，是因为depth维上并非局部，而是全部连接的。</p>
-<p>在2D卷积中，filter在张量的width维, height维上是局部连接，在depth维上是贯串全部channels的。</p>
-<p>类比：想象在切蛋糕的时候，不管这个蛋糕有多少层，通常大家都会一刀切到底，但是在长和宽这两个维上是局部切割。</p>
-<p>下面这张图展示了，在depth为复数时，filter是如何连接输入节点到输出节点的。 图中红、绿、蓝颜色的节点表示3个channels。 黄色节点表示一个feature detector卷积后得到的Feature Map。 其中被透明黑框圈中的12个节点会被连接到黄黑色的节点上。</p>
-<ul>
-<li>在输入depth为1时：被filter size为2x2所圈中的4个输入节点连接到1个输出节点上。</li>
-<li>在输入depth为3时：被filter size为2x2，但是贯串3个channels后，所圈中的12个输入节点连接到1个输出节点上。</li>
-<li>在输入depth为n时：2x2xn个输入节点连接到1个输出节点上。<br><img src="/2018/05/14/cs231n-study-note-2/depth2.jpg" alt=""></li>
-</ul>
-<p><strong>注意：</strong> 三个channels的权重并不共享。 即当深度变为3后，权重也跟着扩增到了三组，如式子(3)所示，不同channels用的是自己的权重。 式子中增加的角标r,g,b分别表示red channel, green channel, blue channel的权重。</p>
-<script type="math/tex; mode=display">
-\left[ \begin{matrix} w_{r1}&w_{r2}\\ w_{r3}&w_{r4}\\ \end{matrix} \right], \left[ \begin{matrix} w_{g1}&w_{g2}\\ w_{g3}&w_{g4}\\ \end{matrix} \right], \left[ \begin{matrix} w_{b1}&w_{b2}\\ w_{b3}&w_{b4}\\ \end{matrix} \right] (3)</script><p>计算例子：用 Xr0 表示red channel的编号为0的输入结点, Xg5表示green channel的编号为5的输入结点, Xb1表示blue channel. 如式子(4)所表达, 这时的一个输出结点实际上是12个输入结点的线性组合. </p>
-<script type="math/tex; mode=display">
-\begin{split} y_0 &= x_{r0}*w_{r1} + x_{r1}*w_{r2}+ x_{r4}*w_{r3}+ x_{r5}*w_{r4}+ x_{g0}*w_{g1} + x_{g1}*w_{g2}+ x_{g4}*w_{g3}+ x_{g5}*w_{g4}+ x_{b0}*w_{b1} + x_{b1}*w_{b2}+ x_{b4}*w_{b3}+ x_{b5}*w_{b4}+b_0\\y_0 &= \left[ \begin{matrix} w_{r1}&w_{r2}& w_{r3}&w_{r4} \end{matrix} \right] \cdot \left[ \begin{matrix} x_{r0}\\ x_{r1}\\ x_{r4}\\ x_{r5}\\ \end{matrix} \right] +\left[ \begin{matrix} w_{g1}&w_{g2}& w_{g3}&w_{g4} \end{matrix} \right] \cdot \left[ \begin{matrix} x_{g0}\\ x_{g1}\\ x_{g4}\\ x_{g5}\\ \end{matrix} \right]+\left[ \begin{matrix} w_{b1}&w_{b2}& w_{b3}&w_{b4} \end{matrix} \right] \cdot \left[ \begin{matrix} x_{b0}\\ x_{b1}\\ x_{b4}\\ x_{b5}\\ \end{matrix} \right]+b_0\end{split}(4)</script><blockquote>
-<p>当filter扫到其他位置计算输出节点y_i时，那12个权重在不同位置是共用的，如下面的动态图所展示。 透明黑框圈中的12个节点会连接到被白色边框选中的黄色节点上。</p>
-</blockquote>
-<h3 id="Zero-padding"><a href="#Zero-padding" class="headerlink" title="Zero padding"></a>Zero padding</h3><p>4x4的图片被2x2的filter卷积后变成了3x3的图片，每次卷积后都会小一圈的话，经过若干层后岂不是变的越来越小？ Zero padding就可以在这时帮助控制Feature Map的输出尺寸，同时避免了边缘信息被一步步舍弃的问题。</p>
-<p>例如：下面4x4的图片在边缘Zero padding一圈后，再用3x3的filter卷积后，得到的Feature Map尺寸依然是4x4不变。<br><img src="/2018/05/14/cs231n-study-note-2/zero1.jpg" alt=""><br>通常大家都想要在卷积时保持图片的原始尺寸。 选择3x3的filter和1的zero padding，或5x5的filter和2的zero padding可以保持图片的原始尺寸。 这也是为什么大家多选择3x3和5x5的filter的原因。 另一个原因是3x3的filter考虑到了像素与其距离为1以内的所有其他像素的关系，而5x5则是考虑像素与其距离为2以内的所有其他像素的关系。</p>
-<p><strong>尺寸：</strong>Feature Map的尺寸等于(input_size + 2 * padding_size − filter_size)/stride+1。</p>
-<p><strong>注意：</strong>上面的式子是计算width或height一维的。padding_size也表示的是单边补零的个数。例如(4+2-3)/1+1 = 4，保持原尺寸。</p>
-<p>不用背这个式子。其中(input_size + 2 * padding_size)是经过Zero padding扩充后真正要卷积的尺寸。 减去 filter_size后表示可以滑动的范围。 再除以可以一次滑动（stride）多少后得到滑动了多少次，也就意味着得到了多少个输出节点。 再加上第一个不需要滑动也存在的输出节点后就是最后的尺寸。</p>
-<h3 id="形状、概念抓取"><a href="#形状、概念抓取" class="headerlink" title="形状、概念抓取"></a>形状、概念抓取</h3><p>知道了每个filter在做什么之后，我们再来思考这样的一个filter会抓取到什么样的信息。</p>
-<p>我们知道不同的形状都可由细小的“零件”组合而成的。比如下图中，用2x2的范围所形成的16种形状可以组合成格式各样的“更大”形状。</p>
-<p>卷积的每个filter可以探测特定的形状。又由于Feature Map保持了抓取后的空间结构。若将探测到细小图形的Feature Map作为新的输入再次卷积后，则可以由此探测到“更大”的形状概念。 比如下图的第一个“大”形状可由2,3,4,5基础形状拼成。第二个可由2,4,5,6组成。第三个可由6,1组成。<br><img src="/2018/05/14/cs231n-study-note-2/figGet.jpg" alt=""><br>除了基础形状之外，颜色、对比度等概念对画面的识别结果也有影响。卷积层也会根据需要去探测特定的概念。</p>
-<p>可以从下面这张图中感受到不同数值的filters所卷积过后的Feature Map可以探测边缘，棱角，模糊，突出等概念。<br><img src="/2018/05/14/cs231n-study-note-2/figGet2.jpg" alt=""></p>
-<p>如我们先前所提，图片被识别成什么不仅仅取决于图片本身，还取决于图片是如何被观察的。</p>
-<p>而filter内的权重矩阵W是网络根据数据学习得到的，也就是说，我们让神经网络自己学习以什么样的方式去观察图片。</p>
-<p>拿老妇与少女的那幅图片举例，当标签是少女时，卷积网络就会学习抓取可以成少女的形状、概念。 当标签是老妇时，卷积网络就会学习抓取可以成老妇的形状、概念。</p>
-<p>下图展现了在人脸识别中经过层层的卷积后，所能够探测的形状、概念也变得越来越抽象和复杂。<br><img src="/2018/05/14/cs231n-study-note-2/figGet3.jpg" alt=""></p>
-<blockquote>
-<p>卷积神经网络会尽可能寻找最能解释训练数据的抓取方式。</p>
-</blockquote>
-<h3 id="多filters"><a href="#多filters" class="headerlink" title="多filters"></a>多filters</h3><p>每个filter可以抓取探测特定的形状的存在。 假如我们要探测下图的长方框形状时，可以用4个filters去探测4个基础“零件”。<br><img src="/2018/05/14/cs231n-study-note-2/mulFil11.jpg" alt=""><br><img src="/2018/05/14/cs231n-study-note-2/mulFil12.jpg" alt=""> </p>
-<p>因此我们自然而然的会选择用多个不同的filters对同一个图片进行多次抓取。 如下图（动态图过大，如果显示不出，请看到该链接观看），同一个图片，经过两个（红色、绿色）不同的filters扫描过后可得到不同特点的Feature Maps。 每增加一个filter，就意味着你想让网络多抓取一个特征。<br><img src="/2018/05/14/cs231n-study-note-2/mulFil2.gif" alt=""></p>
-<p>这样卷积层的输出也不再是depth为1的一个平面，而是和输入一样是depth为复数的长方体。</p>
-<p>如下图所示，当我们增加一个filter（紫色表示）后，就又可以得到一个Feature Map。 将不同filters所卷积得到的Feature Maps按顺序堆叠后，就得到了一个卷积层的最终输出。<br><img src="/2018/05/14/cs231n-study-note-2/mulFil3.jpg" alt=""></p>
-<blockquote>
-<p>卷积层的输入是长方体，输出也是长方体。</p>
-</blockquote>
-<p>这样卷积后输出的长方体可以作为新的输入送入另一个卷积层中处理。</p>
-<h3 id="加入非线性"><a href="#加入非线性" class="headerlink" title="加入非线性"></a>加入非线性</h3><p>和前馈神经网络一样，经过线性组合和偏移后，会加入非线性增强模型的拟合能力。</p>
-<p>将卷积所得的Feature Map经过ReLU变换（elementwise）后所得到的output就如下图所展示。<br><img src="/2018/05/14/cs231n-study-note-2/noneLine.jpg" alt=""></p>
-<h3 id="输出长方体"><a href="#输出长方体" class="headerlink" title="输出长方体"></a>输出长方体</h3><p>现在我们知道了一个卷积层的输出也是一个长方体。 那么这个输出长方体的(width, height, depth)由哪些因素决定和控制。</p>
-<p>这里直接用CS231n的Summary：<br><img src="/2018/05/14/cs231n-study-note-2/squre.jpg" alt=""></p>
-<p>计算例子：参见CS231n的Convolution Demo部分的演示。</p>
-<h3 id="矩阵乘法执行卷积"><a href="#矩阵乘法执行卷积" class="headerlink" title="矩阵乘法执行卷积"></a>矩阵乘法执行卷积</h3><p>如果按常规以扫描的方式一步步计算局部节点和filter的权重的点乘，则不能高效的利用GPU的并行能力。 所以更普遍的方法是用两个大矩阵的乘法来一次性囊括所有计算。</p>
-<p>因为卷积层的每个输出节点都是由若干个输入节点的线性组合所计算。 因为输出的节点个数是$W_2 \times H_2\times D_2$，所以就有$W_2 \times H_2\times D_2$个线性组合。</p>
-<p>读过我写的线性代数教程的读者请回忆，矩阵乘矩阵的意义可以理解为批量的线性组合按顺序排列。 其中一个矩阵所表示的信息是多组权重，另一个矩阵所表示的信息是需要进行组合的向量。 大家习惯性的把组成成分放在矩阵乘法的右边，而把权重放在矩阵乘法的左边。 所以这个大型矩阵乘法可以用 </p>
-<script type="math/tex; mode=display">
-W_{row}\cdot X_{col}</script><p>表示，其中二者都是矩阵。<br><img src="/2018/05/14/cs231n-study-note-2/matrixExe.jpg" alt=""></p>
-<p>卷积的每个输出是由局部的输入节点和对应的filter权重展成向量后所计算的，如式子(2)。 那么W<em>{row}中的每一行则是每个filter的权重，有F\cdot F \cdot D_1个； 而X</em>{col}的每一列是所有需要进行组合的节点（上面的动态图中被黑色透明框圈中的节点），也有F\cdot F \cdot D<em>1个。 X</em>{col}的列的个数则表示每个filter要滑动多少次才可以把整个图片扫描完，有W<em>2\cdot H_2次。 因为我们有多个filters，W</em>{row}的行的个数则是filter的个数K。</p>
-<p>最后我们得到：</p>
-<script type="math/tex; mode=display">
-W_{row} \in R^{K \times F\cdot F \cdot D_1}
-\\
-X_{col} \in R^{F\cdot F \cdot D_1 \times W_2\cdot H_2}
-\\
-W_{row}\cdot X_{col} \in R^{K \times W_2\cdot H_2}</script><p>当然矩阵乘法后需要将</p>
-<script type="math/tex; mode=display">
-W_{row}\cdot X_{col}</script><p>整理成形状为</p>
-<script type="math/tex; mode=display">
-W_2 \times H_2\times D_2</script><p>的三维张量以供后续处理（如再送入另一个卷积层）。 </p>
-<script type="math/tex; mode=display">
-X_{col}</script><p>则也需要逐步的局部滑动图片，最后堆叠构成用于计算矩阵乘法的形式。</p>
-<h3 id="Max-pooling"><a href="#Max-pooling" class="headerlink" title="Max pooling"></a>Max pooling</h3><p>在卷积后还会有一个pooling的操作，尽管有其他的比如average pooling等，这里只提max pooling。</p>
-<p>max pooling的操作如下图所示：整个图片被不重叠的分割成若干个同样大小的小块（pooling size）。每个小块内只取最大的数字，再舍弃其他节点后，保持原有的平面结构得出output。<br><img src="/2018/05/14/cs231n-study-note-2/max1.jpg" alt=""></p>
-<p>max pooling在不同的depth上是分开执行的，且不需要参数控制。 那么问题就max pooling有什么作用？部分信息被舍弃后难道没有影响吗？<br><img src="/2018/05/14/cs231n-study-note-2/max2.jpg" alt=""></p>
-<p>Max pooling的主要功能是downsamping，却不会损坏识别结果。 这意味着卷积后的Feature Map中有对于识别物体不必要的冗余信息。 那么我们就反过来思考，这些“冗余”信息是如何产生的。</p>
-<p>直觉上，我们为了探测到某个特定形状的存在，用一个filter对整个图片进行逐步扫描。但只有出现了该特定形状的区域所卷积获得的输出才是真正有用的，用该filter卷积其他区域得出的数值就可能对该形状是否存在的判定影响较小。 比如下图中，我们还是考虑探测“横折”这个形状。 卷积后得到3x3的Feature Map中，真正有用的就是数字为3的那个节点，其余数值对于这个任务而言都是无关的。 所以用3x3的Max pooling后，并没有对“横折”的探测产生影响。 试想在这里例子中如果不使用Max pooling，而让网络自己去学习。 网络也会去学习与Max pooling近似效果的权重。因为是近似效果，增加了更多的parameters的代价，却还不如直接进行Max pooling。<br><img src="/2018/05/14/cs231n-study-note-2/max3.jpg" alt=""></p>
-<p>Max pooling还有类似“选择句”的功能。假如有两个节点，其中第一个节点会在某些输入情况下最大，那么网络就只在这个节点上流通信息；而另一些输入又会让第二个节点的值最大，那么网络就转而走这个节点的分支。</p>
-<p>但是Max pooling也有不好的地方。因为并非所有的抓取都像上图的例子。有些周边信息对某个概念是否存在的判定也有影响。 并且Max pooling是对所有的Feature Maps进行等价的操作。就好比用相同网孔的渔网打鱼，一定会有漏网之鱼。</p>
-<h3 id="全连接层"><a href="#全连接层" class="headerlink" title="全连接层"></a>全连接层</h3><p>当抓取到足以用来识别图片的特征后，接下来的就是如何进行分类。 全连接层（也叫前馈层）就可以用来将最后的输出映射到线性可分的空间。 通常卷积网络的最后会将末端得到的长方体平摊(flatten)成一个长长的向量，并送入全连接层配合输出层进行分类。</p>
-<p>卷积神经网络大致就是covolutional layer, pooling layer, ReLu layer, fully-connected layer的组合，例如下图所示的结构。<br><img src="/2018/05/14/cs231n-study-note-2/all1.jpg" alt=""></p>
-<p>这里也体现了深层神经网络或deep learning之所以称deep的一个原因：模型将特征抓取层和分类层合在了一起。 负责特征抓取的卷积层主要是用来学习“如何观察”。</p>
-<p>下图简述了机器学习的发展，从最初的人工定义特征再放入分类器的方法，到让机器自己学习特征，再到如今尽量减少人为干涉的deep learning。<br><img src="/2018/05/14/cs231n-study-note-2/all2.jpg" alt=""></p>
-<h3 id="结构发展"><a href="#结构发展" class="headerlink" title="结构发展"></a>结构发展</h3><p>以上介绍了卷积神经网络的基本概念。 以下是几个比较有名的卷积神经网络结构</p>
-<ul>
-<li>LeNet：第一个成功的卷积神经网络应用</li>
-<li>AlexNet：类似LeNet，但更深更大。使用了层叠的卷积层来抓取特征（通常是一个卷积层马上一个max pooling层）</li>
-<li>ZF Net：增加了中间卷积层的尺寸，让第一层的stride和filter size更小。</li>
-<li>GoogLeNet：减少parameters数量，最后一层用max pooling层代替了全连接层，更重要的是Inception-v4模块的使用。</li>
-<li>VGGNet：只使用3x3 卷积层和2x2 pooling层从头到尾堆叠。</li>
-<li>ResNet：引入了跨层连接和batch normalization。</li>
-<li>DenseNet：将跨层连接从头进行到尾</li>
-</ul>
-<p>总结一下：这些结构的发展趋势有：</p>
-<ul>
-<li>使用small filter size的卷积层和pooling</li>
-<li>去掉parameters过多的全连接层</li>
-<li>Inception（稍后会对其中的细节进行说明）</li>
-<li>跳层连接</li>
-</ul>
-<h2 id="3-激活函数"><a href="#3-激活函数" class="headerlink" title="3. 激活函数"></a>3. 激活函数</h2><h3 id="激活函数通常有如下一些性质："><a href="#激活函数通常有如下一些性质：" class="headerlink" title="激活函数通常有如下一些性质："></a>激活函数通常有如下一些性质：</h3><p><strong>非线性：</strong> 当激活函数是线性的时候，一个两层的神经网络就可以逼近基本上所有的函数了。但是，如果激活函数是恒等激活函数的时候（即f(x)=x），就不满足这个性质了，而且如果MLP使用的是恒等激活函数，那么其实整个网络跟单层神经网络是等价的。</p>
-<p><strong>可微性：</strong> 当优化方法是基于梯度的时候，这个性质是必须的。</p>
-<p><strong>单调性： </strong>当激活函数是单调的时候，单层网络能够保证是凸函数。</p>
-<p><strong>f(x)≈x：</strong> 当激活函数满足这个性质的时候，如果参数的初始化是random的很小的值，那么神经网络的训练将会很高效；如果不满足这个性质，那么就需要很用心的去设置初始值。</p>
-<p><strong>输出值的范围：</strong> 当激活函数输出值是 有限 的时候，基于梯度的优化方法会更加 稳定，因为特征的表示受有限权值的影响更显著；当激活函数的输出是 无限 的时候，模型的训练会更加高效，不过在这种情况小，一般需要更小的learning rate.</p>
-<h3 id="Sigmoid"><a href="#Sigmoid" class="headerlink" title="Sigmoid"></a>Sigmoid</h3><p><img src="/2018/05/14/cs231n-study-note-2/actFun1.png" alt=""></p>
-<h3 id="ReLU"><a href="#ReLU" class="headerlink" title="ReLU"></a>ReLU</h3><p><img src="/2018/05/14/cs231n-study-note-2/actFun2.png" alt=""></p>
-<h1 id="二-工作相关"><a href="#二-工作相关" class="headerlink" title="二. 工作相关"></a>二. 工作相关</h1><h3 id="遗传算法"><a href="#遗传算法" class="headerlink" title="遗传算法"></a>遗传算法</h3><ol>
-<li>遗传算法与机器学习-不确定性优化</li>
-<li>遗传算法原理简述</li>
-<li>遗传算法解决机器视觉问题</li>
-<li>遗传算法缺点与局限性</li>
-</ol>
+            <p>
+              一. 学习内容
+前馈神经网络 Feedforward Neural Network
+卷积神经网络 Convolutional Neural Network
+激活函数 Activation Function
 
+1. 前馈神经网络这里用depth只有1的灰度图来举例。 想要完成的任务是：在宽长为4x4的
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2018/05/14/cs231n-study-note-2/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -987,14 +780,14 @@ X_{col}</script><p>则也需要逐步的局部滑动图片，最后堆叠构成�
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Erstellt: 2018-05-14 03:29:41" itemprop="dateCreated datePublished" datetime="2018-05-14T03:29:41+08:00">2018-05-14</time>
+              <time title="Created: 2018-05-14 03:29:41" itemprop="dateCreated datePublished" datetime="2018-05-14T03:29:41+08:00">2018-05-14</time>
             
 
             
@@ -1009,9 +802,9 @@ X_{col}</script><p>则也需要逐步的局部滑动图片，最后堆叠构成�
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 
-                  <span class="post-meta-item-text">Bearbeitet am</span>
+                  <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Geändert am: 2019-04-05 15:33:47" itemprop="dateModified" datetime="2019-04-05T15:33:47+08:00">2019-04-05</time>
+                <time title="Modified: 2019-04-05 15:33:47" itemprop="dateModified" datetime="2019-04-05T15:33:47+08:00">2019-04-05</time>
               
             
           </span>
@@ -1025,7 +818,7 @@ X_{col}</script><p>则也需要逐步的局部滑动图片，最后堆叠构成�
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">In</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/学习笔记/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a></span>
@@ -1065,87 +858,27 @@ X_{col}</script><p>则也需要逐步的局部滑动图片，最后堆叠构成�
       
         
           
-            <h1 id="一、学习内容"><a href="#一、学习内容" class="headerlink" title="一、学习内容"></a>一、学习内容</h1><ol>
-<li>Data Driven Approach 数据驱动的方法</li>
-<li>KNN K最近邻算法</li>
-<li>Linear classifiers 线性分类器</li>
-<li>Loss function 损失函数</li>
-<li>Optimization 优化</li>
-<li>Back propagation 反向传播</li>
-<li>Neural Networks 神经网络</li>
-</ol>
-<h2 id="1-数据驱动"><a href="#1-数据驱动" class="headerlink" title="1. 数据驱动"></a>1. 数据驱动</h2><h3 id="1-1-思路"><a href="#1-1-思路" class="headerlink" title="1.1 思路"></a>1.1 思路</h3><p>dataset: labels —&gt; train —&gt; predict</p>
-<h3 id="1-2-CIFAR-10数据集"><a href="#1-2-CIFAR-10数据集" class="headerlink" title="1.2 CIFAR-10数据集"></a>1.2 CIFAR-10数据集</h3><p>该数据集共有60000张彩色图像，这些图像是32*32，分为10个类，每类6000张图。这里面有50000张用于训练，构成了5个训练批，每一批10000张图；另外10000用于测试，单独构成一批。测试批的数据里，取自10类中的每一类，每一类随机取1000张。抽剩下的就随机排列组成了训练批。注意一个训练批中的各类图像并不一定数量相同，总的来看训练批，每一类都有5000张图。<br><img src="/2018/05/14/cs231n-study-note-1/cifar10.png" alt=""></p>
-<ul>
-<li><p>Data</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">一个10000*3072的numpy数组, 数据类型是无符号整形uint8. 这个数组的每一行存储了32*32大小的彩色图像(32*32*3通道=3072). </div><div class="line">按1024分组, 分别是red,green,blue通道. 图像是以行的顺序存储, 即前32个数是该图的像素矩阵的第一行.</div></pre></td></tr></table></figure>
-</li>
-<li><p>Labels</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">一个范围在0-9的含有10000个数的列表（一维的数组）。第i个数就是第i个图像的类标.</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="2-K最近邻算法"><a href="#2-K最近邻算法" class="headerlink" title="2. K最近邻算法"></a>2. K最近邻算法</h2><ul>
-<li>分类器中最简单的例子</li>
-<li>在dataset中寻找与input最相似的</li>
-</ul>
-<h3 id="2-1-L1-distance-Manhatton-distance"><a href="#2-1-L1-distance-Manhatton-distance" class="headerlink" title="2.1 L1 distance / Manhatton distance"></a>2.1 L1 distance / Manhatton distance</h3><script type="math/tex; mode=display">
-d_1(I_1, I_2) = \sum_p|I_1^p - I_2^p|</script><h3 id="2-2-复杂度分析"><a href="#2-2-复杂度分析" class="headerlink" title="2.2 复杂度分析"></a>2.2 复杂度分析</h3><p>Train         — O(1)<br>Predict         — O(n)<br><code>结论: 不理想 (VS CNN)</code></p>
-<h3 id="2-3-图像之间的视觉判断"><a href="#2-3-图像之间的视觉判断" class="headerlink" title="2.3 图像之间的视觉判断"></a>2.3 图像之间的视觉判断</h3><p><code>不同的图片, 使用KNN可以得到的结论是相同 PS某种情况下也是优势</code><br><img src="/2018/05/14/cs231n-study-note-1/same.jpg" alt=""></p>
-<h3 id="2-4-维度灾难"><a href="#2-4-维度灾难" class="headerlink" title="2.4 维度灾难"></a>2.4 维度灾难</h3><p><code>随着维度的上升, 复杂度指数级增长</code><br><img src="/2018/05/14/cs231n-study-note-1/knnCrash.jpg" alt=""></p>
-<h2 id="3-线性分类器"><a href="#3-线性分类器" class="headerlink" title="3. 线性分类器"></a>3. 线性分类器</h2><h3 id="3-1-参数模型中最简单的实例"><a href="#3-1-参数模型中最简单的实例" class="headerlink" title="3.1 参数模型中最简单的实例"></a>3.1 参数模型中最简单的实例</h3><h3 id="3-2-简单表达式"><a href="#3-2-简单表达式" class="headerlink" title="3.2 简单表达式:"></a>3.2 简单表达式:</h3><script type="math/tex; mode=display">
-f(x,W) = Wx + b</script><h3 id="3-3-示例图"><a href="#3-3-示例图" class="headerlink" title="3.3 示例图"></a>3.3 示例图</h3><p><img src="/2018/05/14/cs231n-study-note-1/linearCla.jpg" alt="CIFAR-10数据集实例"></p>
-<h3 id="3-4-线性分类器的劣势"><a href="#3-4-线性分类器的劣势" class="headerlink" title="3.4 线性分类器的劣势"></a>3.4 线性分类器的劣势</h3><p><img src="/2018/05/14/cs231n-study-note-1/hardTodo.jpg" alt=""></p>
-<h3 id="3-4-两种解释方法"><a href="#3-4-两种解释方法" class="headerlink" title="3.4 两种解释方法"></a>3.4 两种解释方法</h3><ol>
-<li>每个种类的学习模板</li>
-<li>学习像素在高纬度空间的一个线性决策边界</li>
-</ol>
-<h2 id="4-损失函数"><a href="#4-损失函数" class="headerlink" title="4. 损失函数"></a>4. 损失函数</h2><ul>
-<li>dataset.  $ \langle x_i,y_i \rangle  _i^N = 1 $</li>
-<li>$ L = \frac{1}{N} \sum_iL_i(f(x_i,W),y_i) $<br><code>目的是寻找一个合适的W, 使得L最小</code> find:  <script type="math/tex; mode=display">L_{min}</script></li>
-</ul>
-<h3 id="4-1-multiclass-SVN-loss"><a href="#4-1-multiclass-SVN-loss" class="headerlink" title="4.1 multiclass SVN loss"></a>4.1 multiclass SVN loss</h3><script type="math/tex; mode=display">L_i = \sum_{j \neq y} max(0,s_j-s_{yj}+1)</script><ol>
-<li>$L_i  \in (0, +\infty)$</li>
-<li>$ s\approx0 =&gt; L = c - 1 $</li>
-<li>如果求和中不排除相当的情况, 则L++</li>
-<li>使得L=0(L最小)的情况的W并不唯一, exp:2W</li>
-<li>如何在诸多使得L=0的W中选择最合适的</li>
-</ol>
-<ul>
-<li>最简约</li>
-<li>奥卡姆剃须刀</li>
-<li>Regularization: model should be simple so it works on test data</li>
-<li>正则化<script type="math/tex; mode=display">
-L(W) = \frac{1}{N} \sum_{i=1}^N L_i (f(x_i,W),y_i) + \lambda R(W)</script></li>
-<li>R(W)分类</li>
-</ul>
-<ol>
-<li>L2  ==&gt; <script type="math/tex">R(W) = \sum_k \sum_l W_{k,l}^2</script></li>
-<li>L1  ==&gt; <script type="math/tex">R(W) = \sum_k \sum_l |W_{k,l}|</script></li>
-<li>Elastic net (L1+L2)</li>
-<li>Max norm</li>
-<li>Dropout</li>
-</ol>
-<h3 id="4-2-multinormial-logistic-regression"><a href="#4-2-multinormial-logistic-regression" class="headerlink" title="4.2 multinormial logistic regression"></a>4.2 multinormial logistic regression</h3><h3 id="多项逻辑斯蒂回归"><a href="#多项逻辑斯蒂回归" class="headerlink" title="多项逻辑斯蒂回归"></a>多项逻辑斯蒂回归</h3><h3 id="softmax-loss"><a href="#softmax-loss" class="headerlink" title="softmax loss"></a>softmax loss</h3><script type="math/tex; mode=display">
-P(Y=k|X=x_i) = \frac{e^{sk}}{\sum_j e^{sj}} where s=f(x_i;W)</script><script type="math/tex; mode=display">
-L = -log P(Y=k|X=x_i)</script><p><img src="/2018/05/14/cs231n-study-note-1/lossfun.jpg" alt=""></p>
-<h2 id="5-优化"><a href="#5-优化" class="headerlink" title="5. 优化"></a>5. 优化</h2><h3 id="5-1-梯度下降-Gradient-Descent"><a href="#5-1-梯度下降-Gradient-Descent" class="headerlink" title="5.1 梯度下降 Gradient Descent"></a>5.1 梯度下降 Gradient Descent</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">while true:</div><div class="line">	weights_grad = evaluate_gradient(loss_fun, data, weights)</div><div class="line">	weights += -step_size * weights_grad</div></pre></td></tr></table></figure>
-<p>step_size <code>步长</code> <code>学习率</code> <code>超参数</code> <code>优化第一步</code></p>
-<h3 id="5-2-Stochastic-Gradient-Descent-SGD"><a href="#5-2-Stochastic-Gradient-Descent-SGD" class="headerlink" title="5.2 Stochastic Gradient Descent(SGD)"></a>5.2 Stochastic Gradient Descent(SGD)</h3><script type="math/tex; mode=display">
-\nabla w L(W) = \frac{1}{N} \sum_{i=1}^N \nabla w L_i (f(x_i,W),y_i) + \lambda \nabla w R(W)</script><p><code>随机</code> <code>minibatch小批量</code> <code>蒙特卡洛估计</code></p>
-<ol>
-<li>数值计算 — 反向传播</li>
-<li>解析计算</li>
-</ol>
-<h2 id="6-反向传播"><a href="#6-反向传播" class="headerlink" title="6. 反向传播"></a>6. 反向传播</h2><h3 id="6-1-导数-梯度过于复杂无法计算"><a href="#6-1-导数-梯度过于复杂无法计算" class="headerlink" title="6.1 导数/梯度过于复杂无法计算"></a>6.1 导数/梯度过于复杂无法计算</h3><h3 id="6-2-链式法则"><a href="#6-2-链式法则" class="headerlink" title="6.2 链式法则"></a>6.2 链式法则</h3><h3 id="6-3-计算图"><a href="#6-3-计算图" class="headerlink" title="6.3 计算图"></a>6.3 计算图</h3><p><img src="/2018/05/14/cs231n-study-note-1/compuGraph.jpg" alt=""></p>
-<h3 id="6-4-例证"><a href="#6-4-例证" class="headerlink" title="6.4 例证"></a>6.4 例证</h3><script type="math/tex; mode=display">f(x,y,z) = (x+y)z</script><p>VS</p>
-<script type="math/tex; mode=display">f(w,x) = \frac{1}{1+e^{-w_0x_0+w_1x_1+w_2}}</script><p><img src="/2018/05/14/cs231n-study-note-1/complex.jpg" alt=""></p>
-<h3 id="6-5-向量-雅可比矩阵"><a href="#6-5-向量-雅可比矩阵" class="headerlink" title="6.5 向量-雅可比矩阵"></a>6.5 向量-雅可比矩阵</h3><h2 id="7-神经网络初步"><a href="#7-神经网络初步" class="headerlink" title="7. 神经网络初步"></a>7. 神经网络初步</h2><h3 id="多阶段分层计算"><a href="#多阶段分层计算" class="headerlink" title="多阶段分层计算"></a>多阶段分层计算</h3><h3 id="多个W"><a href="#多个W" class="headerlink" title="多个W"></a>多个W</h3><p><img src="/2018/05/14/cs231n-study-note-1/cnn0.jpg" alt=""><br><img src="/2018/05/14/cs231n-study-note-1/cnn1.jpg" alt=""></p>
-<h3 id="层数叠加-—-deep-xxx"><a href="#层数叠加-—-deep-xxx" class="headerlink" title="层数叠加 — deep xxx"></a>层数叠加 — deep xxx</h3><h3 id="activation-function-类比神经元"><a href="#activation-function-类比神经元" class="headerlink" title="activation function(类比神经元)"></a>activation function(类比神经元)</h3><p><img src="/2018/05/14/cs231n-study-note-1/active.jpg" alt=""></p>
-<h3 id="neural-networks-architectures"><a href="#neural-networks-architectures" class="headerlink" title="neural networks architectures"></a>neural networks architectures</h3><p><img src="/2018/05/14/cs231n-study-note-1/archt.jpg" alt=""></p>
-<h3 id="code"><a href="#code" class="headerlink" title="code"></a>code</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">class Neuron:</div><div class="line">	def neuron_tick(inputs):</div><div class="line">	cell_body_sum = np.sum(inputs * selt.weights) + self.bias</div><div class="line">	firing_rate = 1.0 / (1.0 + math.exp(-cell_body_sum))</div><div class="line">	return firing_rate</div></pre></td></tr></table></figure>
-<h1 id="二、工作相关"><a href="#二、工作相关" class="headerlink" title="二、工作相关"></a>二、工作相关</h1><p><img src="/2018/05/14/cs231n-study-note-1/bbs.jpg" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">使用了python对每个帐号的封号进行机器学习</div><div class="line">通过分析1个人的封号情况，分析所有人的封号情况</div><div class="line">建立每个帐号自己的封号模型和总封号模型</div><div class="line"></div><div class="line">如果被封了，那么这个时间段的封号数据模型就有了</div><div class="line">接下来就是之前介绍的概率递归方案，所以，助手会越用越精准</div><div class="line">所以不用反馈被封的问题，距离建模完成至少再封3次，距离精细模型完成至少还要7次</div><div class="line">只有大家的模型基本上完成了，我们才能根据大家的封号模型来建立总的防封模型，才能get到被制裁的原理</div></pre></td></tr></table></figure></p>
+            <p>
+              一、学习内容
+Data Driven Approach 数据驱动的方法
+KNN K最近邻算法
+Linear classifiers 线性分类器
+Loss function 损失函数
+Optimization 优化
+Back propagation 反向传播
+Neural Networks 神经网络
 
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2018/05/14/cs231n-study-note-1/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -1238,14 +971,14 @@ L = -log P(Y=k|X=x_i)</script><p><img src="/2018/05/14/cs231n-study-note-1/lossf
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Erstellt: 2017-11-19 15:57:54" itemprop="dateCreated datePublished" datetime="2017-11-19T15:57:54+08:00">2017-11-19</time>
+              <time title="Created: 2017-11-19 15:57:54" itemprop="dateCreated datePublished" datetime="2017-11-19T15:57:54+08:00">2017-11-19</time>
             
 
             
@@ -1260,9 +993,9 @@ L = -log P(Y=k|X=x_i)</script><p><img src="/2018/05/14/cs231n-study-note-1/lossf
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 
-                  <span class="post-meta-item-text">Bearbeitet am</span>
+                  <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Geändert am: 2019-04-05 15:33:47" itemprop="dateModified" datetime="2019-04-05T15:33:47+08:00">2019-04-05</time>
+                <time title="Modified: 2019-04-05 15:33:47" itemprop="dateModified" datetime="2019-04-05T15:33:47+08:00">2019-04-05</time>
               
             
           </span>
@@ -1298,26 +1031,21 @@ L = -log P(Y=k|X=x_i)</script><p><img src="/2018/05/14/cs231n-study-note-1/lossf
       
         
           
-            <h1 id="缘由"><a href="#缘由" class="headerlink" title="缘由"></a>缘由</h1><p>由于hexo框架在执行了generate以及deploy之后, 上传到远端仓库的仅仅是渲染出来的html, 而可运行的工程文件夹还保存在本地无法灵活增删改</p>
-<h1 id="选择"><a href="#选择" class="headerlink" title="选择"></a>选择</h1><ul>
-<li>有大神选择使用APS在线搞了一套git的交互界面, 通过hook等技术, 同步远端和本地, 使我们无论是在PC端, 还是在云端都可以自由编辑; 但是其局限性也很明显—壕, APS不是每个人都有条件搞的;</li>
-<li>另外一波大神提供了这个思路, 就是在页面的仓库上面, 独立于master分支, 再新建一个branch, 把源代码push到这里, 自由checkout, 也是爽的飞起来的, 当然啦, 其本质和再建一个仓库, 一个存html, 一个存.md, 是一样的;</li>
-</ul>
-<h1 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h1><ol>
-<li>把原来的gitcline下来</li>
-<li>打开git bash, 或者习惯用交互界面的也无所谓</li>
-<li>新建一个分支branch</li>
-<li>从master分支 git checkout 切换到这个source分支</li>
-<li>先commit到远端, 省去后续麻烦</li>
-<li>git rm 删除掉所有关于页面的</li>
-<li>把执行hexo init时候生成的那个文件夹, 除去.deploy_git这个文件夹, 统统复制粘贴过来</li>
-<li>git add 所有的内容, 第一次可能很慢</li>
-<li>git commit</li>
-<li>git push</li>
-<li>done!</li>
-</ol>
-
+            <p>
+              缘由由于hexo框架在执行了generate以及deploy之后, 上传到远端仓库的仅仅是渲染出来的html, 而可运行的工程文件夹还保存在本地无法灵活增删改
+选择
+有大神选择使用APS在线搞了一套git的交互界面, 通过hook等技术, 同步远端和本地, 使我们无论是在PC端, 还是在云端都可以自
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2017/11/19/ioslatingAdmin/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -1410,14 +1138,14 @@ L = -log P(Y=k|X=x_i)</script><p><img src="/2018/05/14/cs231n-study-note-1/lossf
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Erstellt: 2017-11-18 14:55:45" itemprop="dateCreated datePublished" datetime="2017-11-18T14:55:45+08:00">2017-11-18</time>
+              <time title="Created: 2017-11-18 14:55:45" itemprop="dateCreated datePublished" datetime="2017-11-18T14:55:45+08:00">2017-11-18</time>
             
 
             
@@ -1432,9 +1160,9 @@ L = -log P(Y=k|X=x_i)</script><p><img src="/2018/05/14/cs231n-study-note-1/lossf
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 
-                  <span class="post-meta-item-text">Bearbeitet am</span>
+                  <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Geändert am: 2019-04-05 15:33:47" itemprop="dateModified" datetime="2019-04-05T15:33:47+08:00">2019-04-05</time>
+                <time title="Modified: 2019-04-05 15:33:47" itemprop="dateModified" datetime="2019-04-05T15:33:47+08:00">2019-04-05</time>
               
             
           </span>
@@ -1448,7 +1176,7 @@ L = -log P(Y=k|X=x_i)</script><p><img src="/2018/05/14/cs231n-study-note-1/lossf
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">In</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/生活/" itemprop="url" rel="index"><span itemprop="name">生活</span></a></span>
@@ -1488,20 +1216,30 @@ L = -log P(Y=k|X=x_i)</script><p><img src="/2018/05/14/cs231n-study-note-1/lossf
       
         
           
-            <p><code>2017-11-18 15:00:00</code><br>哎呀妈呀太爽了</p>
-<p><code>2017-11-18 23:00:00</code><br>经过了一个晚上的测试, 已经爽到天上去了</p>
-<p><code>2017-11-19 16:13:00</code></p>
-<h4 id="关于我的第一款机械键盘-有如下几个参数"><a href="#关于我的第一款机械键盘-有如下几个参数" class="headerlink" title="关于我的第一款机械键盘,有如下几个参数"></a>关于我的第一款机械键盘,有如下几个参数</h4><ul>
-<li>樱桃轴</li>
-<li>青轴</li>
-<li>87键</li>
-<li>keycool凯酷</li>
-<li>W.Y.W.K二手</li>
-<li>75元</li>
-</ul>
-<p><code>其余内容, 等我使用一段时间之后再做详细展开</code></p>
+            <p>
+              2017-11-18 15:00:00哎呀妈呀太爽了
+2017-11-18 23:00:00经过了一个晚上的测试, 已经爽到天上去了
+2017-11-19 16:13:00
+关于我的第一款机械键盘,有如下几个参数
+樱桃轴
+青轴
+87键
+keycool凯酷
+W.Y.W.K二手
+75元
 
+其余内容, 等
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2017/11/18/mechanicalKeyboard/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -1594,14 +1332,14 @@ L = -log P(Y=k|X=x_i)</script><p><img src="/2018/05/14/cs231n-study-note-1/lossf
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Erstellt: 2017-11-05 17:14:45" itemprop="dateCreated datePublished" datetime="2017-11-05T17:14:45+08:00">2017-11-05</time>
+              <time title="Created: 2017-11-05 17:14:45" itemprop="dateCreated datePublished" datetime="2017-11-05T17:14:45+08:00">2017-11-05</time>
             
 
             
@@ -1616,9 +1354,9 @@ L = -log P(Y=k|X=x_i)</script><p><img src="/2018/05/14/cs231n-study-note-1/lossf
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 
-                  <span class="post-meta-item-text">Bearbeitet am</span>
+                  <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Geändert am: 2019-04-05 15:33:47" itemprop="dateModified" datetime="2019-04-05T15:33:47+08:00">2019-04-05</time>
+                <time title="Modified: 2019-04-05 15:33:47" itemprop="dateModified" datetime="2019-04-05T15:33:47+08:00">2019-04-05</time>
               
             
           </span>
@@ -1632,14 +1370,14 @@ L = -log P(Y=k|X=x_i)</script><p><img src="/2018/05/14/cs231n-study-note-1/lossf
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">In</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术应用/" itemprop="url" rel="index"><span itemprop="name">技术应用</span></a></span>
 
                 
                 
-                  . 
+                  , 
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术应用/实践经验/" itemprop="url" rel="index"><span itemprop="name">实践经验</span></a></span>
@@ -1679,25 +1417,29 @@ L = -log P(Y=k|X=x_i)</script><p><img src="/2018/05/14/cs231n-study-note-1/lossf
       
         
           
-            <blockquote>
-<p>瞎搞比特币的经验<br>其实就是过来吐槽一下而已</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">int getElement(string str)&#123;</div><div class="line">	return &quot;&quot;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<pre><code>    监控拉近士大夫立刻
+            <p>
+              
+瞎搞比特币的经验其实就是过来吐槽一下而已
+
+int getElement(string str)&#123;	return &quot;&quot;;&#125;
+    监控拉近士大夫立刻
     sdafd
     afwef
     afwef
     asga
     wf
-    int main(){
-        return 0;
-    }
-
-
-zheyes?
-</code></pre><p><code>xxx</code></p>
-
+    int
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2017/11/05/tryBitCoin/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -1790,14 +1532,14 @@ zheyes?
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Erstellt: 2017-10-31 20:26:32" itemprop="dateCreated datePublished" datetime="2017-10-31T20:26:32+08:00">2017-10-31</time>
+              <time title="Created: 2017-10-31 20:26:32" itemprop="dateCreated datePublished" datetime="2017-10-31T20:26:32+08:00">2017-10-31</time>
             
 
             
@@ -1812,9 +1554,9 @@ zheyes?
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 
-                  <span class="post-meta-item-text">Bearbeitet am</span>
+                  <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Geändert am: 2019-04-05 15:33:47" itemprop="dateModified" datetime="2019-04-05T15:33:47+08:00">2019-04-05</time>
+                <time title="Modified: 2019-04-05 15:33:47" itemprop="dateModified" datetime="2019-04-05T15:33:47+08:00">2019-04-05</time>
               
             
           </span>
@@ -1828,7 +1570,7 @@ zheyes?
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">In</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/测试文档/" itemprop="url" rel="index"><span itemprop="name">测试文档</span></a></span>
@@ -1868,109 +1610,20 @@ zheyes?
       
         
           
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><h3 id="2018-11-02"><a href="#2018-11-02" class="headerlink" title="2018-11-02"></a>2018-11-02</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">从一个角度解决了</div><div class="line">系统默认主题 + 最新版hexo-math插件</div><div class="line">不能正常运行的这个问题</div><div class="line">但是截至到这一天, 还没有从本质理解问题</div><div class="line">不过这个问题先告一段落</div></pre></td></tr></table></figure>
-<h3 id="2017-11-01"><a href="#2017-11-01" class="headerlink" title="2017-11-01"></a>2017-11-01</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">无论怎么学习, 原作者的github的README都是最好的参考资料</div><div class="line">尽管作者已经停止了维护, 但是还是有许多前赴后继者前来讨论心得</div></pre></td></tr></table></figure>
-<p><a href="https://github.com/hexojs/hexo-math" target="_blank" rel="external">原作者github传送门</a></p>
-<h3 id="2017-10-31"><a href="#2017-10-31" class="headerlink" title="2017-10-31"></a>2017-10-31</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">对于在Hexo框架中插入数学公式, 可谓是山高坑大, 艰难险阻, 苦难重重</div><div class="line">虽然现在预期的功能已经实现了, 但是仍旧有许多未解之谜,</div><div class="line">笔者会随着自己的学习和领悟, 慢慢更新这篇日志</div><div class="line"></div><div class="line">PS: 之所以写成这样的形式, 是因为大多数经验和教程, 都是一步到位了</div><div class="line">并没有考虑使用者在开发过程中出现的各种问题</div></pre></td></tr></table></figure>
-<h2 id="Let’s-go"><a href="#Let’s-go" class="headerlink" title="Let’s go !"></a>Let’s go !</h2><p>首先贴上最终成果, 省得各位看官心急</p>
-<ul>
-<li><p>最普通的等式 $a = b + c$.</p>
-</li>
-<li><p>带下标的概率关系(katex格式) $ P_1P_2=\bar{P_3}P_4 $</p>
-</li>
-<li><p>公式块+分段函数</p>
-<script type="math/tex; mode=display">
-f(x)=\begin{cases}
-0, & \text{if $ x<=0 $}\\
-e^x, & \text{else}
-\end{cases}</script></li>
-</ul>
-<h3 id="方案一"><a href="#方案一" class="headerlink" title="方案一"></a>方案一</h3><h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><p>许多人一开始尝试如何在blog中插入数学公式, 都会在某度或者某歌搜索一波, 得到的答案大多如下<br><img src="/2017/10/31/exploreMathjax/searchRes.jpg" alt=""><br>于是乎, 我们顺理成章的打开这些教程, 慢慢的上了一条贼船</p>
-<h4 id="尝试"><a href="#尝试" class="headerlink" title="尝试"></a>尝试</h4><p>总结大多数人的经验, 第一次的尝试呢, 大抵是分为了以下几步</p>
-<ol>
-<li>安装hexo-math插件, 指令为<code>npm install hexo-math --save</code> 其中—save 是自动把模块和版本号添加到dependencies部分, 即根目录下的<code>package.json</code>文件中</li>
-<li>在<code>_config.yml</code>中加入<code>plugins: - hexo-math</code></li>
-<li>在你的文章的<code>*.md</code>文件中开启开关<code>mathjax: true</code></li>
-<li>*查看<code>package.json</code>文件, 会发现已经有了<code>hexo-math</code>对应的<code>3.0.4</code>版的插件安装好了</li>
-</ol>
-<p>按照<strong>大多数人</strong>的经验介绍, 和<strong>老版本</strong>的插件特性, 操作到这里就已经算是成功了, 但是无数小白都在这里折戟沉沙, 我们可以以<em>2017-04-19</em>为日期分割线, 因为原作者在这里进行了一次更新, 插件进入到了3.0.0的时代, 具体发生了神马变化可以自行参考上面的传送门</p>
-<p>其中上述第4条, 是笔者留下的一点小伏笔, 因为大家并没有讨论这件事</p>
-<h4 id="探索"><a href="#探索" class="headerlink" title="探索"></a>探索</h4><p>上回书说道, 按照经验帖的教程一步一步来的插件, 对于插入公式不奏效, 通过传送门原PO写的REAMDME和各大教程的书写时间, 我意识到问题应该是出在<strong>版本更新</strong>上, 为了解决这个问题, 笔者自然而然的产生了两个思路:<br>1st -&gt; 探索新版本的正确打开方式<br>2nd -&gt; 切换回旧版本, 因为教程和经验多啊 (广大学习python的小白有多少是因为教程和例程只适用于2.7和放弃了研究3.x啊hhhhhh (逃 )</p>
-<p>如果想切换回使用老版本可以进行如下操作</p>
-<ol>
-<li>卸载一波刚刚安装的插件, npm uninstall hexo-math —save</li>
-<li>按照版本号安装对应的hexo-math插件, 例如笔者选择了<code>1.0.8</code>版本, 指令即为<code>npm install hexo-math@^1.0.8 --save</code></li>
-<li>经检验, <code>1.0.8版本</code>和<code>2.0.1版本</code>都是可以完美执行的</li>
-</ol>
-<p>笔者亲测有效!!!至此首战功成</p>
-<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><ul>
-<li>第一. 由于Hexo框架已经不是时下最流行的blog框架了, 所以出现了各种bug也鲜有人出面解决, 据说各路大神都奔向hugo框架了, 笔者也考虑后续弃坑</li>
-<li><p>第二. 老化了的不仅仅是Hexo框架, <code>hexo-math</code>插件的作者赖以生存的插件, 也弃坑已久, 安装的时候你会看见这样一句扎心的话 </p>
-<blockquote>
-<p>The author does not use Hexo any more. This plugin is no longer maintained </p>
-</blockquote>
-</li>
-<li><p>仔细看控制台打印出来的消息, 可以发现是在安装<code>hexo-math</code>插件的时候, 他依赖于另外一个插件—<code>hexo-renerer-inject</code>, 而这个插件的作者已经停止维护了, 通过传送门在插件的github的问题讨论issue中, 可以看见作者有对这件的表态</p>
-</li>
-</ul>
-<h3 id="方案二"><a href="#方案二" class="headerlink" title="方案二"></a>方案二</h3><h4 id="概述-1"><a href="#概述-1" class="headerlink" title="概述"></a>概述</h4><p>通过传送门在插件的github的问题讨论issue中, 有人说通过安装<code>hexo-renderer-mathjax</code>, 可以解决各种疑难杂症</p>
-<h4 id="尝试-1"><a href="#尝试-1" class="headerlink" title="尝试"></a>尝试</h4><p>说明:</p>
-<ul>
-<li>做出这个尝试的前提是, 笔者还是孜孜不倦渴求使用最新版的插件</li>
-<li>所以前述已经成功了的<code>1.0.8版本</code>和<code>2.0.1版本</code>, 在这里都被卸载了, 重新安装回<code>3.0.4版本</code>的</li>
-</ul>
-<p>这个东西操作到这里, 可以说是得心应手了, 在blog的根目录下敲入<code>npm install hexo-renderer-mathjax --save</code>, 顺利安装<br>然后我们执行<br><code>hexo generate</code><br><code>hexo server</code><br>哇!!!, 居然这么就成功了, 喜出望外, 不过先别急高兴, 部署<br><code>hexo deploy</code><br>打开我自己的小站, 发现出事了(懒得截图了,大家脑补吧)<br>靠着这个渲染工具产生的数学公式, 虽然在本地没有问题, 但是一旦部署到服务器端, 其生成公式的脚本, 被浏览器视为<strong>不安全的</strong>, 需要手动信任, 尽管点击之后达到我们希望的效果, 但是用户交互体验极差, 相信没有哪位读者愿意每次打开一个页面, 就点击一次的, 并且其他人的blog没有这个问题</p>
-<h4 id="探索-1"><a href="#探索-1" class="headerlink" title="探索"></a>探索</h4><p>由于其前缀是<code>hexo-renderer</code>, 是一个渲染器, 故其工作原理笔者尚未深究, 但是可以肯定的是, 渲染代码出现的时机不对, 笔者尝试过在\themes\layout文件夹中手动添加渲染脚本, 以及在执行<code>hexo generate</code>之后, 手动修改html文件中的<code>&lt;script&gt;</code>标签再进行部署操作, 均未奏效, 笔者认为这条路可以继续探索下去, 但是笔者对这个领域不太感兴趣, 所以放弃了使用<code>hexo-renderer-mathjax</code></p>
-<h4 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h4><ul>
-<li>如果把<strong>实现hexo-math插件</strong>作为主线任务, <code>hexo-renderer-mathjax</code>给我们带来的惊喜, 犹如饮鸩止渴, 不仅没有从根本上解决原始的问题, 还引来了更多的问题, 偏离主线</li>
-<li><code>hexo-renderer-mathjax</code>插件和<code>hexo-maht</code>插件尽管看起来十分相似, 但是二者几乎没有耦合, 二者均可卸载另外一个而仅靠自己完成数学公式的渲染</li>
-</ul>
-<h3 id="方案三"><a href="#方案三" class="headerlink" title="方案三"></a>方案三</h3><h4 id="概述-2"><a href="#概述-2" class="headerlink" title="概述"></a>概述</h4><p>目前的情况是, 使用<code>hexo-math</code>最新版本的任务尚未完成, 在issue的讨论中, 本没有可以让我成功渲染出来公式的, 但是有先辈是成功了的, 于是我想求助他们</p>
-<h4 id="尝试-2"><a href="#尝试-2" class="headerlink" title="尝试"></a>尝试</h4><p>随即我点开了一个高被赞回答的大神的github主页, 抱着试试看的态度给大神发了封邮件, 很快大神回复了我</p>
-<blockquote>
-<p>你好，<br>hexo-math确实有很多问题（我是在两年前使用的，现在的版本可能有改善）。我目前使用的主题是 <a href="https://github.com/tufu9441/maupassant-hexo" target="_blank" rel="external">https://github.com/tufu9441/maupassant-hexo</a> ， 里面的数学模块是我实现的，其实很简单，查看<a href="https://github.com/tufu9441/maupassant-hexo/commit/bed3217b77e64ce06fd1a5bf3f48bc573c6fd64d" target="_blank" rel="external">https://github.com/tufu9441/maupassant-hexo/commit/bed3217b77e64ce06fd1a5bf3f48bc573c6fd64d</a> 有兴趣的话，你可以在自己使用主题的加入该功能。<br>希望可以帮到你。</p>
-</blockquote>
-<p>从这个回复中, 我大致get到了两点有用的信息</p>
-<ol>
-<li>我不应该使用系统自带的主题这一基础款的东西</li>
-<li>我仍然有两条路可以选择, 一个直接使用大神给的主题, 坐享其成; 另一个是探索如何<code>在自己使用主题的加入该功能</code></li>
-</ol>
-<p>显然, 饥不择食的我选择了偷懒的方式</p>
-<h4 id="探索-2"><a href="#探索-2" class="headerlink" title="探索"></a>探索</h4><p>使用Hexo的theme主题, 其过程还是十分简单的, 即便是不懂各种操作的小白, 在<a href="https://hexo.io/themes/" target="_blank" rel="external">https://hexo.io/themes/</a> 挑选到喜欢的主题后, 依次执行复制-粘贴-回车-修改配置文件, 就可以实现换主题了</p>
-<p>成功更换主题之后, 我第一次感觉到了体内的多巴胺迸发的感觉, 因为</p>
-<ul>
-<li>主题好漂亮</li>
-<li>本地测试成功</li>
-<li>部署到服务器成功</li>
-</ul>
-<p>至此, 这是探索路上第一次真真正正的实现了最新版本插件渲染出来数学公式的功能, 而且部署到远端无bug</p>
-<h4 id="总结-2"><a href="#总结-2" class="headerlink" title="总结"></a>总结</h4><p>走到这一步, 还是有几句话要说的</p>
-<ol>
-<li>笔者目前除去系统默认主题, 尝试过的主题只有两个, 一个是<code>maupassant</code>, 另外一个是<code>next</code></li>
-<li>不同主题的配置都大同小异, 但是共同点就是需要在主题的<code>_config.yml</code>文件中, 实现一些功能的开启和屏蔽, 而我们的<code>mathjax</code>就在其中</li>
-<li>遗憾的是, 笔者还没有尝试探索如何<strong>在自己使用主题的加入该功能</strong></li>
-</ol>
-<h3 id="方案四"><a href="#方案四" class="headerlink" title="方案四"></a>方案四</h3><h4 id="概述-3"><a href="#概述-3" class="headerlink" title="概述"></a>概述</h4><p>尽管在大神给出的主题下, 使用的很嗨, 但是我还是听见了灵魂深处对自己的拷问, <em>那是你自己探索出来的处理方案么?</em></p>
-<p>于是这一次, 我展开了真真正正的探索—在<code>landscape</code>主题下, 使用<code>3.0.4版本的hexo-math</code></p>
-<h4 id="尝试-3"><a href="#尝试-3" class="headerlink" title="尝试"></a>尝试</h4><p><em>此处省略一万字</em></p>
-<h4 id="探索-3"><a href="#探索-3" class="headerlink" title="探索"></a>探索</h4><p>其实在issue中, 一众网友给出的诸多解决方案, 例如</p>
-<ul>
-<li>执行 hexo clean</li>
-<li>安装 hexo-renderer-mathjax</li>
-<li>在配置文件<code>_config.yml</code>中, 修改math对应的mathjax的源文件路径为<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">math:</div><div class="line">  engine: &apos;mathjax&apos; # or &apos;katex&apos;</div><div class="line">  mathjax:</div><div class="line">    src: &quot;//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&quot;</div><div class="line">    config:</div><div class="line">      # MathJax config</div><div class="line">  katex:</div><div class="line">    css: #custom_css_source</div><div class="line">    js: #custom_js_source # not used</div><div class="line">    config:</div><div class="line">      # KaTeX config</div></pre></td></tr></table></figure></li>
-</ul>
-<p>这些回答, 都有人点赞表示”哎呀按照这个办法我TM也成功了”, 但是我就是没成功!!!!!</p>
-<p>综上所述的方案一到方案三, 实际上是以时间轴的进度展开的, 我用了大概四五天的零碎时间, 进行了大量的尝试, 终于皇天不负有心人, 图灵dalao给了我一个一瞬间的发现<br><strong><em>我弄成了哈哈哈哈哈哈哈哈哈哈</em></strong></p>
-<p>而且, 过程并不是太复杂, 只有两步, 这两步在上面都贴过了, 我怀着激动的心情, 没有复制粘贴下来, 而是又亲手敲了一遍<br><code>npm install hexo-math@^2.0.1 --save</code><br><code>npm install hexo-math@^3.0.4 --save</code><br>用一句话描述就是, 在安装完旧版本之后, 不卸载, 继续安装最新版本<br>当然了, 第二行的那句版本选择也可以省略不要<br>这显然是一个bug, 笔者虽然没弄清其真正的来龙去脉, 但是一个显而易见的猜测就是, 在<code>3.0.4版本</code>中所依赖的某些模块或者代码或者插件, 被原作者从<code>2.x.x版本</code>升级上来之后, 莫名其妙的丢失了, 经过先安装低版本, 再安装高版本的操作, 不仅<code>mathjax</code>可以大显神通, 而且新版本的新卖点—<code>katex</code>, 也可以通过配置<code>_config.yml</code>文件中的engine来实现切换了<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">math:</div><div class="line">  engine: &apos;mathjax&apos; # or &apos;katex&apos;</div><div class="line">  ...</div><div class="line">  ...</div><div class="line">  ...</div></pre></td></tr></table></figure></p>
-<h4 id="总结-3"><a href="#总结-3" class="headerlink" title="总结"></a>总结</h4><p>笔者呕心沥血最后再啰嗦两句</p>
-<ul>
-<li>革命尚未成功, 因为还没搞懂底层bug, 只会从表面解决</li>
-<li>互联网技术大爆发, 各种轮子\插件\库\包, 我们在使用的过程中不仅要小心踩坑, 而且要在遇到问题之后可以有解决问题的能力</li>
-<li>为了不踩这些坑, 或者是掉进去之后可以爬出来, 磨练好基本功很重要</li>
-</ul>
-<p>```</p>
-
+            <p>
+              前言2018-11-02从一个角度解决了系统默认主题 + 最新版hexo-math插件不能正常运行的这个问题但是截至到这一天, 还没有从本质理解问题不过这个问题先告一段落
+2017-11-01无论怎么学习, 原作者的github的README都是最好的参考资料尽管作者已经停止了维护, 但是还是有许多
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2017/10/31/exploreMathjax/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -2063,14 +1716,14 @@ e^x, & \text{else}
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Erstellt: 2017-10-27 18:36:09" itemprop="dateCreated datePublished" datetime="2017-10-27T18:36:09+08:00">2017-10-27</time>
+              <time title="Created: 2017-10-27 18:36:09" itemprop="dateCreated datePublished" datetime="2017-10-27T18:36:09+08:00">2017-10-27</time>
             
 
             
@@ -2085,9 +1738,9 @@ e^x, & \text{else}
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 
-                  <span class="post-meta-item-text">Bearbeitet am</span>
+                  <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Geändert am: 2019-04-05 15:33:47" itemprop="dateModified" datetime="2019-04-05T15:33:47+08:00">2019-04-05</time>
+                <time title="Modified: 2019-04-05 15:33:47" itemprop="dateModified" datetime="2019-04-05T15:33:47+08:00">2019-04-05</time>
               
             
           </span>
@@ -2101,7 +1754,7 @@ e^x, & \text{else}
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">In</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/测试文档/" itemprop="url" rel="index"><span itemprop="name">测试文档</span></a></span>
@@ -2141,17 +1794,19 @@ e^x, & \text{else}
       
         
           
-            <h3 id="这篇是初始化Hexo时候，自动生成的，并且安利了一波如何新建"><a href="#这篇是初始化Hexo时候，自动生成的，并且安利了一波如何新建" class="headerlink" title="这篇是初始化Hexo时候，自动生成的，并且安利了一波如何新建"></a>这篇是初始化Hexo时候，自动生成的，并且安利了一波如何新建</h3><p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
+            <p>
+              这篇是初始化Hexo时候，自动生成的，并且安利了一波如何新建Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2017/10/27/hello-world/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -2238,7 +1893,7 @@ e^x, & \text{else}
                   <a href="/archives/">
                 
                     <span class="site-state-item-count">8</span>
-                    <span class="site-state-item-name">Artikel</span>
+                    <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
               
@@ -2265,7 +1920,7 @@ e^x, & \text{else}
                       
                     
                     <span class="site-state-item-count">5</span>
-                    <span class="site-state-item-name">Kategorien</span>
+                    <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
               
@@ -2328,7 +1983,7 @@ e^x, & \text{else}
                       
                     
                     <span class="site-state-item-count">22</span>
-                    <span class="site-state-item-name">schlagwörter</span>
+                    <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
               
@@ -2371,7 +2026,7 @@ e^x, & \text{else}
       <div class="footer-inner">
         <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love" id="animate">
-    <i class="fa fa-user"></i>
+    <i class="fa fa-shenzhonghao"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">godshen</span>
 
@@ -2381,7 +2036,7 @@ e^x, & \text{else}
 </div>
 
 
-  <div class="powered-by">Erstellt mit  <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.3.9</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.3.9</div>
 
 
 
@@ -2389,7 +2044,7 @@ e^x, & \text{else}
 
 
 
-  <div class="theme-info">Design – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.1.0</div>
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.1.0</div>
 
 
 
@@ -2442,11 +2097,26 @@ e^x, & \text{else}
 
 
 
+  
+    
+    
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
 
 
 
+  
+  
 
 
+
+  
+  
+
+
+
+  
+  
 
 
 
@@ -2463,6 +2133,18 @@ e^x, & \text{else}
   
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
 
+  
+  <script src="/lib/three/three.min.js"></script>
+
+  
+  <script src="/lib/three/three-waves.min.js"></script>
+
+  
+  <script src="/lib/three/canvas_lines.min.js"></script>
+
+  
+  <script src="/lib/three/canvas_sphere.min.js"></script>
+
 
   
 
@@ -2477,7 +2159,10 @@ e^x, & \text{else}
   
 
 
-  <script src="/js/schemes/muse.js?v=7.1.0"></script>
+  <script src="/js/affix.js?v=7.1.0"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.0"></script>
+
 
 
 
