@@ -7,7 +7,7 @@ title: 沈中皓同学不好学
 subtitle: stay hungry stay foolish
 description: Dangge Chihuo Zuoge Shabi
 author: godshen
-language: zh-Hans #zh-CN
+language: en
 timezone: Asia/Shanghai
 
 # URL
@@ -25,6 +25,7 @@ archive_dir: archives
 category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
+about_dir: about
 skip_render:
 
 # Writing
