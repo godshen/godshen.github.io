@@ -96,18 +96,25 @@
 
 
 
-  <meta name="description" content="通用的三层前馈网络的BP学习算法的推导输入矩阵\boldsymbol{X}_{n \times1} = \left[  \begin{matrix}    x_1 &amp; x_2 &amp; \cdots &amp; x_n   \end{matrix}  \right]^T从输入到隐藏层的参数矩阵\boldsymbol{W}_{m \times n}= \left[  \begin{matrix}    w_{11">
-<meta name="keywords" content="deep learning,neural networks,back propagation">
+  <meta name="description" content="一. 背景 我直播平台目前存在大量黑产, 表现为买关注刷人气等; 直播风控上线近一年, 技术上保护了抽奖等相关接口, 同时更对营收起到了保护作用; 本文阐述了风控在对抗黑产方面的工作进展, 计算对营收产生的影响, 并对未来加以预期以收获更好的成效.   二. 黑产流程二.(一) 概念描述 什么是黑产? 黑产是黑/灰色产业的简称. 其通过非正当手段谋取利益, 俗称薅羊毛. 在我们的直播平台中, 黑产">
+<meta name="keywords" content="工作总结,反作弊,风险控制,黑产">
 <meta property="og:type" content="article">
-<meta property="og:title" content="BP homowork">
-<meta property="og:url" content="http://godshen.github.io/2019/04/05/SpicyStripsPastAndNow/index.html">
+<meta property="og:title" content="一根辣条的前世今生">
+<meta property="og:url" content="http://godshen.github.io/2019/04/05/spicyStripsPastAndNow/index.html">
 <meta property="og:site_name" content="天气不错沈中皓同学有点困">
-<meta property="og:description" content="通用的三层前馈网络的BP学习算法的推导输入矩阵\boldsymbol{X}_{n \times1} = \left[  \begin{matrix}    x_1 &amp; x_2 &amp; \cdots &amp; x_n   \end{matrix}  \right]^T从输入到隐藏层的参数矩阵\boldsymbol{W}_{m \times n}= \left[  \begin{matrix}    w_{11">
+<meta property="og:description" content="一. 背景 我直播平台目前存在大量黑产, 表现为买关注刷人气等; 直播风控上线近一年, 技术上保护了抽奖等相关接口, 同时更对营收起到了保护作用; 本文阐述了风控在对抗黑产方面的工作进展, 计算对营收产生的影响, 并对未来加以预期以收获更好的成效.   二. 黑产流程二.(一) 概念描述 什么是黑产? 黑产是黑/灰色产业的简称. 其通过非正当手段谋取利益, 俗称薅羊毛. 在我们的直播平台中, 黑产">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-04-05T08:20:03.481Z">
+<meta property="og:image" content="http://godshen.github.io/2019/04/05/spicyStripsPastAndNow/picture01.png">
+<meta property="og:image" content="http://godshen.github.io/2019/04/05/spicyStripsPastAndNow/picture02.png">
+<meta property="og:image" content="http://godshen.github.io/2019/04/05/spicyStripsPastAndNow/黑产流程.jpg">
+<meta property="og:image" content="http://godshen.github.io/2019/04/05/spicyStripsPastAndNow/picture03.jpg">
+<meta property="og:image" content="http://godshen.github.io/2019/04/05/spicyStripsPastAndNow/jd.jpg">
+<meta property="og:image" content="http://godshen.github.io/2019/04/05/spicyStripsPastAndNow/xc.jpg">
+<meta property="og:updated_time" content="2019-04-05T10:00:43.938Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="BP homowork">
-<meta name="twitter:description" content="通用的三层前馈网络的BP学习算法的推导输入矩阵\boldsymbol{X}_{n \times1} = \left[  \begin{matrix}    x_1 &amp; x_2 &amp; \cdots &amp; x_n   \end{matrix}  \right]^T从输入到隐藏层的参数矩阵\boldsymbol{W}_{m \times n}= \left[  \begin{matrix}    w_{11">
+<meta name="twitter:title" content="一根辣条的前世今生">
+<meta name="twitter:description" content="一. 背景 我直播平台目前存在大量黑产, 表现为买关注刷人气等; 直播风控上线近一年, 技术上保护了抽奖等相关接口, 同时更对营收起到了保护作用; 本文阐述了风控在对抗黑产方面的工作进展, 计算对营收产生的影响, 并对未来加以预期以收获更好的成效.   二. 黑产流程二.(一) 概念描述 什么是黑产? 黑产是黑/灰色产业的简称. 其通过非正当手段谋取利益, 俗称薅羊毛. 在我们的直播平台中, 黑产">
+<meta name="twitter:image" content="http://godshen.github.io/2019/04/05/spicyStripsPastAndNow/picture01.png">
 
 
 
@@ -115,7 +122,7 @@
 
   
   
-  <link rel="canonical" href="http://godshen.github.io/2019/04/05/SpicyStripsPastAndNow/"/>
+  <link rel="canonical" href="http://godshen.github.io/2019/04/05/spicyStripsPastAndNow/"/>
 
 
 
@@ -125,7 +132,7 @@
   };
 </script>
 
-  <title>BP homowork | 天气不错沈中皓同学有点困</title>
+  <title>一根辣条的前世今生 | 天气不错沈中皓同学有点困</title>
   
 
 
@@ -372,7 +379,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://godshen.github.io/2019/04/05/SpicyStripsPastAndNow/"/>
+    <link itemprop="mainEntityOfPage" href="http://godshen.github.io/2019/04/05/spicyStripsPastAndNow/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="godshen"/>
@@ -389,7 +396,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">BP homowork
+          <h1 class="post-title" itemprop="name headline">一根辣条的前世今生
 
               
             
@@ -415,7 +422,7 @@
                 
               
 
-              <time title="Created: 2019-04-05 03:29:41 / Modified: 16:20:03" itemprop="dateCreated datePublished" datetime="2019-04-05T03:29:41+08:00">2019-04-05</time>
+              <time title="Created: 2019-04-05 17:51:41 / Modified: 18:00:43" itemprop="dateCreated datePublished" datetime="2019-04-05T17:51:41+08:00">2019-04-05</time>
             
 
             
@@ -437,7 +444,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/学习笔记/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/工作总结/" itemprop="url" rel="index"><span itemprop="name">工作总结</span></a></span>
 
                 
                 
@@ -472,106 +479,534 @@
       
 
       
-        <h2 id="通用的三层前馈网络的BP学习算法的推导"><a href="#通用的三层前馈网络的BP学习算法的推导" class="headerlink" title="通用的三层前馈网络的BP学习算法的推导"></a>通用的三层前馈网络的BP学习算法的推导</h2><h3 id="输入矩阵"><a href="#输入矩阵" class="headerlink" title="输入矩阵"></a>输入矩阵</h3><script type="math/tex; mode=display">\boldsymbol{X}_{n \times1} =
-\left[
- \begin{matrix}
-   x_1 & x_2 & \cdots & x_n
-  \end{matrix} 
-\right]^T</script><h3 id="从输入到隐藏层的参数矩阵"><a href="#从输入到隐藏层的参数矩阵" class="headerlink" title="从输入到隐藏层的参数矩阵"></a>从输入到隐藏层的参数矩阵</h3><script type="math/tex; mode=display">\boldsymbol{W}_{m \times n}=
-\left[
- \begin{matrix}
-   w_{11} & w_{12} & \cdots & w_{1m}\\
-   w_{21} & w_{22} & \cdots & w_{2m}\\
-   {\vdots} & {\vdots} & {\ddots} & {\vdots} &\\
-   w_{n1} & w_{n2} & \cdots & w_{nm}\\
-  \end{matrix} 
-\right]^T ​</script><h3 id="隐藏层矩阵"><a href="#隐藏层矩阵" class="headerlink" title="隐藏层矩阵"></a>隐藏层矩阵</h3><script type="math/tex; mode=display">\boldsymbol{H}_{m \times 1}
-=\left[
- \begin{matrix}
-   h_1 & h_2 & \cdots & h_m
-  \end{matrix} 
-\right]^T​</script><h3 id="从隐藏层到输出的参数矩阵"><a href="#从隐藏层到输出的参数矩阵" class="headerlink" title="从隐藏层到输出的参数矩阵"></a>从隐藏层到输出的参数矩阵</h3><script type="math/tex; mode=display">\boldsymbol{V}_{l \times m}
-=\left[
- \begin{matrix}
-   v_{11} & v_{12} & \cdots & v_{1l}\\
-   v_{21} & v_{22} & \cdots & v_{2l}\\
-   {\vdots} & {\vdots} & {\ddots} & {\vdots} &\\
-   v_{m1} & v_{m2} & \cdots & v_{ml}\\
-  \end{matrix} 
-\right]^T</script><h3 id="计算输出"><a href="#计算输出" class="headerlink" title="计算输出"></a>计算输出</h3><script type="math/tex; mode=display">\boldsymbol{Y}_{l \times 1}
-=\left[
- \begin{matrix}
-   y_1 & y_2 & \cdots & y_l
-  \end{matrix} 
-\right]^T​</script><h3 id="期望输出"><a href="#期望输出" class="headerlink" title="期望输出"></a>期望输出</h3><script type="math/tex; mode=display">\boldsymbol{D}_{l \times 1}
-=\left[
- \begin{matrix}
-   d_1 & d_2 & \cdots & d_l
-  \end{matrix} 
-\right]^T​</script><h3 id="传递关系"><a href="#传递关系" class="headerlink" title="传递关系"></a>传递关系</h3><script type="math/tex; mode=display">
-\boldsymbol{W} \cdot \boldsymbol{X} = \boldsymbol{H}</script><script type="math/tex; mode=display">
-\boldsymbol{V} \cdot \boldsymbol{H} = \boldsymbol{Y}</script><h3 id="其展开后的求和公式形式为"><a href="#其展开后的求和公式形式为" class="headerlink" title="其展开后的求和公式形式为"></a>其展开后的求和公式形式为</h3><script type="math/tex; mode=display">
-y_k = f(net_k) \quad k=1,2,...,l</script><script type="math/tex; mode=display">
-net_k = \sum_{j=0}^m{v_{jk}h_j} \quad k=1,2,...,l</script><script type="math/tex; mode=display">
-h_j = f(net_j) \quad j=1,2,...,m</script><script type="math/tex; mode=display">
-net_j = \sum_{i=0}^n{w_{ij}x_i} \quad j=1,2,...,m</script><h3 id="单极性sigmoid函数"><a href="#单极性sigmoid函数" class="headerlink" title="单极性sigmoid函数"></a>单极性sigmoid函数</h3><script type="math/tex; mode=display">
-f(x)={1 \over {1+e^{-x}}}</script><h3 id="误差计算"><a href="#误差计算" class="headerlink" title="误差计算"></a>误差计算</h3><script type="math/tex; mode=display">
-E = {1 \over 2} (\boldsymbol{D}-\boldsymbol{Y})^2 = {1 \over 2} \sum_{k=1}^l(d_k-y_k)^2</script><h3 id="将以上误差定义式展开至隐藏层"><a href="#将以上误差定义式展开至隐藏层" class="headerlink" title="将以上误差定义式展开至隐藏层:"></a>将以上误差定义式展开至隐藏层:</h3><script type="math/tex; mode=display">
-E = {1 \over 2} \sum_{k=1}^l[d_k-f(net_k)]^2 = {1 \over 2} \sum_{k=1}^l[d_k-f(\sum_{j=0}^mv_{jk}h_j)]^2</script><h3 id="进一步展开至输入层"><a href="#进一步展开至输入层" class="headerlink" title="进一步展开至输入层:"></a>进一步展开至输入层:</h3><script type="math/tex; mode=display">
-E = {1 \over 2} \sum_{k=1}^l\{d_k-f[\sum_{j=0}^mv_{jk}f(net_j)]\}^2 =  {1 \over 2} \sum_{k=1}^l\{d_k-f[\sum_{j=0}^mv_{jk}f(\sum_{i=0}^nw_{ij}x_i)]\}^2</script><script type="math/tex; mode=display">\Delta v_{jk} = - \eta { \partial E \over \partial v_{jk}} \quad j=0,1,2,…m; k=1,2,..,l​</script><script type="math/tex; mode=display">\Delta w_{ij} = - \eta { \partial E \over \partial w_{ij}} \quad i=0,1,2,…n; j=1,2,..,m</script><h3 id="式中负号表示梯度下降-常数-eta-in-0-1-表示比例系数"><a href="#式中负号表示梯度下降-常数-eta-in-0-1-表示比例系数" class="headerlink" title="式中负号表示梯度下降, 常数$\eta \in (0,1)$ 表示比例系数."></a>式中负号表示梯度下降, 常数$\eta \in (0,1)$ 表示比例系数.</h3><h3 id="对于输出层-上式可写成"><a href="#对于输出层-上式可写成" class="headerlink" title="对于输出层, 上式可写成:"></a>对于输出层, 上式可写成:</h3><script type="math/tex; mode=display">\Delta v_{jk} = - \eta { \partial E \over {v_{jk}}} = - \eta { \partial E \over \partial net_k} \ { \partial net_k \over \partial v_{jk}} ​</script><h3 id="对于隐藏层-上式可写成"><a href="#对于隐藏层-上式可写成" class="headerlink" title="对于隐藏层, 上式可写成:"></a>对于隐藏层, 上式可写成:</h3><script type="math/tex; mode=display">\Delta w_{ij} = - \eta { \partial E \over {w_{ij}}} = - \eta { \partial E \over \partial net_j} \ { \partial net_j \over \partial w_{ij}} ​</script><h3 id="对于输出层和隐藏层各定义一个误差信号-令"><a href="#对于输出层和隐藏层各定义一个误差信号-令" class="headerlink" title="对于输出层和隐藏层各定义一个误差信号, 令"></a>对于输出层和隐藏层各定义一个误差信号, 令</h3><script type="math/tex; mode=display">\delta_k^y = - {\partial E \over \partial net_k }</script><script type="math/tex; mode=display">\delta_j^h = - {\partial E \over \partial net_j }</script><h3 id="代入上式可得到"><a href="#代入上式可得到" class="headerlink" title="代入上式可得到"></a>代入上式可得到</h3><script type="math/tex; mode=display">\Delta v_{jk} = \eta \ \delta_k^y \ h_j</script><script type="math/tex; mode=display">\Delta w_{ij} = \eta \ \delta_j^h \ x_i</script><h3 id="对于输出层-delta-y-可以展开为"><a href="#对于输出层-delta-y-可以展开为" class="headerlink" title="对于输出层, $\delta^y$可以展开为"></a>对于输出层, $\delta^y$可以展开为</h3><script type="math/tex; mode=display">\delta_k^y = - { \partial E \over \partial net_k} = - { \partial E \over \partial y_k} { \partial y_k \over \partial net_k} =  -  { \partial E \over \partial y_k} f'(net_k)​</script><h3 id="对于隐藏层-delta-h-可以展开为"><a href="#对于隐藏层-delta-h-可以展开为" class="headerlink" title="对于隐藏层, $\delta^h$可以展开为"></a>对于隐藏层, $\delta^h$可以展开为</h3><script type="math/tex; mode=display">\delta_k^y = - { \partial E \over \partial net_j} = - { \partial E \over \partial h_j} { \partial h_j \over \partial net_j} =  -  { \partial E \over \partial h_j} f'(net_j)</script><h3 id="对于输出层-利用误差公式-E-1-over-2-sum-k-1-l-d-k-y-k-2-可得"><a href="#对于输出层-利用误差公式-E-1-over-2-sum-k-1-l-d-k-y-k-2-可得" class="headerlink" title="对于输出层, 利用误差公式 $E = {1 \over 2} \sum_{k=1}^l(d_k-y_k)^2$, 可得"></a>对于输出层, 利用误差公式 $E = {1 \over 2} \sum_{k=1}^l(d_k-y_k)^2$, 可得</h3><script type="math/tex; mode=display">
-{\partial E \over \partial y_k} = -(d_k - y_k)</script><h3 id="对于隐藏层-利用误差公式-E-1-over-2-sum-k-1-l-d-k-f-sum-j-0-mv-jk-h-j-2-可得"><a href="#对于隐藏层-利用误差公式-E-1-over-2-sum-k-1-l-d-k-f-sum-j-0-mv-jk-h-j-2-可得" class="headerlink" title="对于隐藏层, 利用误差公式 $E  = {1 \over 2} \sum{k=1}^l[d_k-f(\sum{j=0}^mv_{jk}h_j)]^2$, 可得"></a>对于隐藏层, 利用误差公式 $E  = {1 \over 2} \sum<em>{k=1}^l[d_k-f(\sum</em>{j=0}^mv_{jk}h_j)]^2$, 可得</h3><script type="math/tex; mode=display">
-{\partial E \over \partial y_k} = - \sum_{k=1}^l(d_k-y_k)f'(net_k)v_{jk}</script><h3 id="将Sigmoid激活函数代入-可以得到"><a href="#将Sigmoid激活函数代入-可以得到" class="headerlink" title="将Sigmoid激活函数代入, 可以得到"></a>将Sigmoid激活函数代入, 可以得到</h3><script type="math/tex; mode=display">\delta_k^y = (d_k-y_k)y_k(1-y_k)​</script><script type="math/tex; mode=display">\delta_j^h = \sum_{k=1}^l(d_k-y_k)f'(net_k)v_{jk}]f'(net_j) = (\sum_{k=1}^l \delta_k^y v_{jk})h_j(1-h_j)</script><h3 id="所以得到三层前馈网络的BP学习算法权值调整计算公式为"><a href="#所以得到三层前馈网络的BP学习算法权值调整计算公式为" class="headerlink" title="所以得到三层前馈网络的BP学习算法权值调整计算公式为"></a>所以得到三层前馈网络的BP学习算法权值调整计算公式为</h3><script type="math/tex; mode=display">
-\Delta v_{jk} = \eta \delta_k^y h_j = \eta \ (d_k-y_k)y_k(1-y_k) \ h_j</script><script type="math/tex; mode=display">
-\Delta w_{ij} = \eta \delta_j^h x_i = \eta \  (\sum_{k=1}^l \delta_k^y v_{jk})h_j(1-h_j) \  x_i</script><h2 id="作业-在此例中"><a href="#作业-在此例中" class="headerlink" title="作业: 在此例中"></a>作业: 在此例中</h2><h3 id="输入层有4个-隐藏层有3个-输出有1个-因此有"><a href="#输入层有4个-隐藏层有3个-输出有1个-因此有" class="headerlink" title="输入层有4个, 隐藏层有3个, 输出有1个, 因此有"></a>输入层有4个, 隐藏层有3个, 输出有1个, 因此有</h3><h3 id="n-4-m-3-l-1-即为"><a href="#n-4-m-3-l-1-即为" class="headerlink" title="n=4, m=3, l=1, 即为:"></a>n=4, m=3, l=1, 即为:</h3><script type="math/tex; mode=display">
-\boldsymbol{X} =
-\left[
- \begin{matrix}
-   x_1 & x_2 & x_3 & x_4
-  \end{matrix} 
-\right]^T​</script><script type="math/tex; mode=display">
-\boldsymbol{W}=
-\left[
- \begin{matrix}
-   w_{11} & w_{12} & w_{13}\\
-   w_{21} & w_{22} & w_{23}\\
-   w_{31} & w_{32} & w_{33}\\
-   w_{41} & w_{42} & w_{43}\\
-  \end{matrix} 
-\right]^T ​</script><script type="math/tex; mode=display">
-\boldsymbol{H}
-=\left[
- \begin{matrix}
-   h_1 & h_2 & h_3
-  \end{matrix} 
-\right]^T</script><script type="math/tex; mode=display">
-\boldsymbol{V}
-=\left[
- \begin{matrix}
-   v_{11} \\ v_{21} \\ v_{31}
-  \end{matrix} 
-\right]^T ​</script><script type="math/tex; mode=display">
-\boldsymbol{Y} = y​</script><script type="math/tex; mode=display">
-\boldsymbol{D} = d​</script><h3 id="正向推导"><a href="#正向推导" class="headerlink" title="正向推导"></a>正向推导</h3><script type="math/tex; mode=display">
-h_1 = w_{11}x_1 + w_{21}x_2 + w_{31}x_3 + w_{41}x_4 = W_{t_1}X</script><script type="math/tex; mode=display">
-h_2 = w_{12}x_1 + w_{22}x_2 + w_{32}x_3 + w_{42}x_4 = W_{t_2}X</script><script type="math/tex; mode=display">
-h_3 = w_{13}x_1 + w_{23}x_2 + w_{33}x_3 + w_{43}x_4 = W_{t_3}X ​</script><script type="math/tex; mode=display">
-Y = y = v_{11}h_1 + v_{21}h_2 + v_{31}h_3 = V \ \left[
- \begin{matrix}
-   W_{t_1}X \\ W_{t_2}X \\ W_{t_3}X
-  \end{matrix} 
-\right] = V \ W \ X​</script><h3 id="误差反向传播"><a href="#误差反向传播" class="headerlink" title="误差反向传播"></a>误差反向传播</h3><script type="math/tex; mode=display">
-E = {1 \over 2} \sum_{k=1}^1\{d_k-f[\sum_{j=1}^mv_{jk}f(net_j)]\}^2 =  {1 \over 2} \sum_{k=1}^l\{d_k-f[\sum_{j=1}^mv_{jk}f(\sum_{i=1}^nw_{ij}x_i)]\}^2</script><h4 id="代入n-m-l具体数值"><a href="#代入n-m-l具体数值" class="headerlink" title="代入n,m,l具体数值"></a>代入n,m,l具体数值</h4><script type="math/tex; mode=display">
-E = {1 \over 2} \sum_{k=1}^1\{d_k-f[\sum_{j=1}^3v_{jk}f(net_j)]\}^2 =  {1 \over 2} \sum_{k=1}^1\{d_k-f[\sum_{j=1}^3v_{jk}f(\sum_{i=1}^4w_{ij}x_i)]\}^2</script><script type="math/tex; mode=display">
-E = {1 \over 2} \{d_1-f[\sum_{j=1}^3v_{j1}f(\sum_{i=1}^4w_{ij}x_i)]\}^2</script><h4 id="误差为"><a href="#误差为" class="headerlink" title="误差为:"></a>误差为:</h4><script type="math/tex; mode=display">
-\Delta v_{j1} = \eta \delta^y h_j = \eta \ (d_1-y_1)y_1(1-y_1) \ h_j</script><script type="math/tex; mode=display">
- \Delta v_{11} = \eta \ (d_1-y_1)y_1(1-y_1) \ h_1 ​</script><script type="math/tex; mode=display">
- \Delta v_{21} = \eta \ (d_1-y_1)y_1(1-y_1) \ h_2</script><script type="math/tex; mode=display">
- \Delta v_{31} = \eta \ (d_1-y_1)y_1(1-y_1) \ h_3</script><script type="math/tex; mode=display">
-\Delta w_{ij} = \eta \delta_j^h x_i = \eta \  \delta^y v_{j1}h_j(1-h_j) \  x_i</script><script type="math/tex; mode=display">
- \Delta w_{11} =  \eta \  \delta^y v_{j1}h_1(1-h_1) \  x_1</script><script type="math/tex; mode=display">
- \Delta w_{12} =  \eta \  \delta^y v_{j1}h_2(1-h_2) \  x_1 ​</script><script type="math/tex; mode=display">
- \Delta w_{13} =  \eta \  \delta^y v_{j1}h_3(1-h_3) \  x_1</script><script type="math/tex; mode=display">
- \Delta w_{21} =  \eta \  \delta^y v_{j3}h_1(1-h_1) \  x_2 ​</script>
+        <h1 id="一-背景"><a href="#一-背景" class="headerlink" title="一. 背景"></a>一. 背景</h1><ul>
+<li>我直播平台目前存在大量黑产, 表现为买关注刷人气等;</li>
+<li>直播风控上线近一年, 技术上保护了抽奖等相关接口, 同时更对营收起到了保护作用;</li>
+<li>本文阐述了风控在对抗黑产方面的工作进展, 计算对营收产生的影响, 并对未来加以预期以收获更好的成效.</li>
+</ul>
+<hr>
+<h1 id="二-黑产流程"><a href="#二-黑产流程" class="headerlink" title="二. 黑产流程"></a>二. 黑产流程</h1><h2 id="二-一-概念描述"><a href="#二-一-概念描述" class="headerlink" title="二.(一) 概念描述"></a>二.(一) 概念描述</h2><ul>
+<li>什么是黑产?<blockquote>
+<p>黑产是黑/灰色产业的简称. 其通过非正当手段谋取利益, 俗称薅羊毛. 在我们的直播平台中, 黑产通过批量注册小号, 利用脚本大量刷辣条, 使得主播提升曝光的方式获取利益, 让本身是免费的辣条道具, 成为了他们赚钱的工具, 耗用的却是我们的资源; </p>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p>黑产是风控的重点打击对象.</p>
+</blockquote>
+<ul>
+<li><p>直观上看, 黑产影响了两个方面:</p>
+<ul>
+<li><p>技术方面浪费资源: </p>
+<blockquote>
+<p>在送高能礼物时, 大量小号涌入直播间, 占用了大量系统和网络资源;</p>
+</blockquote>
+</li>
+<li><p>用户体验和直播风气方面变差:  </p>
+<blockquote>
+<p>刷子在集中对于主播尤其是新人主播送道具刷人气的时候, 会集中登上七日榜等榜单, 也造成了不好的用户体验以及打破了主播间相对公平的竞争.</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<center class="half">
+    <img src="/2019/04/05/spicyStripsPastAndNow/picture01.png" height="300px">
+    <img src="/2019/04/05/spicyStripsPastAndNow/picture02.png" height="300px">
+</center>
+
+
+<ul>
+<li>进一步看, 主播希望获取营收, 黑产希望薅羊毛赚钱. 所以黑产利用平台机制, 和有相关需求的主播私下交易形成了闭环链条. </li>
+<li>从主播角度来说:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">graph LR</div><div class="line"> a(希望赚钱)--&gt;b(需求很多关注)</div><div class="line"> b--&gt;c(需要推荐位)</div><div class="line"> c--&gt;d(需要高人气)</div><div class="line"> c1(缺乏高人气能力)--&gt;e</div><div class="line"> d--&gt;e(特殊手段)</div><div class="line"> e--&gt;|主播因此得以营收并, 持续投入|a</div></pre></td></tr></table></figure>
+<ul>
+<li>从黑产刷子的角度来说:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">graph LR</div><div class="line"> a(发现平台机制漏洞)--&gt;b(低成本注册小号)</div><div class="line"> b--&gt;c(低成本刷免费道具)</div><div class="line"> c--&gt;d(需要高人气)</div><div class="line"> c1(主播购买)--&gt;d(大量送给主播)</div><div class="line"> d--&gt;e(人气增高)</div><div class="line"> e--&gt;|从主播的付费中获取利益, 并持续黑产|b</div></pre></td></tr></table></figure>
+<ul>
+<li>综上, 黑产和购买黑产服务的主播之间, 实现了“合作共赢”. 在平台, 主播, 黑产三者之间, 抛开对于营收的影响, 至少我方投入的人力物力财力成本, 被消耗和利用.</li>
+</ul>
+<h2 id="二-二-关系流程图"><a href="#二-二-关系流程图" class="headerlink" title="二.(二) 关系流程图:"></a>二.(二) 关系流程图:</h2><p><img src="/2019/04/05/spicyStripsPastAndNow/黑产流程.jpg" alt="黑产流程"></p>
+<hr>
+<h1 id="三-营收影响"><a href="#三-营收影响" class="headerlink" title="三. 营收影响"></a>三. 营收影响</h1><h2 id="三-〇"><a href="#三-〇" class="headerlink" title="三.(〇)"></a>三.(〇)</h2><p>更近一步看, 黑产极大程度的影响了营收, 该部分用数据支持, 推算黑产链上面的过程 </p>
+<h2 id="三-一-小主播"><a href="#三-一-小主播" class="headerlink" title="三.(一) 小主播"></a>三.(一) 小主播</h2><p>通过跑数据, 处于被大批量小号刷辣条数量榜首的, 是一系列小主播, 关注数在1w以下, 但是再通过查看相关人气、营收金瓜子数据来看, 刷出的高人气难以快速转化为营收. 但是他们也占据了一定的曝光.</p>
+<h2 id="三-二-大主播"><a href="#三-二-大主播" class="headerlink" title="三.(二) 大主播"></a>三.(二) 大主播</h2><p>过滤掉小主播, 发现在某一周(2019-01-23 ~ 2019-01-30)营收金瓜子排名前100的大主播中, 有93名主播存在小号疯狂刷量的现象, 在93名主播中, 其<strong>黑产刷辣条</strong>和最终转化为的<strong>金瓜子</strong>营收之间的关系大致如下<br><img src="/2019/04/05/spicyStripsPastAndNow/picture03.jpg" alt="拟合图"><br><strong>其中虚线为趋势线, 证明二者之间有一定的正相关关系</strong></p>
+<h2 id="三-三-用户体验"><a href="#三-三-用户体验" class="headerlink" title="三.(三) 用户体验"></a>三.(三) 用户体验</h2><ul>
+<li>用户体验的好坏, 直接影响用户的付费意愿, 去留意愿. 直播环境良好, 弹幕友善本身是我直播平台的一大优势, 需要加以维护. </li>
+<li>黑产的存在, 会直接影响用户体验, 一方面大量刷子小号的存在, 会给真实用户不良体验; 另一方面, 忠实粉丝捧自家主播, 但效果却不如买流量的主播, 影响了用户粘度.</li>
+</ul>
+<h2 id="三-四-小结"><a href="#三-四-小结" class="headerlink" title="三.(四) 小结"></a>三.(四) 小结</h2><p>从全平台的主播行为分析来看, 可以关注主播几个阶段性的特征点</p>
+<ul>
+<li>高质量 or 低质量</li>
+<li>高关注 or 低关注 (粉丝量)</li>
+<li>高人气 or 低人气</li>
+<li>高营收 or 低营收</li>
+</ul>
+<p>这里面的质量指的是主播本身及其直播内容的质量, 观众会比较关注的一些方面包括声音是否动听, 画面是否流畅, (游戏)技术是否高超, </p>
+<p>一般来说, 正常成长起来的大主播会按照路线<br><strong>高质量-&gt;高关注-&gt;高人气-&gt;推荐位-&gt;高营收</strong><br>良性循环下去</p>
+<p>但是对于黑产和使用非法手段的主播来说, 我们不排除其中难免有才华出众者迫不得以采取该手段, 来快速把自己拉升到上述良性循环链条中, 而且相当数据显示诸多(超过90%)既成大主播, 多少存在着用刷子为自己提升人气的现象, 所以会诞生以下链路<br><strong>高质量-&gt;低人气-&gt;(刷子强刷)-&gt;高人气-&gt;推荐位-&gt;(用户认可)-&gt;高营收-&gt;高关注</strong></p>
+<p>然而黑产会造就另外链路<br><strong>低质量-&gt;低人气-&gt;(刷子强刷)-&gt;高人气-&gt;推荐位-&gt;(用户不买帐)-&gt;低营收</strong></p>
+<p>从影响营收的角度来看, 可能存在以下几种方式的影响</p>
+<ol>
+<li>从长期效应看, 刷子刷高主播人气, 主播上推荐位, 低质量主播挤掉高质量主播位置, 观众的付费意愿被削弱, 从而拉低了本应该存在的营收</li>
+<li>从短期效应看, 刷子刷高主播人气, 仅仅是为了挤进某排行榜, 获取相应的现金奖励, 相当于诈骗奖金</li>
+<li>从全局角度讲, 主播获利后的分成, 会流向三个部分, 一个是自身的收益, 一个是平常抽成, 还有一个是付费给了黑产, 极端的考虑这个问题, 付费给黑产的部分, 即便主播不要, 平台也可以抽走; 换个说法是, 黑车借用我们的平台和资源, 为自己生成了效益, 我方浪费了人力物力财力的情况下, 养活了黑产.</li>
+</ol>
+<hr>
+<h1 id="四-风控现状"><a href="#四-风控现状" class="headerlink" title="四. 风控现状"></a>四. 风控现状</h1><h2 id="四-〇"><a href="#四-〇" class="headerlink" title="四.(〇)"></a>四.(〇)</h2><p>直播风控系统当前的主要工作, 是识别出黑产注册的小号, 拦截掉他们的抽奖行为, 可以总结为断其资源来路. </p>
+<h2 id="四-一-按接口"><a href="#四-一-按接口" class="headerlink" title="四.(一) 按接口"></a>四.(一) 按接口</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">title</th>
+<th style="text-align:center">number</th>
+<th style="text-align:center">else</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">每日拦截量最高</td>
+<td style="text-align:center">1.节奏风暴; 2.小电视</td>
+<td style="text-align:center">小电视包括小电视类的各种</td>
+</tr>
+<tr>
+<td style="text-align:center">单日最高拦截量</td>
+<td style="text-align:center">20亿</td>
+<td style="text-align:center">节奏风暴, 18年12月到19年1月持续每日10亿以上</td>
+</tr>
+<tr>
+<td style="text-align:center">近半年日均拦截量</td>
+<td style="text-align:center">5.88亿</td>
+<td style="text-align:center">统计周期2018-07-02到2018-12-28</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>结论</p>
+<ul>
+<li>黑产刷子的目标明确, 就是获取亿元和辣条</li>
+<li>节奏风暴的玩法造成了请求量和拦截量巨大</li>
+<li>针对刷节奏风暴可以作出更合理的前置和后续处理, 例如</li>
+</ul>
+<ol>
+<li>提升领亿元门槛</li>
+<li>加入更合理的概率-提示体系</li>
+<li>跟踪亿元流向, 拦截道具的送出</li>
+</ol>
+<h2 id="四-二-按规则"><a href="#四-二-按规则" class="headerlink" title="四.(二) 按规则"></a>四.(二) 按规则</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">title</th>
+<th style="text-align:center">number</th>
+<th style="text-align:center">else</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">规则总数</td>
+<td style="text-align:center">8</td>
+<td style="text-align:center">8为当前有效的, 总共上过16条规则</td>
+</tr>
+<tr>
+<td style="text-align:center">每日拦截量最高</td>
+<td style="text-align:center">1.IP云主机; 2.referer异常; 3.有抽奖但无访问</td>
+<td style="text-align:center">前三名</td>
+</tr>
+<tr>
+<td style="text-align:center">单日最高拦截量</td>
+<td style="text-align:center">10亿</td>
+<td style="text-align:center">IP云主机规则</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>结论</p>
+<ul>
+<li>ip仍然是绕不过的根本信息</li>
+<li>用户行为逻辑异常会倒逼黑产开发者优化代码, 导致规则异常</li>
+</ul>
+<h2 id="四-三-小结"><a href="#四-三-小结" class="headerlink" title="四.(三) 小结"></a>四.(三) 小结</h2><ol>
+<li>从业务接口角度说, 可以提升获取<strong>免费道具</strong>的门槛以及送出<strong>加人气值道具</strong>的难度;</li>
+<li>从规则角度说, 一方面IP情报可以继续挖掘内容, 另一方面行为逻辑的终点是判断刷子是否拉流<blockquote>
+<p>拉流会使得黑产付出更多的带宽成本, 羊毛出在羊身上, 直播/用户使用的价格提升, 会大量削减黑灰产业链的发展, 当付出&gt;回报的时候, 产业自然不存在, 或者出现新的形式</p>
+</blockquote>
+</li>
+</ol>
+<hr>
+<h1 id="五-一根辣条的前世今生"><a href="#五-一根辣条的前世今生" class="headerlink" title="五. 一根辣条的前世今生"></a>五. 一根辣条的前世今生</h1><h2 id="五-〇-辣条对于整条链路的影响推算"><a href="#五-〇-辣条对于整条链路的影响推算" class="headerlink" title="五.(〇) 辣条对于整条链路的影响推算"></a>五.(〇) 辣条对于整条链路的影响推算</h2><p>综上, 黑产影响到的不仅仅是公平的竞争环境, 良好的社区氛围, 还通过一条较长的链路影响到了公司的营收, 涉及到了收益; 而风控在保护了接口稳定以及维持优质用户体验的同时, 也从一定程度上打击了黑产, 保护了营收的损失.</p>
+<p>最后这里要给出一个推算: 辣条是黑产的切入口, 所以此时也会作为量化估计的基本单位, 衡量出我平台每被薅走一根辣条, 将会给黑产带来多少收益, 以及对我们带来多少营收上面的损失.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">graph LR</div><div class="line"> a(主播)--&gt;|开播|b(人气)</div><div class="line"> a2(刷子)--&gt;|刷|b</div><div class="line"> b--&gt;|突击暴张|ed(活动奖励 #流失点一#)</div><div class="line"> b--&gt;|涨|c(推荐位)</div><div class="line"> b2(真实用户)--&gt;|观看|c</div><div class="line"> c--&gt;|内容优质|d(付费)</div><div class="line"> c--&gt;|内容劣质|d2(浪费推荐位 #流失点二#)</div><div class="line"> d--&gt;|产生|e(礼物营收)</div><div class="line"> e---ea(主播自赚)</div><div class="line"> e---eb(平台抽成)</div><div class="line"> e---ec(投入黑产 #流失点三#)</div></pre></td></tr></table></figure>
+<ul>
+<li><p>对于用户付费相关, 我们有以下结论可以作为参考: </p>
+<ol>
+<li>视频的内容上的特征带给用户的感官体验与用户积极的付费态度线性因果关系: 感知视频内容越具有丰富性、用户认为感知视频内容可信度越高、或者感知视频内容越是突显个性化, 越能正向促进用户积极的付费态度感知视频热度是指用户对感知内容的关注度, 表现在点击量、评论量上;</li>
+<li>概括来说, 本段所探讨的感知网站特征包含的感知用户活跃度和感知收费价格两个子变量只有感知收费价格能显著负向影响用户的积极付费态度;</li>
+<li>网站通过各种途径为自己做宣传的力度越大, 用户的口碑越髙, 越能吸引更多用户, 进而促进他们的付费态度;</li>
+<li>在线支付、移动支付成为人们的日常, 网站采用的感知支付方式为用户所熟悉, 具有方便性、快捷性、低成本等特点, 用户支付上的困难小, 所以感知支付方式越方便快捷, 用户对付费行为的感知行为控制越强;</li>
+<li>用户的付费态度越强, 他的付费意愿就越高;</li>
+<li>用户对付费行为的感知行为控制越强, 更倾向于推进付费行为.</li>
+</ol>
+</li>
+</ul>
+<h2 id="五-一-基本假设"><a href="#五-一-基本假设" class="headerlink" title="五.(一) 基本假设"></a>五.(一) 基本假设</h2><ul>
+<li><p>最终的目的, 是推算出黑产每刷到一根辣条, 能给黑产带来多少收益, 以及会让我们损失多少利益</p>
+</li>
+<li><p>为了推算方便, 将辣条视为一种“流通货币”</p>
+</li>
+<li><p>其他的相关的影响, 如直播内容质量, 用户付费意愿等, 量化为价值, 转化为$x$个单位辣条</p>
+</li>
+<li><p>一切影响因素, 相邻层级之间的正相关关系暂时均以线性关系表达</p>
+</li>
+<li><p>影响直播人气的因素, 只考虑(扩展因素列为”其他”)</p>
+<ol>
+<li>观众送道具数量</li>
+<li>CDN连接数</li>
+<li>弹幕连接数</li>
+<li>其他</li>
+</ol>
+</li>
+<li><p>影响主播质量的因素, 只考虑(扩展因素列为”其他”)</p>
+<ol>
+<li>业务能力(唱功 / 舞功 / 游戏技术)</li>
+<li>个人魅力(颜值 / 声音 / 幽默 / 人品)</li>
+<li>硬件配置(电脑配置 / 码率)</li>
+<li>标题封面</li>
+<li>其他</li>
+</ol>
+</li>
+<li><p>经过相关模型推算, 为了简化计算复杂度, 假设低质量主播营收金额只有高质量主播(本应该在推荐位的主播)的占比为$rate<em>{anchor}$ , 经过数据推算这个值在这里取$rate</em>{anchor} = 0.3$ 作为折损比例.</p>
+</li>
+<li><p>影响用户付费意愿的因素, 只考虑(扩展因素列为”其他”)</p>
+<ul>
+<li>这个部分, 参考了相关研究成果. 对于付费意愿含义的解释, 一种应用较为广泛的解释是认为顾客愿意为特定商品或者服务质量改善而支付的额外价值, 也称为溢价付费意愿. 相关研究提出商家应该抓准人群特征而对不同的群体选取不同的经营策略. 根据计划行为理论研究模型, 有人员探索了影响某消费群体对食品安全付费意愿的因素. 研究表明, 顾客对安全食品的付费意愿是受“是否愿意支付额外费用”与“愿意支付多少额外费用”两者结合的影响.</li>
+<li>应用到我们的直播平台, 可以理解为, 观众</li>
+</ul>
+<ol>
+<li>用户本身因素<br>1-1. 是否愿意支付额外费用<br>1-2. 愿意支付多少额外费用</li>
+<li>直播客观因素<br>2-1. 直播间人气<br>2-2. 主播质量</li>
+<li>其他因素</li>
+</ol>
+</li>
+</ul>
+<h2 id="五-二-符号说明"><a href="#五-二-符号说明" class="headerlink" title="五.(二) 符号说明"></a>五.(二) 符号说明</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>解释</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$Lost_n(x)$</td>
+<td>第n种营收损失</td>
+<td>目前共三种</td>
+</tr>
+<tr>
+<td>$x$</td>
+<td>辣条数量</td>
+<td>亿元体量小, 暂也算作辣条</td>
+</tr>
+<tr>
+<td>$Mon$</td>
+<td>钱</td>
+<td>RMB</td>
+</tr>
+<tr>
+<td>$Pop$</td>
+<td>人气值</td>
+<td></td>
+</tr>
+<tr>
+<td>$Rank$</td>
+<td>人气排名</td>
+<td></td>
+</tr>
+<tr>
+<td>$K_{p-m}$</td>
+<td>人气-金钱比例</td>
+<td>每元钱能张多少人气</td>
+</tr>
+<tr>
+<td>$K_{x-p}$</td>
+<td>辣条-人气比例</td>
+<td>涨1人气需要多少辣条</td>
+</tr>
+<tr>
+<td>$K_{p-r}$</td>
+<td>辣条-排名比例</td>
+<td>上升到一定名次需要的辣条量</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="五-三-公式推导"><a href="#五-三-公式推导" class="headerlink" title="五.(三) 公式推导"></a>五.(三) 公式推导</h2><h3 id="五-三-1-金钱和人气的关系"><a href="#五-三-1-金钱和人气的关系" class="headerlink" title="五.(三).1 金钱和人气的关系"></a>五.(三).1 金钱和人气的关系</h3><p>根据相关市场行情(某宝), 10元RMB大概可以购买5000-6000的人气值, 这里为了方便计算, 把相关数值取整数处理, 即10元RMB对应了5000人气值</p>
+<script type="math/tex; mode=display">
+K_{p-m} = Pop / Mon = 5000 / 10 = 500 (人气值/元)</script><h3 id="五-三-2-人气和辣条的关系"><a href="#五-三-2-人气和辣条的关系" class="headerlink" title="五.(三).2 人气和辣条的关系"></a>五.(三).2 人气和辣条的关系</h3><p>根据上述分析可以得知, 人气会受到辣条数目, 在线人数, 弹幕连接数的综合影响, 如</p>
+<script type="math/tex; mode=display">
+Pop(x) = K_{p-x} * x + K_2 * 在线人数 + K_3 * 弹幕连接数</script><p>考虑到实际情况, 辣条(银瓜子)礼物影响人气的倍率是固定不变的, 所以有</p>
+<script type="math/tex; mode=display">
+K_{x-p} = {1 \over 1000}</script><p>与此同时, 通过观察, 黑产在给主播刷辣条的时候, 批量小号数目大体固定, 考虑到$K_3$实际上远小于$K_2$, 并且人数稳定在80-200之间, 故选取固定值150作为参数</p>
+<p>所以得到</p>
+<script type="math/tex; mode=display">
+Pop(x) = {1 \over 1000} * x + 150</script><h3 id="五-三-3-营收的损失推算"><a href="#五-三-3-营收的损失推算" class="headerlink" title="五.(三).3 营收的损失推算"></a>五.(三).3 营收的损失推算</h3><ol>
+<li><p>浪费推荐位 — $Lost_1(x)​$ </p>
+<ul>
+<li><p>a. 定性分析<br> 人气受到辣条的影响, 上述已经讨论清楚<br> 主播排名会收到实时人气值的影响, 根据最近几天的人气值-排名次序关系可以得到之间的转换系数<br> 主播之间的质量之差, 可以通过辣条的数量体现出来<br> 而单位质量转化为金钱, 也受到一个系数的分配</p>
+</li>
+<li><p>b. 定量分析</p>
+<p> 人气值-排名次序关系可以得到之间的转换系数$K_{p-r}$, 其中这个关系只关心排名较高的几名, 所以在小区间内可以近似看作线性关系, 有(数据见附件)</p>
+<script type="math/tex; mode=display">
+ K_{p-r} = {1 \over 13551};
+ b_{p-r} = -25.88</script><p> 所以可以得到: </p>
+<script type="math/tex; mode=display">
+ Rank(Pop) = K_{p-r} * Pop + b_{p-r} = {1 \over 13551} * Pop - 25.88</script><p> 并且可知, 被刷上去的推荐位的排名越靠前, 对于全局的影响越大, 所以被刷主播占据排位和对应折损率之间的关系可以拟合为</p>
+<script type="math/tex; mode=display">
+ Rate(Rank) = -0.01 * (10-Rank) + rate_{anchor}</script><p> 带入之前的式子, 得到和辣条之间的关系</p>
+<script type="math/tex; mode=display">
+ Rate(x) = 0.46 + {1 \over 1.3E+09} * x</script><p> 而排名数字和营收数额之间的关系, 可以用下式来描述</p>
+<script type="math/tex; mode=display">
+ Money(Rank) = 342.98 * Rank + 12397</script><p> 以上可以得到, 营收损失即为主播的质量差导致的金钱差值, 即为</p>
+<script type="math/tex; mode=display">
+ Lost_1(x) = 2.04*10^{-13} * x^2 + 3.93*10^{-5} * x + 1622</script></li>
+</ul>
+</li>
+<li><p>活动奖励 — $Lost_2(x)$ </p>
+<ul>
+<li>a. 定性分析<br>  活动奖励的最终金额, 将会受到活动影响力等等方面的影响, 为了简化模型, 此处的系数暂时表达为1, 即为一个没有倍率的常系数<br>  而奖励金额和辣条之间的关系, 则可以直接又线性关系表达</li>
+<li><p>b. 定量分析<br>  上述的表达式, 又相关活动的数据综合给出为:</p>
+<script type="math/tex; mode=display">
+  Lost_2(x) = 0.0685 * x + 666.2</script></li>
+</ul>
+</li>
+<li><p>投入黑产 — $Lost_3(x)​$ </p>
+<ul>
+<li>a. 定性分析<br>  这一项的影响, 其相关系数上述均为讨论过, 分别为<br>  k1 : 每个辣条可以刷多少人气<br>  k2 : 每个人气值需要多少钱<br>  两个系数联系起来了辣条和投入黑产的金额之间的关系</li>
+<li>b. 定量分析</li>
+<li><script type="math/tex; mode=display">
+  Lost_3(x) = {1 \over 500000} * x + 0.3</script></li>
+</ul>
+</li>
+</ol>
+<p>综述, </p>
+<script type="math/tex; mode=display">
+Lost(x) = \sum_{i=1}^3{k_i*Lost_i(x)}</script><p>其中三个损失营收函数前面$k_i$为比例系数, 且应该满足</p>
+<script type="math/tex; mode=display">
+\sum_{i=1}^3{k_i} = 1</script><p>在条件均等条件下, 或者条件未知的情况下, 即在没有明确主播有意刷哪种营收更多的情况下, 考虑一根辣条的流向最终将会消亡, 所以取</p>
+<script type="math/tex; mode=display">
+k_1 = k_2 = k_3 = {1 \over 3}</script><p>有</p>
+<script type="math/tex; mode=display">
+Lost(x) = 6.8*10^{-14}*x^2 + 0.0228 * x + 762.8</script><h2 id="五-四-计算影响"><a href="#五-四-计算影响" class="headerlink" title="五.(四) 计算影响"></a>五.(四) 计算影响</h2><h3 id="五-四-1-单直播计算"><a href="#五-四-1-单直播计算" class="headerlink" title="五.(四).1 单直播计算"></a>五.(四).1 单直播计算</h3><p>对于直播间 roomid = 60895 刷辣条量存在异常</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>日期</th>
+<th>辣条量</th>
+<th>影响的营收数额</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>20190124</td>
+<td>7213</td>
+<td>927.2917786</td>
+</tr>
+<tr>
+<td>20190125</td>
+<td>5571</td>
+<td>889.8399045</td>
+</tr>
+<tr>
+<td>20190126</td>
+<td>5347</td>
+<td>884.7310415</td>
+</tr>
+<tr>
+<td>20190127</td>
+<td>5356</td>
+<td>884.936307</td>
+</tr>
+<tr>
+<td>20190128</td>
+<td>5552</td>
+<td>889.4065608</td>
+</tr>
+<tr>
+<td>20190129</td>
+<td>3912</td>
+<td>852.0040065</td>
+</tr>
+<tr>
+<td>20190130</td>
+<td>3579</td>
+<td>844.4099103</td>
+</tr>
+<tr>
+<td>20190131</td>
+<td>3492594</td>
+<td>88688.72794</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="五-四-2-风控拦截总量计算"><a href="#五-四-2-风控拦截总量计算" class="headerlink" title="五.(四).2 风控拦截总量计算"></a>五.(四).2 风控拦截总量计算</h3><p>风控每天拦截的小电视抽奖, 刚好拦住了刷子们生产辣条, 辣条有效期30天, 刷子们为了避免被封, 平滑送礼, 所以当天的拦截量平分成30份, 则可以当作是送辣条量</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>日期</th>
+<th>拦截领取辣条</th>
+<th>辣条分30天送完</th>
+<th>挽救营收数额</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>20190211</td>
+<td>359371869</td>
+<td>11979062.3</td>
+<td>563368.1836</td>
+</tr>
+<tr>
+<td>20190212</td>
+<td>334558403</td>
+<td>11151946.77</td>
+<td>339596.0096</td>
+</tr>
+<tr>
+<td>20190213</td>
+<td>306429762</td>
+<td>10214325.4</td>
+<td>304595.4806</td>
+</tr>
+<tr>
+<td>20190214</td>
+<td>299727953</td>
+<td>9990931.767</td>
+<td>296432.7722</td>
+</tr>
+<tr>
+<td>20190215</td>
+<td>237853001</td>
+<td>7928433.367</td>
+<td>224275.9186</td>
+</tr>
+<tr>
+<td>20190216</td>
+<td>275453654</td>
+<td>9181788.467</td>
+<td>267435.1399</td>
+</tr>
+<tr>
+<td>20190217</td>
+<td>207347235</td>
+<td>6911574.5</td>
+<td>190830.2048</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h1 id="六-补充与展望"><a href="#六-补充与展望" class="headerlink" title="六. 补充与展望"></a>六. 补充与展望</h1><h2 id="六-一-不足"><a href="#六-一-不足" class="headerlink" title="六.(一) 不足"></a>六.(一) 不足</h2><ol>
+<li>从完整性方面讲, 风控系统一方面要对黑产进行截源, 一方面也要截流; <strong>送道具接口</strong>也需要接入风控;</li>
+<li>从实时性方面讲, 目前系统离线计算24h前的数据, 黑产可以利用不断注册小号, 轮休账号等方式绕开, 所以需要考虑加入<strong>实时计算</strong>;</li>
+<li>从准确性方面来讲, 目前策略还是更多的依靠了人工分析, 以及最基础的特征工程, 在面对多种多种不同的脚本/外挂/策略的时候, 往往不能覆盖全面, 甚至是在黑产修改了自身的方案之后, 我方也得为之作出相应调整, 诸多有待完善;</li>
+<li>以上三个方面是从技术角度出发, 而从影响到的营收角来讲, 解决了技术问题, 也将会进一步的保护上面推算得到的营收状况.</li>
+</ol>
+<h2 id="六-二-方案及评估"><a href="#六-二-方案及评估" class="headerlink" title="六.(二) 方案及评估"></a>六.(二) 方案及评估</h2><h3 id="六-二-1-方案描述"><a href="#六-二-1-方案描述" class="headerlink" title="六.(二).1 方案描述"></a>六.(二).1 方案描述</h3><ol>
+<li>对于解决<strong>完整性</strong>的问题, 首先要保证的是风控自身足够准确; 另外存在一个困难, 对于小电视抽奖/节奏风暴等服务, 接入风控系统是可以有效的保护其接口, 从效果上看是减少了对于抽奖服务的访问次数, 同时也保护了营收等方面; 但是如果要是让<strong>送道具接口</strong>接入风控系统, 从·全局的角度看, 是可以做到保护用户体验, 保护营收, 打击黑产, 但是从接口调用方的服务角度来看, 则是凭空增加了服务的压力. 所以这个方面的工作, 更多的是要考虑怎么和送道具的相关服务的对接, 充分考虑其能容忍的超时时间, 以及误判造成的影响等; 退而求其次, 既然是送辣条影响到了人气, 如果送的接口不方便对接, 那么可以考虑在<strong>计算实时人气阶段</strong>对黑产用户的辣条加以过滤剔除等等. 上述策略的实施需要进一步的调研.</li>
+<li>对于解决<strong>实时性</strong>的问题, 计划使用<strong>Flink/Spark streaming</strong>等技术手段, 处理当前访问和抽奖行为的日志, 对用户进行计算和打分等逻辑; 一方面, 虽然叫做实时计算, 但是仍旧是要去统计和计算一段时间内的行为数据, 简单来看是把原本24h的延迟, 缩短到5-10min左右, 所以可以考虑利用原有风控的规则, 开发移植成为实时版本; 另一方面, 长期的行为和短期的行为不见得能够体现出一致的统计特征, 所以还需要根据具体实践, 开发出相应的处理规则, 计划H1可以上线第一版本的, 处理单个日志/规则, 并且同时做好系统的扩展方案, 方便日后多日志多规则的融合升级.</li>
+<li>对于解决<strong>准确性</strong>的问题, 考虑加入更多的机器学习算法, 训练出抽象的<strong>模型</strong>.因为目前主要是靠人工发现和制定规则, 甚至规则的阈值都是经验所得, 这样做的缺点一个是慢, 一个不准, 利用训练的模型, 可以弥补尚未发现的规律, 合理的制定阈值等; 另外, 由于风控本身是一个对抗的过程, 不会存在一种一劳永逸的策略和算法, 这样做既可以解决每次黑产有了更为肉眼难以识别的策略之后, 我们自身响应和发现异常的周期过于漫长的问题. 参考业界做的相对成熟的体系, 结合自身的特点, 优化升级风控系统.</li>
+<li>验证码. 参考其他平台, 验证码也是风控系统中的一个重要工具, 目前验证码流程已经打通, 需要做的事情是制定好技术-产品-用户都能够接受的验证码弹出策略. 利用验证码不仅可以达到更好的拦截效果, 更可以参考拦截的结果日志等, 计算出更准确的数据.</li>
+<li>风控画像. 有些平台的风控, 是在一个大的项目下, 包含了用户画像,推荐,风控等多个业务;有些平台的则是用户画像,风控画像,订单画像等每个业务都做出了画像. 这个方面可以结合我们正在做的直播用户画像, 做合理的画像工作. </li>
+</ol>
+<h3 id="六-二-效果预估"><a href="#六-二-效果预估" class="headerlink" title="六.(二) 效果预估"></a>六.(二) 效果预估</h3><ol>
+<li>技术方面, 对标更成熟的系统, 参考如下公司公开方案, 制定理性化的评价风控系统的指标</li>
+</ol>
+<center class="half">
+    <h4>京东:</h4>
+<img src="/2019/04/05/spicyStripsPastAndNow/jd.jpg" height="300px">
+    <h4>携程:</h4>
+<img src="/2019/04/05/spicyStripsPastAndNow/xc.jpg" height="300px">
+</center>
+
+<ol>
+<li>最后, 营收方面, 只有做好上述多个维度的工作, 目标是达到如下的效果预期, 真正的目的是对于保护营收和增长营收作出贡献:</li>
+</ol>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">日期</th>
+<th style="text-align:center">黑产辣条</th>
+<th style="text-align:center">预估未来风控控制量(RMB)</th>
+<th style="text-align:center">现行风控控制量(RMB)</th>
+<th style="text-align:center">较现有系统的增长率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">20190211</td>
+<td style="text-align:center">49718798</td>
+<td style="text-align:center">371464.0153</td>
+<td style="text-align:center">1134519.488</td>
+<td style="text-align:center">150%</td>
+</tr>
+<tr>
+<td style="text-align:center">20190212</td>
+<td style="text-align:center">35473587</td>
+<td style="text-align:center">339596.0096</td>
+<td style="text-align:center">809646.1531</td>
+<td style="text-align:center">142%</td>
+</tr>
+<tr>
+<td style="text-align:center">20190213</td>
+<td style="text-align:center">29468916</td>
+<td style="text-align:center">304595.4806</td>
+<td style="text-align:center">672713.1372</td>
+<td style="text-align:center">145%</td>
+</tr>
+<tr>
+<td style="text-align:center">20190214</td>
+<td style="text-align:center">18785698</td>
+<td style="text-align:center">296432.7722</td>
+<td style="text-align:center">429100.7118</td>
+<td style="text-align:center">169%</td>
+</tr>
+<tr>
+<td style="text-align:center">20190215</td>
+<td style="text-align:center">17688351</td>
+<td style="text-align:center">224275.9186</td>
+<td style="text-align:center">404078.4785</td>
+<td style="text-align:center">156%</td>
+</tr>
+<tr>
+<td style="text-align:center">20190216</td>
+<td style="text-align:center">33825983</td>
+<td style="text-align:center">267435.1399</td>
+<td style="text-align:center">772073.0178</td>
+<td style="text-align:center">135%</td>
+</tr>
+<tr>
+<td style="text-align:center">20190217</td>
+<td style="text-align:center">24673859</td>
+<td style="text-align:center">190830.2048</td>
+<td style="text-align:center">563368.1836</td>
+<td style="text-align:center">134%</td>
+</tr>
+</tbody>
+</table>
+</div>
+
       
     </div>
 
@@ -594,11 +1029,13 @@ E = {1 \over 2} \{d_1-f[\sum_{j=1}^3v_{j1}f(\sum_{i=1}^4w_{ij}x_i)]\}^2</script>
       
         <div class="post-tags">
           
-            <a href="/tags/deep-learning/" rel="tag"># deep learning</a>
+            <a href="/tags/工作总结/" rel="tag"># 工作总结</a>
           
-            <a href="/tags/neural-networks/" rel="tag"># neural networks</a>
+            <a href="/tags/反作弊/" rel="tag"># 反作弊</a>
           
-            <a href="/tags/back-propagation/" rel="tag"># back propagation</a>
+            <a href="/tags/风险控制/" rel="tag"># 风险控制</a>
+          
+            <a href="/tags/黑产/" rel="tag"># 黑产</a>
           
         </div>
       
@@ -663,8 +1100,8 @@ E = {1 \over 2} \{d_1-f[\sum_{j=1}^3v_{j1}f(\sum_{i=1}^4w_{ij}x_i)]\}^2</script>
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/05/14/cs231n-study-note-2/" rel="next" title="cs231n study note 2">
-                <i class="fa fa-chevron-left"></i> cs231n study note 2
+              <a href="/2019/04/05/bp-homework/" rel="next" title="反向传播计算的作业">
+                <i class="fa fa-chevron-left"></i> 反向传播计算的作业
               </a>
             
           </div>
@@ -672,10 +1109,6 @@ E = {1 \over 2} \{d_1-f[\sum_{j=1}^3v_{j1}f(\sum_{i=1}^4w_{ij}x_i)]\}^2</script>
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/04/05/bp-homework/" rel="prev" title="BP homowork">
-                BP homowork <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -775,7 +1208,9 @@ E = {1 \over 2} \{d_1-f[\sum_{j=1}^3v_{j1}f(\sum_{i=1}^4w_{ij}x_i)]\}^2</script>
                     
                       
                     
-                    <span class="site-state-item-count">5</span>
+                      
+                    
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -838,7 +1273,15 @@ E = {1 \over 2} \{d_1-f[\sum_{j=1}^3v_{j1}f(\sum_{i=1}^4w_{ij}x_i)]\}^2</script>
                     
                       
                     
-                    <span class="site-state-item-count">22</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">26</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -907,7 +1350,7 @@ E = {1 \over 2} \{d_1-f[\sum_{j=1}^3v_{j1}f(\sum_{i=1}^4w_{ij}x_i)]\}^2</script>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#通用的三层前馈网络的BP学习算法的推导"><span class="nav-number">1.</span> <span class="nav-text">通用的三层前馈网络的BP学习算法的推导</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#输入矩阵"><span class="nav-number">1.1.</span> <span class="nav-text">输入矩阵</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#从输入到隐藏层的参数矩阵"><span class="nav-number">1.2.</span> <span class="nav-text">从输入到隐藏层的参数矩阵</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#隐藏层矩阵"><span class="nav-number">1.3.</span> <span class="nav-text">隐藏层矩阵</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#从隐藏层到输出的参数矩阵"><span class="nav-number">1.4.</span> <span class="nav-text">从隐藏层到输出的参数矩阵</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#计算输出"><span class="nav-number">1.5.</span> <span class="nav-text">计算输出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#期望输出"><span class="nav-number">1.6.</span> <span class="nav-text">期望输出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#传递关系"><span class="nav-number">1.7.</span> <span class="nav-text">传递关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其展开后的求和公式形式为"><span class="nav-number">1.8.</span> <span class="nav-text">其展开后的求和公式形式为</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#单极性sigmoid函数"><span class="nav-number">1.9.</span> <span class="nav-text">单极性sigmoid函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#误差计算"><span class="nav-number">1.10.</span> <span class="nav-text">误差计算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#将以上误差定义式展开至隐藏层"><span class="nav-number">1.11.</span> <span class="nav-text">将以上误差定义式展开至隐藏层:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进一步展开至输入层"><span class="nav-number">1.12.</span> <span class="nav-text">进一步展开至输入层:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#式中负号表示梯度下降-常数-eta-in-0-1-表示比例系数"><span class="nav-number">1.13.</span> <span class="nav-text">式中负号表示梯度下降, 常数$\eta \in (0,1)$ 表示比例系数.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对于输出层-上式可写成"><span class="nav-number">1.14.</span> <span class="nav-text">对于输出层, 上式可写成:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对于隐藏层-上式可写成"><span class="nav-number">1.15.</span> <span class="nav-text">对于隐藏层, 上式可写成:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对于输出层和隐藏层各定义一个误差信号-令"><span class="nav-number">1.16.</span> <span class="nav-text">对于输出层和隐藏层各定义一个误差信号, 令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代入上式可得到"><span class="nav-number">1.17.</span> <span class="nav-text">代入上式可得到</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对于输出层-delta-y-可以展开为"><span class="nav-number">1.18.</span> <span class="nav-text">对于输出层, $\delta^y$可以展开为</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对于隐藏层-delta-h-可以展开为"><span class="nav-number">1.19.</span> <span class="nav-text">对于隐藏层, $\delta^h$可以展开为</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对于输出层-利用误差公式-E-1-over-2-sum-k-1-l-d-k-y-k-2-可得"><span class="nav-number">1.20.</span> <span class="nav-text">对于输出层, 利用误差公式 $E = {1 \over 2} \sum_{k=1}^l(d_k-y_k)^2$, 可得</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对于隐藏层-利用误差公式-E-1-over-2-sum-k-1-l-d-k-f-sum-j-0-mv-jk-h-j-2-可得"><span class="nav-number">1.21.</span> <span class="nav-text">对于隐藏层, 利用误差公式 $E  = {1 \over 2} \sum{k=1}^l[d_k-f(\sum{j=0}^mv_{jk}h_j)]^2$, 可得</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#将Sigmoid激活函数代入-可以得到"><span class="nav-number">1.22.</span> <span class="nav-text">将Sigmoid激活函数代入, 可以得到</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#所以得到三层前馈网络的BP学习算法权值调整计算公式为"><span class="nav-number">1.23.</span> <span class="nav-text">所以得到三层前馈网络的BP学习算法权值调整计算公式为</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#作业-在此例中"><span class="nav-number">2.</span> <span class="nav-text">作业: 在此例中</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#输入层有4个-隐藏层有3个-输出有1个-因此有"><span class="nav-number">2.1.</span> <span class="nav-text">输入层有4个, 隐藏层有3个, 输出有1个, 因此有</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#n-4-m-3-l-1-即为"><span class="nav-number">2.2.</span> <span class="nav-text">n=4, m=3, l=1, 即为:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正向推导"><span class="nav-number">2.3.</span> <span class="nav-text">正向推导</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#误差反向传播"><span class="nav-number">2.4.</span> <span class="nav-text">误差反向传播</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#代入n-m-l具体数值"><span class="nav-number">2.4.1.</span> <span class="nav-text">代入n,m,l具体数值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#误差为"><span class="nav-number">2.4.2.</span> <span class="nav-text">误差为:</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一-背景"><span class="nav-number">1.</span> <span class="nav-text">一. 背景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二-黑产流程"><span class="nav-number">2.</span> <span class="nav-text">二. 黑产流程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#二-一-概念描述"><span class="nav-number">2.1.</span> <span class="nav-text">二.(一) 概念描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二-二-关系流程图"><span class="nav-number">2.2.</span> <span class="nav-text">二.(二) 关系流程图:</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三-营收影响"><span class="nav-number">3.</span> <span class="nav-text">三. 营收影响</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#三-〇"><span class="nav-number">3.1.</span> <span class="nav-text">三.(〇)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三-一-小主播"><span class="nav-number">3.2.</span> <span class="nav-text">三.(一) 小主播</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三-二-大主播"><span class="nav-number">3.3.</span> <span class="nav-text">三.(二) 大主播</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三-三-用户体验"><span class="nav-number">3.4.</span> <span class="nav-text">三.(三) 用户体验</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三-四-小结"><span class="nav-number">3.5.</span> <span class="nav-text">三.(四) 小结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四-风控现状"><span class="nav-number">4.</span> <span class="nav-text">四. 风控现状</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#四-〇"><span class="nav-number">4.1.</span> <span class="nav-text">四.(〇)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四-一-按接口"><span class="nav-number">4.2.</span> <span class="nav-text">四.(一) 按接口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四-二-按规则"><span class="nav-number">4.3.</span> <span class="nav-text">四.(二) 按规则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四-三-小结"><span class="nav-number">4.4.</span> <span class="nav-text">四.(三) 小结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#五-一根辣条的前世今生"><span class="nav-number">5.</span> <span class="nav-text">五. 一根辣条的前世今生</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#五-〇-辣条对于整条链路的影响推算"><span class="nav-number">5.1.</span> <span class="nav-text">五.(〇) 辣条对于整条链路的影响推算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五-一-基本假设"><span class="nav-number">5.2.</span> <span class="nav-text">五.(一) 基本假设</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五-二-符号说明"><span class="nav-number">5.3.</span> <span class="nav-text">五.(二) 符号说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五-三-公式推导"><span class="nav-number">5.4.</span> <span class="nav-text">五.(三) 公式推导</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#五-三-1-金钱和人气的关系"><span class="nav-number">5.4.1.</span> <span class="nav-text">五.(三).1 金钱和人气的关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#五-三-2-人气和辣条的关系"><span class="nav-number">5.4.2.</span> <span class="nav-text">五.(三).2 人气和辣条的关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#五-三-3-营收的损失推算"><span class="nav-number">5.4.3.</span> <span class="nav-text">五.(三).3 营收的损失推算</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五-四-计算影响"><span class="nav-number">5.5.</span> <span class="nav-text">五.(四) 计算影响</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#五-四-1-单直播计算"><span class="nav-number">5.5.1.</span> <span class="nav-text">五.(四).1 单直播计算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#五-四-2-风控拦截总量计算"><span class="nav-number">5.5.2.</span> <span class="nav-text">五.(四).2 风控拦截总量计算</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#六-补充与展望"><span class="nav-number">6.</span> <span class="nav-text">六. 补充与展望</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#六-一-不足"><span class="nav-number">6.1.</span> <span class="nav-text">六.(一) 不足</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#六-二-方案及评估"><span class="nav-number">6.2.</span> <span class="nav-text">六.(二) 方案及评估</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#六-二-1-方案描述"><span class="nav-number">6.2.1.</span> <span class="nav-text">六.(二).1 方案描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#六-二-效果预估"><span class="nav-number">6.2.2.</span> <span class="nav-text">六.(二) 效果预估</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">6.2.2.1.</span> <span class="nav-text">京东:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">6.2.2.2.</span> <span class="nav-text">携程:</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
