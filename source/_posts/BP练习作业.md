@@ -236,14 +236,17 @@ $$
 
 ### n=4, m=3, l=1, 即为:
 
-$$\boldsymbol{X} =
+$$
+\boldsymbol{X} =
 \left[
  \begin{matrix}
    x_1 & x_2 & x_3 & x_4
   \end{matrix} 
-\right]^T​$$
+\right]^T​
+$$
 
-$$ \boldsymbol{W}=
+$$ 
+\boldsymbol{W}=
 \left[
  \begin{matrix}
    w_{11} & w_{12} & w_{13}\\
@@ -251,39 +254,56 @@ $$ \boldsymbol{W}=
    w_{31} & w_{32} & w_{33}\\
    w_{41} & w_{42} & w_{43}\\
   \end{matrix} 
-\right]^T ​$$
+\right]^T ​
+$$
 
-$$\boldsymbol{H}
+$$
+\boldsymbol{H}
 =\left[
  \begin{matrix}
    h_1 & h_2 & h_3
   \end{matrix} 
-\right]^T$$
+\right]^T
+$$
 
-$$\boldsymbol{V}
+$$
+\boldsymbol{V}
 =\left[
  \begin{matrix}
    v_{11} \\ v_{21} \\ v_{31}
   \end{matrix} 
-\right]^T ​$$
+\right]^T ​
+$$
 
-$$\boldsymbol{Y} = y​$$
+$$
+\boldsymbol{Y} = y​
+$$
 
-$$\boldsymbol{D} = d​$$
+$$
+\boldsymbol{D} = d​
+$$
 
 ### 正向推导
 
-$h_1 = w_{11}x_1 + w_{21}x_2 + w_{31}x_3 + w_{41}x_4 = W_{t_1}X $ 
+$$
+h_1 = w_{11}x_1 + w_{21}x_2 + w_{31}x_3 + w_{41}x_4 = W_{t_1}X 
+$$ 
 
-$h_2 = w_{12}x_1 + w_{22}x_2 + w_{32}x_3 + w_{42}x_4 = W_{t_2}X $
+$$
+h_2 = w_{12}x_1 + w_{22}x_2 + w_{32}x_3 + w_{42}x_4 = W_{t_2}X 
+$$
 
-$h_3 = w_{13}x_1 + w_{23}x_2 + w_{33}x_3 + w_{43}x_4 = W_{t_3}X ​$
+$$
+h_3 = w_{13}x_1 + w_{23}x_2 + w_{33}x_3 + w_{43}x_4 = W_{t_3}X ​
+$$
 
-$Y = y = v_{11}h_1 + v_{21}h_2 + v_{31}h_3 = V \ \left[
+$$
+Y = y = v_{11}h_1 + v_{21}h_2 + v_{31}h_3 = V \ \left[
  \begin{matrix}
    W_{t_1}X \\ W_{t_2}X \\ W_{t_3}X
   \end{matrix} 
-\right] = V \ W \ X​$
+\right] = V \ W \ X​
+$$
 
 ### 误差反向传播
 
@@ -306,21 +326,35 @@ $$
 \Delta v_{j1} = \eta \delta^y h_j = \eta \ (d_1-y_1)y_1(1-y_1) \ h_j
 $$
 
-$ \Delta v_{11} = \eta \ (d_1-y_1)y_1(1-y_1) \ h_1 ​$
-$ \Delta v_{21} = \eta \ (d_1-y_1)y_1(1-y_1) \ h_2 $
-$ \Delta v_{31} = \eta \ (d_1-y_1)y_1(1-y_1) \ h_3 $
+$$
+ \Delta v_{11} = \eta \ (d_1-y_1)y_1(1-y_1) \ h_1 ​
+$$
+$$
+ \Delta v_{21} = \eta \ (d_1-y_1)y_1(1-y_1) \ h_2 
+$$
+$$
+ \Delta v_{31} = \eta \ (d_1-y_1)y_1(1-y_1) \ h_3 
+$$
 
 $$
 \Delta w_{ij} = \eta \delta_j^h x_i = \eta \  \delta^y v_{j1}h_j(1-h_j) \  x_i
 $$
 
-$ \Delta w_{11} =  \eta \  \delta^y v_{j1}h_1(1-h_1) \  x_1 $
+$$
+ \Delta w_{11} =  \eta \  \delta^y v_{j1}h_1(1-h_1) \  x_1 
+$$
 
-$ \Delta w_{12} =  \eta \  \delta^y v_{j1}h_2(1-h_2) \  x_1 ​$
+$$
+ \Delta w_{12} =  \eta \  \delta^y v_{j1}h_2(1-h_2) \  x_1 ​
+$$
 
-$ \Delta w_{13} =  \eta \  \delta^y v_{j1}h_3(1-h_3) \  x_1 $
+$$
+ \Delta w_{13} =  \eta \  \delta^y v_{j1}h_3(1-h_3) \  x_1 
+$$
 
-$ \Delta w_{21} =  \eta \  \delta^y v_{j3}h_1(1-h_1) \  x_2 ​$
+$$
+ \Delta w_{21} =  \eta \  \delta^y v_{j3}h_1(1-h_1) \  x_2 ​
+$$
 
 ...
 
