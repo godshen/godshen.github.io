@@ -88,7 +88,7 @@
 <meta property="og:description" content="前言2018-11-0212345从一个角度解决了系统默认主题 + 最新版hexo-math插件不能正常运行的这个问题但是截至到这一天, 还没有从本质理解问题不过这个问题先告一段落 2017-11-0112无论怎么学习, 原作者的github的README都是最好的参考资料尽管作者已经停止了维护, 但是还是有许多前赴后继者前来讨论心得 原作者github传送门 2017-10-31123456对于">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://godshen.github.io/2017/10/31/exploreMathjax/searchRes.jpg">
-<meta property="og:updated_time" content="2017-11-19T07:49:13.647Z">
+<meta property="og:updated_time" content="2018-05-13T21:03:28.617Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="探索在Hexo下使用Mathjax的经验">
 <meta name="twitter:description" content="前言2018-11-0212345从一个角度解决了系统默认主题 + 最新版hexo-math插件不能正常运行的这个问题但是截至到这一天, 还没有从本质理解问题不过这个问题先告一段落 2017-11-0112无论怎么学习, 原作者的github的README都是最好的参考资料尽管作者已经停止了维护, 但是还是有许多前赴后继者前来讨论心得 原作者github传送门 2017-10-31123456对于">
@@ -367,7 +367,7 @@
 <ul>
 <li><p>最普通的等式 $a = b + c$.</p>
 </li>
-<li><p>带下标的概率关系(katex格式)<span>$P_1P_2=\bar{P_3}P_4$</span><!-- Has MathJax --></p>
+<li><p>带下标的概率关系(katex格式) $ P_1P_2=\bar{P_3}P_4 $</p>
 </li>
 <li><p>公式块+分段函数</p>
 <script type="math/tex; mode=display">
@@ -389,7 +389,7 @@ e^x, & \text{else}
 <h4 id="探索"><a href="#探索" class="headerlink" title="探索"></a>探索</h4><p>上回书说道, 按照经验帖的教程一步一步来的插件, 对于插入公式不奏效, 通过传送门原PO写的REAMDME和各大教程的书写时间, 我意识到问题应该是出在<strong>版本更新</strong>上, 为了解决这个问题, 笔者自然而然的产生了两个思路:<br>1st -&gt; 探索新版本的正确打开方式<br>2nd -&gt; 切换回旧版本, 因为教程和经验多啊 (广大学习python的小白有多少是因为教程和例程只适用于2.7和放弃了研究3.x啊hhhhhh (逃 )</p>
 <p>如果想切换回使用老版本可以进行如下操作</p>
 <ol>
-<li>卸载一波刚刚安装的插件, <code>npm uninstall hexo-math --save</code></li>
+<li>卸载一波刚刚安装的插件, npm uninstall hexo-math —save</li>
 <li>按照版本号安装对应的hexo-math插件, 例如笔者选择了<code>1.0.8</code>版本, 指令即为<code>npm install hexo-math@^1.0.8 --save</code></li>
 <li>经检验, <code>1.0.8版本</code>和<code>2.0.1版本</code>都是可以完美执行的</li>
 </ol>
@@ -459,6 +459,7 @@ e^x, & \text{else}
 <li>互联网技术大爆发, 各种轮子\插件\库\包, 我们在使用的过程中不仅要小心踩坑, 而且要在遇到问题之后可以有解决问题的能力</li>
 <li>为了不踩这些坑, 或者是掉进去之后可以爬出来, 磨练好基本功很重要</li>
 </ul>
+<p>```</p>
 
       
     </div>
@@ -586,7 +587,7 @@ e^x, & \text{else}
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -597,7 +598,7 @@ e^x, & \text{else}
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -608,7 +609,7 @@ e^x, & \text{else}
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">21</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -695,7 +696,7 @@ e^x, & \text{else}
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
