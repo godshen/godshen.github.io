@@ -20,7 +20,7 @@ webtitle: 'godshen webtitle'
 bio: 'godshen bio'
 about: true
 aboutyou: 'godshen introduction'
-portraits: '/assets/profile.jpeg' # your portraits image file path
+portraits: '/assets/profile.jpg' # your portraits image file path
 
 # SNS
 SNS: true
