@@ -1,4 +1,647 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="https://godshen.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://godshen.github.io/" rel="alternate" type="text/html" /><updated>2021-03-30T11:17:26+08:00</updated><id>https://godshen.github.io/</id><title type="html">godshen</title><subtitle>something about study &amp; life</subtitle><author><name>true</name></author><entry><title type="html">Welcome to Jekyll!</title><link href="https://godshen.github.io/2021/03/29/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2021-03-29T14:05:21+08:00</published><updated>2021-03-29T14:05:21+08:00</updated><id>https://godshen.github.io/2021/03/29/welcome-to-jekyll</id><content type="html" xml:base="https://godshen.github.io/2021/03/29/welcome-to-jekyll.html">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="https://godshen.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://godshen.github.io/" rel="alternate" type="text/html" /><updated>2021-04-01T10:22:04+08:00</updated><id>https://godshen.github.io/</id><title type="html">godshen</title><subtitle>something about study &amp; life</subtitle><author><name>true</name></author><entry><title type="html">一根辣条的前世今生</title><link href="https://godshen.github.io/2021/03/31/scripy-life.html" rel="alternate" type="text/html" title="一根辣条的前世今生" /><published>2021-03-31T00:00:00+08:00</published><updated>2021-03-31T00:00:00+08:00</updated><id>https://godshen.github.io/2021/03/31/scripy-life</id><content type="html" xml:base="https://godshen.github.io/2021/03/31/scripy-life.html">&lt;p&gt;#一. 背景&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;我直播平台目前存在大量黑产, 表现为买关注刷人气等;&lt;/li&gt;
+  &lt;li&gt;直播风控上线近一年, 技术上保护了抽奖等相关接口, 同时更对营收起到了保护作用;&lt;/li&gt;
+  &lt;li&gt;本文阐述了风控在对抗黑产方面的工作进展, 计算对营收产生的影响, 并对未来加以预期以收获更好的成效.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;#二. 黑产流程
+##二.(一) 概念描述&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;什么是黑产?
+    &lt;blockquote&gt;
+      &lt;p&gt;黑产是黑/灰色产业的简称. 其通过非正当手段谋取利益, 俗称薅羊毛. 在我们的直播平台中, 黑产通过批量注册小号, 利用脚本大量刷辣条, 使得主播提升曝光的方式获取利益, 让本身是免费的辣条道具, 成为了他们赚钱的工具, 耗用的却是我们的资源;&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;黑产是风控的重点打击对象.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;直观上看, 黑产影响了两个方面:
+    &lt;ul&gt;
+      &lt;li&gt;技术方面浪费资源:
+        &lt;blockquote&gt;
+          &lt;p&gt;在送高能礼物时, 大量小号涌入直播间, 占用了大量系统和网络资源;&lt;/p&gt;
+        &lt;/blockquote&gt;
+      &lt;/li&gt;
+      &lt;li&gt;用户体验和直播风气方面变差:
+        &lt;blockquote&gt;
+          &lt;p&gt;刷子在集中对于主播尤其是新人主播送道具刷人气的时候, 会集中登上七日榜等榜单, 也造成了不好的用户体验以及打破了主播间相对公平的竞争.&lt;/p&gt;
+        &lt;/blockquote&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;center class=&quot;half&quot;&gt;
+    &lt;img src=&quot;./picture01.png&quot; height=&quot;300px&quot; /&gt;
+    &lt;img src=&quot;./picture02.png&quot; height=&quot;300px&quot; /&gt;
+&lt;/center&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;进一步看, 主播希望获取营收, 黑产希望薅羊毛赚钱. 所以黑产利用平台机制, 和有相关需求的主播私下交易形成了闭环链条.&lt;/li&gt;
+  &lt;li&gt;从主播角度来说:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;graph LR
+ a(希望赚钱)--&amp;gt;b(需求很多关注)
+ b--&amp;gt;c(需要推荐位)
+ c--&amp;gt;d(需要高人气)
+ c1(缺乏高人气能力)--&amp;gt;e
+ d--&amp;gt;e(特殊手段)
+ e--&amp;gt;|主播因此得以营收并, 持续投入|a
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+  &lt;li&gt;从黑产刷子的角度来说:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;graph LR
+ a(发现平台机制漏洞)--&amp;gt;b(低成本注册小号)
+ b--&amp;gt;c(低成本刷免费道具)
+ c--&amp;gt;d(需要高人气)
+ c1(主播购买)--&amp;gt;d(大量送给主播)
+ d--&amp;gt;e(人气增高)
+ e--&amp;gt;|从主播的付费中获取利益, 并持续黑产|b
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;综上, 黑产和购买黑产服务的主播之间, 实现了“合作共赢”. 在平台, 主播, 黑产三者之间, 抛开对于营收的影响, 至少我方投入的人力物力财力成本, 被消耗和利用.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;##二.(二) 关系流程图:
+&lt;img src=&quot;./黑产流程.jpg&quot; alt=&quot;黑产流程&quot; /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;#三. 营收影响&lt;/p&gt;
+
+&lt;p&gt;##三.(〇)
+更近一步看, 黑产极大程度的影响了营收, 该部分用数据支持, 推算黑产链上面的过程 
+##三.(一) 小主播
+通过跑数据, 处于被大批量小号刷辣条数量榜首的, 是一系列小主播, 关注数在1w以下, 但是再通过查看相关人气、营收金瓜子数据来看, 刷出的高人气难以快速转化为营收. 但是他们也占据了一定的曝光.&lt;/p&gt;
+
+&lt;p&gt;##三.(二) 大主播
+过滤掉小主播, 发现在某一周(2019-01-23 ~ 2019-01-30)营收金瓜子排名前100的大主播中, 有93名主播存在小号疯狂刷量的现象, 在93名主播中, 其&lt;strong&gt;黑产刷辣条&lt;/strong&gt;和最终转化为的&lt;strong&gt;金瓜子&lt;/strong&gt;营收之间的关系大致如下
+&lt;img src=&quot;./picture03.jpg&quot; alt=&quot;拟合图&quot; /&gt;
+&lt;strong&gt;其中虚线为趋势线, 证明二者之间有一定的正相关关系&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;##三.(三) 用户体验&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;用户体验的好坏, 直接影响用户的付费意愿, 去留意愿. 直播环境良好, 弹幕友善本身是我直播平台的一大优势, 需要加以维护.&lt;/li&gt;
+  &lt;li&gt;黑产的存在, 会直接影响用户体验, 一方面大量刷子小号的存在, 会给真实用户不良体验; 另一方面, 忠实粉丝捧自家主播, 但效果却不如买流量的主播, 影响了用户粘度.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;##三.(四) 小结
+从全平台的主播行为分析来看, 可以关注主播几个阶段性的特征点&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;高质量 or 低质量&lt;/li&gt;
+  &lt;li&gt;高关注 or 低关注 (粉丝量)&lt;/li&gt;
+  &lt;li&gt;高人气 or 低人气&lt;/li&gt;
+  &lt;li&gt;高营收 or 低营收&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;这里面的质量指的是主播本身及其直播内容的质量, 观众会比较关注的一些方面包括声音是否动听, 画面是否流畅, (游戏)技术是否高超,&lt;/p&gt;
+
+&lt;p&gt;一般来说, 正常成长起来的大主播会按照路线
+&lt;strong&gt;高质量-&amp;gt;高关注-&amp;gt;高人气-&amp;gt;推荐位-&amp;gt;高营收&lt;/strong&gt;
+良性循环下去&lt;/p&gt;
+
+&lt;p&gt;但是对于黑产和使用非法手段的主播来说, 我们不排除其中难免有才华出众者迫不得以采取该手段, 来快速把自己拉升到上述良性循环链条中, 而且相当数据显示诸多(超过90%)既成大主播, 多少存在着用刷子为自己提升人气的现象, 所以会诞生以下链路
+&lt;strong&gt;高质量-&amp;gt;低人气-&amp;gt;(刷子强刷)-&amp;gt;高人气-&amp;gt;推荐位-&amp;gt;(用户认可)-&amp;gt;高营收-&amp;gt;高关注&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;然而黑产会造就另外链路
+&lt;strong&gt;低质量-&amp;gt;低人气-&amp;gt;(刷子强刷)-&amp;gt;高人气-&amp;gt;推荐位-&amp;gt;(用户不买帐)-&amp;gt;低营收&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;从影响营收的角度来看, 可能存在以下几种方式的影响&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;从长期效应看, 刷子刷高主播人气, 主播上推荐位, 低质量主播挤掉高质量主播位置, 观众的付费意愿被削弱, 从而拉低了本应该存在的营收&lt;/li&gt;
+  &lt;li&gt;从短期效应看, 刷子刷高主播人气, 仅仅是为了挤进某排行榜, 获取相应的现金奖励, 相当于诈骗奖金&lt;/li&gt;
+  &lt;li&gt;从全局角度讲, 主播获利后的分成, 会流向三个部分, 一个是自身的收益, 一个是平常抽成, 还有一个是付费给了黑产, 极端的考虑这个问题, 付费给黑产的部分, 即便主播不要, 平台也可以抽走; 换个说法是, 黑车借用我们的平台和资源, 为自己生成了效益, 我方浪费了人力物力财力的情况下, 养活了黑产.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;#四. 风控现状
+##四.(〇)
+直播风控系统当前的主要工作, 是识别出黑产注册的小号, 拦截掉他们的抽奖行为, 可以总结为断其资源来路.&lt;/p&gt;
+
+&lt;p&gt;##四.(一) 按接口
+|title|number|else|
+|:—–:|:—–:|:—–:|
+|每日拦截量最高|1.节奏风暴; 2.小电视|小电视包括小电视类的各种|
+|单日最高拦截量|20亿|节奏风暴, 18年12月到19年1月持续每日10亿以上|
+|近半年日均拦截量|5.88亿|统计周期2018-07-02到2018-12-28|&lt;/p&gt;
+
+&lt;p&gt;结论&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;黑产刷子的目标明确, 就是获取亿元和辣条&lt;/li&gt;
+  &lt;li&gt;节奏风暴的玩法造成了请求量和拦截量巨大&lt;/li&gt;
+  &lt;li&gt;针对刷节奏风暴可以作出更合理的前置和后续处理, 例如
+    &lt;ol&gt;
+      &lt;li&gt;提升领亿元门槛&lt;/li&gt;
+      &lt;li&gt;加入更合理的概率-提示体系&lt;/li&gt;
+      &lt;li&gt;跟踪亿元流向, 拦截道具的送出&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;##四.(二) 按规则
+|title|number|else|
+|:—–:|:—–:|:—–:|
+|规则总数|8|8为当前有效的, 总共上过16条规则|
+|每日拦截量最高|1.IP云主机; 2.referer异常; 3.有抽奖但无访问|前三名|
+|单日最高拦截量|10亿|IP云主机规则|&lt;/p&gt;
+
+&lt;p&gt;结论&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;ip仍然是绕不过的根本信息&lt;/li&gt;
+  &lt;li&gt;用户行为逻辑异常会倒逼黑产开发者优化代码, 导致规则异常&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;##四.(三) 小结&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;从业务接口角度说, 可以提升获取&lt;strong&gt;免费道具&lt;/strong&gt;的门槛以及送出&lt;strong&gt;加人气值道具&lt;/strong&gt;的难度;&lt;/li&gt;
+  &lt;li&gt;从规则角度说, 一方面IP情报可以继续挖掘内容, 另一方面行为逻辑的终点是判断刷子是否拉流
+    &lt;blockquote&gt;
+      &lt;p&gt;拉流会使得黑产付出更多的带宽成本, 羊毛出在羊身上, 直播/用户使用的价格提升, 会大量削减黑灰产业链的发展, 当付出&amp;gt;回报的时候, 产业自然不存在, 或者出现新的形式&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;#五. 一根辣条的前世今生
+##五.(〇) 辣条对于整条链路的影响推算&lt;/p&gt;
+
+&lt;p&gt;综上, 黑产影响到的不仅仅是公平的竞争环境, 良好的社区氛围, 还通过一条较长的链路影响到了公司的营收, 涉及到了收益; 而风控在保护了接口稳定以及维持优质用户体验的同时, 也从一定程度上打击了黑产, 保护了营收的损失.&lt;/p&gt;
+
+&lt;p&gt;最后这里要给出一个推算: 辣条是黑产的切入口, 所以此时也会作为量化估计的基本单位, 衡量出我平台每被薅走一根辣条, 将会给黑产带来多少收益, 以及对我们带来多少营收上面的损失.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;graph LR
+ a(主播)--&amp;gt;|开播|b(人气)
+ a2(刷子)--&amp;gt;|刷|b
+ b--&amp;gt;|突击暴张|ed(活动奖励 #流失点一#)
+ b--&amp;gt;|涨|c(推荐位)
+ b2(真实用户)--&amp;gt;|观看|c
+ c--&amp;gt;|内容优质|d(付费)
+ c--&amp;gt;|内容劣质|d2(浪费推荐位 #流失点二#)
+ d--&amp;gt;|产生|e(礼物营收)
+ e---ea(主播自赚)
+ e---eb(平台抽成)
+ e---ec(投入黑产 #流失点三#)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;对于用户付费相关, 我们有以下结论可以作为参考:&lt;/p&gt;
+
+    &lt;ol&gt;
+      &lt;li&gt;视频的内容上的特征带给用户的感官体验与用户积极的付费态度线性因果关系: 感知视频内容越具有丰富性、用户认为感知视频内容可信度越高、或者感知视频内容越是突显个性化, 越能正向促进用户积极的付费态度感知视频热度是指用户对感知内容的关注度, 表现在点击量、评论量上;&lt;/li&gt;
+      &lt;li&gt;概括来说, 本段所探讨的感知网站特征包含的感知用户活跃度和感知收费价格两个子变量只有感知收费价格能显著负向影响用户的积极付费态度;&lt;/li&gt;
+      &lt;li&gt;网站通过各种途径为自己做宣传的力度越大, 用户的口碑越髙, 越能吸引更多用户, 进而促进他们的付费态度;&lt;/li&gt;
+      &lt;li&gt;在线支付、移动支付成为人们的日常, 网站采用的感知支付方式为用户所熟悉, 具有方便性、快捷性、低成本等特点, 用户支付上的困难小, 所以感知支付方式越方便快捷, 用户对付费行为的感知行为控制越强;&lt;/li&gt;
+      &lt;li&gt;用户的付费态度越强, 他的付费意愿就越高;&lt;/li&gt;
+      &lt;li&gt;用户对付费行为的感知行为控制越强, 更倾向于推进付费行为.&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;##五.(一) 基本假设&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;最终的目的, 是推算出黑产每刷到一根辣条, 能给黑产带来多少收益, 以及会让我们损失多少利益&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;为了推算方便, 将辣条视为一种“流通货币”&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;其他的相关的影响, 如直播内容质量, 用户付费意愿等, 量化为价值, 转化为$x$个单位辣条&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;一切影响因素, 相邻层级之间的正相关关系暂时均以线性关系表达&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;影响直播人气的因素, 只考虑(扩展因素列为”其他”)
+    &lt;ol&gt;
+      &lt;li&gt;观众送道具数量&lt;/li&gt;
+      &lt;li&gt;CDN连接数&lt;/li&gt;
+      &lt;li&gt;弹幕连接数&lt;/li&gt;
+      &lt;li&gt;其他&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;影响主播质量的因素, 只考虑(扩展因素列为”其他”)
+    &lt;ol&gt;
+      &lt;li&gt;业务能力(唱功 / 舞功 / 游戏技术)&lt;/li&gt;
+      &lt;li&gt;个人魅力(颜值 / 声音 / 幽默 / 人品)&lt;/li&gt;
+      &lt;li&gt;硬件配置(电脑配置 / 码率)&lt;/li&gt;
+      &lt;li&gt;标题封面&lt;/li&gt;
+      &lt;li&gt;其他&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;经过相关模型推算, 为了简化计算复杂度, 假设低质量主播营收金额只有高质量主播(本应该在推荐位的主播)的占比为$rate_{anchor}$ , 经过数据推算这个值在这里取$rate_{anchor} = 0.3$ 作为折损比例.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;影响用户付费意愿的因素, 只考虑(扩展因素列为”其他”)
+    &lt;ul&gt;
+      &lt;li&gt;这个部分, 参考了相关研究成果. 对于付费意愿含义的解释, 一种应用较为广泛的解释是认为顾客愿意为特定商品或者服务质量改善而支付的额外价值, 也称为溢价付费意愿. 相关研究提出商家应该抓准人群特征而对不同的群体选取不同的经营策略. 根据计划行为理论研究模型, 有人员探索了影响某消费群体对食品安全付费意愿的因素. 研究表明, 顾客对安全食品的付费意愿是受“是否愿意支付额外费用”与“愿意支付多少额外费用”两者结合的影响.&lt;/li&gt;
+      &lt;li&gt;应用到我们的直播平台, 可以理解为, 观众
+        &lt;ol&gt;
+          &lt;li&gt;用户本身因素
+1-1. 是否愿意支付额外费用
+1-2. 愿意支付多少额外费用&lt;/li&gt;
+          &lt;li&gt;直播客观因素
+2-1. 直播间人气
+2-2. 主播质量&lt;/li&gt;
+          &lt;li&gt;其他因素&lt;/li&gt;
+        &lt;/ol&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;##五.(二) 符号说明&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;符号&lt;/th&gt;
+      &lt;th&gt;解释&lt;/th&gt;
+      &lt;th&gt;备注&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$Lost_n(x)$&lt;/td&gt;
+      &lt;td&gt;第n种营收损失&lt;/td&gt;
+      &lt;td&gt;目前共三种&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$x$&lt;/td&gt;
+      &lt;td&gt;辣条数量&lt;/td&gt;
+      &lt;td&gt;亿元体量小, 暂也算作辣条&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$Mon$&lt;/td&gt;
+      &lt;td&gt;钱&lt;/td&gt;
+      &lt;td&gt;RMB&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$Pop$&lt;/td&gt;
+      &lt;td&gt;人气值&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$Rank$&lt;/td&gt;
+      &lt;td&gt;人气排名&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$K_{p-m}$&lt;/td&gt;
+      &lt;td&gt;人气-金钱比例&lt;/td&gt;
+      &lt;td&gt;每元钱能张多少人气&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$K_{x-p}$&lt;/td&gt;
+      &lt;td&gt;辣条-人气比例&lt;/td&gt;
+      &lt;td&gt;涨1人气需要多少辣条&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$K_{p-r}$&lt;/td&gt;
+      &lt;td&gt;辣条-排名比例&lt;/td&gt;
+      &lt;td&gt;上升到一定名次需要的辣条量&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;##五.(三) 公式推导&lt;/p&gt;
+
+&lt;p&gt;###五.(三).1 金钱和人气的关系
+根据相关市场行情(某宝), 10元RMB大概可以购买5000-6000的人气值, 这里为了方便计算, 把相关数值取整数处理, 即10元RMB对应了5000人气值&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;K_{p-m} = Pop / Mon = 5000 / 10 = 500 (人气值/元)&lt;/script&gt;
+
+&lt;p&gt;###五.(三).2 人气和辣条的关系
+根据上述分析可以得知, 人气会受到辣条数目, 在线人数, 弹幕连接数的综合影响, 如&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;Pop(x) = K_{p-x} * x + K_2 * 在线人数 + K_3 * 弹幕连接数&lt;/script&gt;
+
+&lt;p&gt;考虑到实际情况, 辣条(银瓜子)礼物影响人气的倍率是固定不变的, 所以有&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;K_{x-p} = {1 \over 1000}&lt;/script&gt;
+
+&lt;p&gt;与此同时, 通过观察, 黑产在给主播刷辣条的时候, 批量小号数目大体固定, 考虑到$K_3$实际上远小于$K_2$, 并且人数稳定在80-200之间, 故选取固定值150作为参数&lt;/p&gt;
+
+&lt;p&gt;所以得到&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;Pop(x) = {1 \over 1000} * x + 150&lt;/script&gt;
+
+&lt;p&gt;###五.(三).3 营收的损失推算&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;浪费推荐位 – $Lost_1(x)​$
+    &lt;ul&gt;
+      &lt;li&gt;a. 定性分析
+   人气受到辣条的影响, 上述已经讨论清楚
+   主播排名会收到实时人气值的影响, 根据最近几天的人气值-排名次序关系可以得到之间的转换系数
+   主播之间的质量之差, 可以通过辣条的数量体现出来
+   而单位质量转化为金钱, 也受到一个系数的分配&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;b. 定量分析&lt;/p&gt;
+
+    &lt;p&gt;人气值-排名次序关系可以得到之间的转换系数$K_{p-r}$, 其中这个关系只关心排名较高的几名, 所以在小区间内可以近似看作线性关系, 有(数据见附件)&lt;/p&gt;
+
+    &lt;script type=&quot;math/tex; mode=display&quot;&gt;K_{p-r} = {1 \over 13551};
+  b_{p-r} = -25.88&lt;/script&gt;
+
+    &lt;p&gt;所以可以得到:&lt;/p&gt;
+
+    &lt;script type=&quot;math/tex; mode=display&quot;&gt;Rank(Pop) = K_{p-r} * Pop + b_{p-r} = {1 \over 13551} * Pop - 25.88&lt;/script&gt;
+
+    &lt;p&gt;并且可知, 被刷上去的推荐位的排名越靠前, 对于全局的影响越大, 所以被刷主播占据排位和对应折损率之间的关系可以拟合为&lt;/p&gt;
+
+    &lt;script type=&quot;math/tex; mode=display&quot;&gt;Rate(Rank) = -0.01 * (10-Rank) + rate_{anchor}&lt;/script&gt;
+
+    &lt;p&gt;带入之前的式子, 得到和辣条之间的关系&lt;/p&gt;
+
+    &lt;script type=&quot;math/tex; mode=display&quot;&gt;Rate(x) = 0.46 + {1 \over 1.3E+09} * x&lt;/script&gt;
+
+    &lt;p&gt;而排名数字和营收数额之间的关系, 可以用下式来描述&lt;/p&gt;
+
+    &lt;script type=&quot;math/tex; mode=display&quot;&gt;Money(Rank) = 342.98 * Rank + 12397&lt;/script&gt;
+
+    &lt;p&gt;以上可以得到, 营收损失即为主播的质量差导致的金钱差值, 即为&lt;/p&gt;
+
+    &lt;script type=&quot;math/tex; mode=display&quot;&gt;Lost_1(x) = 2.04*10^{-13} * x^2 + 3.93*10^{-5} * x + 1622&lt;/script&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;活动奖励 – $Lost_2(x)$
+    &lt;ul&gt;
+      &lt;li&gt;a. 定性分析
+活动奖励的最终金额, 将会受到活动影响力等等方面的影响, 为了简化模型, 此处的系数暂时表达为1, 即为一个没有倍率的常系数
+而奖励金额和辣条之间的关系, 则可以直接又线性关系表达&lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;b. 定量分析
+上述的表达式, 又相关活动的数据综合给出为:&lt;/p&gt;
+
+        &lt;script type=&quot;math/tex; mode=display&quot;&gt;Lost_2(x) = 0.0685 * x + 666.2&lt;/script&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;投入黑产 – $Lost_3(x)​$
+    &lt;ul&gt;
+      &lt;li&gt;a. 定性分析
+这一项的影响, 其相关系数上述均为讨论过, 分别为
+k1 : 每个辣条可以刷多少人气
+k2 : 每个人气值需要多少钱
+两个系数联系起来了辣条和投入黑产的金额之间的关系&lt;/li&gt;
+      &lt;li&gt;b. 定量分析&lt;/li&gt;
+      &lt;li&gt;
+        &lt;script type=&quot;math/tex; mode=display&quot;&gt;Lost_3(x) = {1 \over 500000} * x + 0.3&lt;/script&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;综述,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;Lost(x) = \sum_{i=1}^3{k_i*Lost_i(x)}&lt;/script&gt;
+
+&lt;p&gt;其中三个损失营收函数前面$k_i$为比例系数, 且应该满足&lt;/p&gt;
+
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;\sum_{i=1}^3{k_i} = 1&lt;/script&gt;
+在条件均等条件下, 或者条件未知的情况下, 即在没有明确主播有意刷哪种营收更多的情况下, 考虑一根辣条的流向最终将会消亡, 所以取
+&lt;script type=&quot;math/tex&quot;&gt;k_1 = k_2 = k_3 = {1 \over 3}&lt;/script&gt;
+有
+&lt;script type=&quot;math/tex&quot;&gt;Lost(x) = 6.8*10^{-14}*x^2 + 0.0228 * x + 762.8&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;##五.(四) 计算影响&lt;/p&gt;
+
+&lt;p&gt;###五.(四).1 单直播计算
+对于直播间 roomid = 60895 刷辣条量存在异常&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;日期&lt;/th&gt;
+      &lt;th&gt;辣条量&lt;/th&gt;
+      &lt;th&gt;影响的营收数额&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;20190124&lt;/td&gt;
+      &lt;td&gt;7213&lt;/td&gt;
+      &lt;td&gt;927.2917786&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;20190125&lt;/td&gt;
+      &lt;td&gt;5571&lt;/td&gt;
+      &lt;td&gt;889.8399045&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;20190126&lt;/td&gt;
+      &lt;td&gt;5347&lt;/td&gt;
+      &lt;td&gt;884.7310415&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;20190127&lt;/td&gt;
+      &lt;td&gt;5356&lt;/td&gt;
+      &lt;td&gt;884.936307&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;20190128&lt;/td&gt;
+      &lt;td&gt;5552&lt;/td&gt;
+      &lt;td&gt;889.4065608&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;20190129&lt;/td&gt;
+      &lt;td&gt;3912&lt;/td&gt;
+      &lt;td&gt;852.0040065&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;20190130&lt;/td&gt;
+      &lt;td&gt;3579&lt;/td&gt;
+      &lt;td&gt;844.4099103&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;20190131&lt;/td&gt;
+      &lt;td&gt;3492594&lt;/td&gt;
+      &lt;td&gt;88688.72794&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;###五.(四).2 风控拦截总量计算&lt;/p&gt;
+
+&lt;p&gt;风控每天拦截的小电视抽奖, 刚好拦住了刷子们生产辣条, 辣条有效期30天, 刷子们为了避免被封, 平滑送礼, 所以当天的拦截量平分成30份, 则可以当作是送辣条量&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;日期&lt;/th&gt;
+      &lt;th&gt;拦截领取辣条&lt;/th&gt;
+      &lt;th&gt;辣条分30天送完&lt;/th&gt;
+      &lt;th&gt;挽救营收数额&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;20190211&lt;/td&gt;
+      &lt;td&gt;359371869&lt;/td&gt;
+      &lt;td&gt;11979062.3&lt;/td&gt;
+      &lt;td&gt;563368.1836&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;20190212&lt;/td&gt;
+      &lt;td&gt;334558403&lt;/td&gt;
+      &lt;td&gt;11151946.77&lt;/td&gt;
+      &lt;td&gt;339596.0096&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;20190213&lt;/td&gt;
+      &lt;td&gt;306429762&lt;/td&gt;
+      &lt;td&gt;10214325.4&lt;/td&gt;
+      &lt;td&gt;304595.4806&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;20190214&lt;/td&gt;
+      &lt;td&gt;299727953&lt;/td&gt;
+      &lt;td&gt;9990931.767&lt;/td&gt;
+      &lt;td&gt;296432.7722&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;20190215&lt;/td&gt;
+      &lt;td&gt;237853001&lt;/td&gt;
+      &lt;td&gt;7928433.367&lt;/td&gt;
+      &lt;td&gt;224275.9186&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;20190216&lt;/td&gt;
+      &lt;td&gt;275453654&lt;/td&gt;
+      &lt;td&gt;9181788.467&lt;/td&gt;
+      &lt;td&gt;267435.1399&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;20190217&lt;/td&gt;
+      &lt;td&gt;207347235&lt;/td&gt;
+      &lt;td&gt;6911574.5&lt;/td&gt;
+      &lt;td&gt;190830.2048&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;#六. 补充与展望
+##六.(一) 不足&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;从完整性方面讲, 风控系统一方面要对黑产进行截源, 一方面也要截流; &lt;strong&gt;送道具接口&lt;/strong&gt;也需要接入风控;&lt;/li&gt;
+  &lt;li&gt;从实时性方面讲, 目前系统离线计算24h前的数据, 黑产可以利用不断注册小号, 轮休账号等方式绕开, 所以需要考虑加入&lt;strong&gt;实时计算&lt;/strong&gt;;&lt;/li&gt;
+  &lt;li&gt;从准确性方面来讲, 目前策略还是更多的依靠了人工分析, 以及最基础的特征工程, 在面对多种多种不同的脚本/外挂/策略的时候, 往往不能覆盖全面, 甚至是在黑产修改了自身的方案之后, 我方也得为之作出相应调整, 诸多有待完善;&lt;/li&gt;
+  &lt;li&gt;以上三个方面是从技术角度出发, 而从影响到的营收角来讲, 解决了技术问题, 也将会进一步的保护上面推算得到的营收状况.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;##六.(二) 方案及评估&lt;/p&gt;
+
+&lt;p&gt;###六.(二).1 方案描述&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;对于解决&lt;strong&gt;完整性&lt;/strong&gt;的问题, 首先要保证的是风控自身足够准确; 另外存在一个困难, 对于小电视抽奖/节奏风暴等服务, 接入风控系统是可以有效的保护其接口, 从效果上看是减少了对于抽奖服务的访问次数, 同时也保护了营收等方面; 但是如果要是让&lt;strong&gt;送道具接口&lt;/strong&gt;接入风控系统, 从·全局的角度看, 是可以做到保护用户体验, 保护营收, 打击黑产, 但是从接口调用方的服务角度来看, 则是凭空增加了服务的压力. 所以这个方面的工作, 更多的是要考虑怎么和送道具的相关服务的对接, 充分考虑其能容忍的超时时间, 以及误判造成的影响等; 退而求其次, 既然是送辣条影响到了人气, 如果送的接口不方便对接, 那么可以考虑在&lt;strong&gt;计算实时人气阶段&lt;/strong&gt;对黑产用户的辣条加以过滤剔除等等. 上述策略的实施需要进一步的调研.&lt;/li&gt;
+  &lt;li&gt;对于解决&lt;strong&gt;实时性&lt;/strong&gt;的问题, 计划使用&lt;strong&gt;Flink/Spark streaming&lt;/strong&gt;等技术手段, 处理当前访问和抽奖行为的日志, 对用户进行计算和打分等逻辑; 一方面, 虽然叫做实时计算, 但是仍旧是要去统计和计算一段时间内的行为数据, 简单来看是把原本24h的延迟, 缩短到5-10min左右, 所以可以考虑利用原有风控的规则, 开发移植成为实时版本; 另一方面, 长期的行为和短期的行为不见得能够体现出一致的统计特征, 所以还需要根据具体实践, 开发出相应的处理规则, 计划H1可以上线第一版本的, 处理单个日志/规则, 并且同时做好系统的扩展方案, 方便日后多日志多规则的融合升级.&lt;/li&gt;
+  &lt;li&gt;对于解决&lt;strong&gt;准确性&lt;/strong&gt;的问题, 考虑加入更多的机器学习算法, 训练出抽象的&lt;strong&gt;模型&lt;/strong&gt;.因为目前主要是靠人工发现和制定规则, 甚至规则的阈值都是经验所得, 这样做的缺点一个是慢, 一个不准, 利用训练的模型, 可以弥补尚未发现的规律, 合理的制定阈值等; 另外, 由于风控本身是一个对抗的过程, 不会存在一种一劳永逸的策略和算法, 这样做既可以解决每次黑产有了更为肉眼难以识别的策略之后, 我们自身响应和发现异常的周期过于漫长的问题. 参考业界做的相对成熟的体系, 结合自身的特点, 优化升级风控系统.&lt;/li&gt;
+  &lt;li&gt;验证码. 参考其他平台, 验证码也是风控系统中的一个重要工具, 目前验证码流程已经打通, 需要做的事情是制定好技术-产品-用户都能够接受的验证码弹出策略. 利用验证码不仅可以达到更好的拦截效果, 更可以参考拦截的结果日志等, 计算出更准确的数据.&lt;/li&gt;
+  &lt;li&gt;风控画像. 有些平台的风控, 是在一个大的项目下, 包含了用户画像,推荐,风控等多个业务;有些平台的则是用户画像,风控画像,订单画像等每个业务都做出了画像. 这个方面可以结合我们正在做的直播用户画像, 做合理的画像工作.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;###六.(二) 效果预估&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;技术方面, 对标更成熟的系统, 参考如下公司公开方案, 制定理性化的评价风控系统的指标&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;center class=&quot;half&quot;&gt;
+    &lt;h4&gt;京东:&lt;/h4&gt;
+&lt;img src=&quot;./jd.jpg&quot; height=&quot;300px&quot; /&gt;
+    &lt;h4&gt;携程:&lt;/h4&gt;
+&lt;img src=&quot;./xc.jpg&quot; height=&quot;300px&quot; /&gt;
+&lt;/center&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;最后, 营收方面, 只有做好上述多个维度的工作, 目标是达到如下的效果预期, 真正的目的是对于保护营收和增长营收作出贡献:&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;日期&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;黑产辣条&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;预估未来风控控制量(RMB)&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;现行风控控制量(RMB)&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;较现有系统的增长率&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;20190211&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;49718798&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;371464.0153&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1134519.488&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;150%&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;20190212&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;35473587&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;339596.0096&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;809646.1531&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;142%&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;20190213&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;29468916&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;304595.4806&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;672713.1372&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;145%&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;20190214&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;18785698&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;296432.7722&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;429100.7118&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;169%&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;20190215&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;17688351&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;224275.9186&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;404078.4785&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;156%&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;20190216&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;33825983&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;267435.1399&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;772073.0178&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;135%&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;20190217&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;24673859&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;190830.2048&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;563368.1836&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;134%&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</content><author><name>godshen</name></author><category term="risk" /><summary type="html">#一. 背景 我直播平台目前存在大量黑产, 表现为买关注刷人气等; 直播风控上线近一年, 技术上保护了抽奖等相关接口, 同时更对营收起到了保护作用; 本文阐述了风控在对抗黑产方面的工作进展, 计算对营收产生的影响, 并对未来加以预期以收获更好的成效.</summary></entry><entry><title type="html">Welcome to Jekyll!</title><link href="https://godshen.github.io/2021/03/29/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2021-03-29T14:05:21+08:00</published><updated>2021-03-29T14:05:21+08:00</updated><id>https://godshen.github.io/2021/03/29/welcome-to-jekyll</id><content type="html" xml:base="https://godshen.github.io/2021/03/29/welcome-to-jekyll.html">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
 
 &lt;p&gt;To add new posts, simply add a file in the &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code class=&quot;highlighter-rouge&quot;&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
 
