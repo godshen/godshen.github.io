@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.ico">
+  <link rel="mask-icon" href="/images/favicon-16x16-next.ico" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"godshen.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="##通用的三层前馈网络的BP学习算法的推导 输入矩阵$$\boldsymbol{X}_{n \times1} &#x3D;\left[ \begin{matrix}   x_1 &amp; x_2 &amp; \cdots &amp; x_n  \end{matrix}\right]^T$$ 从输入到隐藏层的参数矩阵$$ \boldsymbol{W}{m \times n}&#x3D;\left[">
+<meta property="og:type" content="article">
+<meta property="og:title" content="反向传播计算的作业">
+<meta property="og:url" content="https://godshen.github.io/2019/04/05/bp-homework/index.html">
+<meta property="og:site_name" content="中好好不能困">
+<meta property="og:description" content="##通用的三层前馈网络的BP学习算法的推导 输入矩阵$$\boldsymbol{X}_{n \times1} &#x3D;\left[ \begin{matrix}   x_1 &amp; x_2 &amp; \cdots &amp; x_n  \end{matrix}\right]^T$$ 从输入到隐藏层的参数矩阵$$ \boldsymbol{W}{m \times n}&#x3D;\left[">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-04-04T19:29:41.000Z">
+<meta property="article:modified_time" content="2024-08-20T07:45:48.000Z">
+<meta property="article:author" content="godshen">
+<meta property="article:tag" content="neural networks">
+<meta property="article:tag" content="deep learning">
+<meta property="article:tag" content="back propagation">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://godshen.github.io/2019/04/05/bp-homework/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://godshen.github.io/2019/04/05/bp-homework/","path":"2019/04/05/bp-homework/","title":"反向传播计算的作业"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>反向传播计算的作业 | 中好好不能困</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">中好好不能困</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">stay hungry stay foolish</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">10</span></a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">27</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">6</span></a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E7%9F%A9%E9%98%B5"><span class="nav-number">1.</span> <span class="nav-text">输入矩阵</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%8E%E8%BE%93%E5%85%A5%E5%88%B0%E9%9A%90%E8%97%8F%E5%B1%82%E7%9A%84%E5%8F%82%E6%95%B0%E7%9F%A9%E9%98%B5"><span class="nav-number">2.</span> <span class="nav-text">从输入到隐藏层的参数矩阵</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9A%90%E8%97%8F%E5%B1%82%E7%9F%A9%E9%98%B5"><span class="nav-number">3.</span> <span class="nav-text">隐藏层矩阵</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%8E%E9%9A%90%E8%97%8F%E5%B1%82%E5%88%B0%E8%BE%93%E5%87%BA%E7%9A%84%E5%8F%82%E6%95%B0%E7%9F%A9%E9%98%B5"><span class="nav-number">4.</span> <span class="nav-text">从隐藏层到输出的参数矩阵</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E8%BE%93%E5%87%BA"><span class="nav-number">5.</span> <span class="nav-text">计算输出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%9F%E6%9C%9B%E8%BE%93%E5%87%BA"><span class="nav-number">6.</span> <span class="nav-text">期望输出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%A0%E9%80%92%E5%85%B3%E7%B3%BB"><span class="nav-number">7.</span> <span class="nav-text">传递关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E5%B1%95%E5%BC%80%E5%90%8E%E7%9A%84%E6%B1%82%E5%92%8C%E5%85%AC%E5%BC%8F%E5%BD%A2%E5%BC%8F%E4%B8%BA"><span class="nav-number">8.</span> <span class="nav-text">其展开后的求和公式形式为</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%95%E6%9E%81%E6%80%A7sigmoid%E5%87%BD%E6%95%B0"><span class="nav-number">9.</span> <span class="nav-text">单极性sigmoid函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%AF%E5%B7%AE%E8%AE%A1%E7%AE%97"><span class="nav-number">10.</span> <span class="nav-text">误差计算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%86%E4%BB%A5%E4%B8%8A%E8%AF%AF%E5%B7%AE%E5%AE%9A%E4%B9%89%E5%BC%8F%E5%B1%95%E5%BC%80%E8%87%B3%E9%9A%90%E8%97%8F%E5%B1%82"><span class="nav-number">11.</span> <span class="nav-text">将以上误差定义式展开至隐藏层:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9B%E4%B8%80%E6%AD%A5%E5%B1%95%E5%BC%80%E8%87%B3%E8%BE%93%E5%85%A5%E5%B1%82"><span class="nav-number">12.</span> <span class="nav-text">进一步展开至输入层:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%8F%E4%B8%AD%E8%B4%9F%E5%8F%B7%E8%A1%A8%E7%A4%BA%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D-%E5%B8%B8%E6%95%B0-eta-in-0-1-%E8%A1%A8%E7%A4%BA%E6%AF%94%E4%BE%8B%E7%B3%BB%E6%95%B0"><span class="nav-number">13.</span> <span class="nav-text">式中负号表示梯度下降, 常数$\eta \in (0,1)$ 表示比例系数.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E4%BA%8E%E8%BE%93%E5%87%BA%E5%B1%82-%E4%B8%8A%E5%BC%8F%E5%8F%AF%E5%86%99%E6%88%90"><span class="nav-number">14.</span> <span class="nav-text">对于输出层, 上式可写成:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E4%BA%8E%E9%9A%90%E8%97%8F%E5%B1%82-%E4%B8%8A%E5%BC%8F%E5%8F%AF%E5%86%99%E6%88%90"><span class="nav-number">15.</span> <span class="nav-text">对于隐藏层, 上式可写成:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E4%BA%8E%E8%BE%93%E5%87%BA%E5%B1%82%E5%92%8C%E9%9A%90%E8%97%8F%E5%B1%82%E5%90%84%E5%AE%9A%E4%B9%89%E4%B8%80%E4%B8%AA%E8%AF%AF%E5%B7%AE%E4%BF%A1%E5%8F%B7-%E4%BB%A4"><span class="nav-number">16.</span> <span class="nav-text">对于输出层和隐藏层各定义一个误差信号, 令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E5%85%A5%E4%B8%8A%E5%BC%8F%E5%8F%AF%E5%BE%97%E5%88%B0"><span class="nav-number">17.</span> <span class="nav-text">代入上式可得到</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E4%BA%8E%E8%BE%93%E5%87%BA%E5%B1%82-delta-y-%E5%8F%AF%E4%BB%A5%E5%B1%95%E5%BC%80%E4%B8%BA"><span class="nav-number">18.</span> <span class="nav-text">对于输出层, $\delta^y$可以展开为</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E4%BA%8E%E9%9A%90%E8%97%8F%E5%B1%82-delta-h-%E5%8F%AF%E4%BB%A5%E5%B1%95%E5%BC%80%E4%B8%BA"><span class="nav-number">19.</span> <span class="nav-text">对于隐藏层, $\delta^h$可以展开为</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E4%BA%8E%E8%BE%93%E5%87%BA%E5%B1%82-%E5%88%A9%E7%94%A8%E8%AF%AF%E5%B7%AE%E5%85%AC%E5%BC%8F-E-1-over-2-sum-k-1-l-d-k-y-k-2-%E5%8F%AF%E5%BE%97"><span class="nav-number">20.</span> <span class="nav-text">对于输出层, 利用误差公式 $E &#x3D; {1 \over 2} \sum_{k&#x3D;1}^l(d_k-y_k)^2$, 可得</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E4%BA%8E%E9%9A%90%E8%97%8F%E5%B1%82-%E5%88%A9%E7%94%A8%E8%AF%AF%E5%B7%AE%E5%85%AC%E5%BC%8F-E-1-over-2-sum-k-1-l-d-k-f-sum-j-0-mv-jk-h-j-2-%E5%8F%AF%E5%BE%97"><span class="nav-number">21.</span> <span class="nav-text">对于隐藏层, 利用误差公式 $E  &#x3D; {1 \over 2} \sum_{k&#x3D;1}^l[d_k-f(\sum_{j&#x3D;0}^mv_{jk}h_j)]^2$, 可得</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%86Sigmoid%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0%E4%BB%A3%E5%85%A5-%E5%8F%AF%E4%BB%A5%E5%BE%97%E5%88%B0"><span class="nav-number">22.</span> <span class="nav-text">将Sigmoid激活函数代入, 可以得到</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%80%E4%BB%A5%E5%BE%97%E5%88%B0%E4%B8%89%E5%B1%82%E5%89%8D%E9%A6%88%E7%BD%91%E7%BB%9C%E7%9A%84BP%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E6%9D%83%E5%80%BC%E8%B0%83%E6%95%B4%E8%AE%A1%E7%AE%97%E5%85%AC%E5%BC%8F%E4%B8%BA"><span class="nav-number">23.</span> <span class="nav-text">所以得到三层前馈网络的BP学习算法权值调整计算公式为</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E5%B1%82%E6%9C%894%E4%B8%AA-%E9%9A%90%E8%97%8F%E5%B1%82%E6%9C%893%E4%B8%AA-%E8%BE%93%E5%87%BA%E6%9C%891%E4%B8%AA-%E5%9B%A0%E6%AD%A4%E6%9C%89"><span class="nav-number">24.</span> <span class="nav-text">输入层有4个, 隐藏层有3个, 输出有1个, 因此有</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#n-4-m-3-l-1-%E5%8D%B3%E4%B8%BA"><span class="nav-number">25.</span> <span class="nav-text">n&#x3D;4, m&#x3D;3, l&#x3D;1, 即为:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AD%A3%E5%90%91%E6%8E%A8%E5%AF%BC"><span class="nav-number">26.</span> <span class="nav-text">正向推导</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%AF%E5%B7%AE%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD"><span class="nav-number">27.</span> <span class="nav-text">误差反向传播</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%A3%E5%85%A5n-m-l%E5%85%B7%E4%BD%93%E6%95%B0%E5%80%BC"><span class="nav-number">27.1.</span> <span class="nav-text">代入n,m,l具体数值</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">godshen</p>
+  <div class="site-description" itemprop="description">Dangge Chihuo Zuoge Shabi</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/godshen" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;godshen" rel="noopener me" target="_blank"><i class="github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:shenzh0713@gmail.com" title="E-Mail → mailto:shenzh0713@gmail.com" rel="noopener me" target="_blank"><i class="envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/1805733597" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;1805733597" rel="noopener me" target="_blank"><i class="weibo fa-fw"></i>Weibo</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://godshen.github.io/2019/04/05/bp-homework/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="godshen">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="中好好不能困">
+      <meta itemprop="description" content="Dangge Chihuo Zuoge Shabi">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="反向传播计算的作业 | 中好好不能困">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          反向传播计算的作业
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-04-05 03:29:41" itemprop="dateCreated datePublished" datetime="2019-04-05T03:29:41+08:00">2019-04-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-08-20 15:45:48" itemprop="dateModified" datetime="2024-08-20T15:45:48+08:00">2024-08-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>##通用的三层前馈网络的BP学习算法的推导</p>
+<h3 id="输入矩阵"><a href="#输入矩阵" class="headerlink" title="输入矩阵"></a>输入矩阵</h3><p>$$\boldsymbol{X}_{n \times1} &#x3D;<br>\left[<br> \begin{matrix}<br>   x_1 &amp; x_2 &amp; \cdots &amp; x_n<br>  \end{matrix}<br>\right]^T$$</p>
+<h3 id="从输入到隐藏层的参数矩阵"><a href="#从输入到隐藏层的参数矩阵" class="headerlink" title="从输入到隐藏层的参数矩阵"></a>从输入到隐藏层的参数矩阵</h3><p>$$ \boldsymbol{W}<em>{m \times n}&#x3D;<br>\left[<br> \begin{matrix}<br>   w</em>{11} &amp; w_{12} &amp; \cdots &amp; w_{1m}\<br>   w_{21} &amp; w_{22} &amp; \cdots &amp; w_{2m}\<br>   {\vdots} &amp; {\vdots} &amp; {\ddots} &amp; {\vdots} &amp;\<br>   w_{n1} &amp; w_{n2} &amp; \cdots &amp; w_{nm}\<br>  \end{matrix}<br>\right]^T ​$$</p>
+<h3 id="隐藏层矩阵"><a href="#隐藏层矩阵" class="headerlink" title="隐藏层矩阵"></a>隐藏层矩阵</h3><p>$$\boldsymbol{H}_{m \times 1}<br>&#x3D;\left[<br> \begin{matrix}<br>   h_1 &amp; h_2 &amp; \cdots &amp; h_m<br>  \end{matrix}<br>\right]^T​$$</p>
+<h3 id="从隐藏层到输出的参数矩阵"><a href="#从隐藏层到输出的参数矩阵" class="headerlink" title="从隐藏层到输出的参数矩阵"></a>从隐藏层到输出的参数矩阵</h3><p>$$\boldsymbol{V}<em>{l \times m}<br>&#x3D;\left[<br> \begin{matrix}<br>   v</em>{11} &amp; v_{12} &amp; \cdots &amp; v_{1l}\<br>   v_{21} &amp; v_{22} &amp; \cdots &amp; v_{2l}\<br>   {\vdots} &amp; {\vdots} &amp; {\ddots} &amp; {\vdots} &amp;\<br>   v_{m1} &amp; v_{m2} &amp; \cdots &amp; v_{ml}\<br>  \end{matrix}<br>\right]^T$$</p>
+<h3 id="计算输出"><a href="#计算输出" class="headerlink" title="计算输出"></a>计算输出</h3><p>$$\boldsymbol{Y}_{l \times 1}<br>&#x3D;\left[<br> \begin{matrix}<br>   y_1 &amp; y_2 &amp; \cdots &amp; y_l<br>  \end{matrix}<br>\right]^T​$$</p>
+<h3 id="期望输出"><a href="#期望输出" class="headerlink" title="期望输出"></a>期望输出</h3><p>$$\boldsymbol{D}_{l \times 1}<br>&#x3D;\left[<br> \begin{matrix}<br>   d_1 &amp; d_2 &amp; \cdots &amp; d_l<br>  \end{matrix}<br>\right]^T​$$</p>
+<h3 id="传递关系"><a href="#传递关系" class="headerlink" title="传递关系"></a>传递关系</h3><p>$$<br>\boldsymbol{W} \cdot \boldsymbol{X} &#x3D; \boldsymbol{H}<br>$$</p>
+<p>$$<br>\boldsymbol{V} \cdot \boldsymbol{H} &#x3D; \boldsymbol{Y}<br>$$</p>
+<h3 id="其展开后的求和公式形式为"><a href="#其展开后的求和公式形式为" class="headerlink" title="其展开后的求和公式形式为"></a>其展开后的求和公式形式为</h3><p>$$<br>y_k &#x3D; f(net_k) \quad k&#x3D;1,2,…,l<br>$$<br>$$<br>net_k &#x3D; \sum_{j&#x3D;0}^m{v_{jk}h_j} \quad k&#x3D;1,2,…,l<br>$$</p>
+<p>$$<br>h_j &#x3D; f(net_j) \quad j&#x3D;1,2,…,m<br>$$<br>$$<br>net_j &#x3D; \sum_{i&#x3D;0}^n{w_{ij}x_i} \quad j&#x3D;1,2,…,m<br>$$</p>
+<h3 id="单极性sigmoid函数"><a href="#单极性sigmoid函数" class="headerlink" title="单极性sigmoid函数"></a>单极性sigmoid函数</h3><p>$$<br>f(x)&#x3D;{1 \over {1+e^{-x}}}<br>$$</p>
+<h3 id="误差计算"><a href="#误差计算" class="headerlink" title="误差计算"></a>误差计算</h3><p>$$<br>E &#x3D; {1 \over 2} (\boldsymbol{D}-\boldsymbol{Y})^2 &#x3D; {1 \over 2} \sum_{k&#x3D;1}^l(d_k-y_k)^2<br>$$</p>
+<h3 id="将以上误差定义式展开至隐藏层"><a href="#将以上误差定义式展开至隐藏层" class="headerlink" title="将以上误差定义式展开至隐藏层:"></a>将以上误差定义式展开至隐藏层:</h3><p>$$<br>E &#x3D; {1 \over 2} \sum_{k&#x3D;1}^l[d_k-f(net_k)]^2 &#x3D; {1 \over 2} \sum_{k&#x3D;1}^l[d_k-f(\sum_{j&#x3D;0}^mv_{jk}h_j)]^2<br>$$</p>
+<h3 id="进一步展开至输入层"><a href="#进一步展开至输入层" class="headerlink" title="进一步展开至输入层:"></a>进一步展开至输入层:</h3><p>$$<br>E &#x3D; {1 \over 2} \sum_{k&#x3D;1}^l{d_k-f[\sum_{j&#x3D;0}^mv_{jk}f(net_j)]}^2 &#x3D;  {1 \over 2} \sum_{k&#x3D;1}^l{d_k-f[\sum_{j&#x3D;0}^mv_{jk}f(\sum_{i&#x3D;0}^nw_{ij}x_i)]}^2<br>$$</p>
+<p>$$ \Delta v_{jk} &#x3D; - \eta { \partial E \over \partial v_{jk}} \quad j&#x3D;0,1,2,…m; k&#x3D;1,2,..,l​$$</p>
+<p>$$ \Delta w_{ij} &#x3D; - \eta { \partial E \over \partial w_{ij}} \quad i&#x3D;0,1,2,…n; j&#x3D;1,2,..,m$$</p>
+<h3 id="式中负号表示梯度下降-常数-eta-in-0-1-表示比例系数"><a href="#式中负号表示梯度下降-常数-eta-in-0-1-表示比例系数" class="headerlink" title="式中负号表示梯度下降, 常数$\eta \in (0,1)$ 表示比例系数."></a>式中负号表示梯度下降, 常数$\eta \in (0,1)$ 表示比例系数.</h3><h3 id="对于输出层-上式可写成"><a href="#对于输出层-上式可写成" class="headerlink" title="对于输出层, 上式可写成:"></a>对于输出层, 上式可写成:</h3><p>$$ \Delta v_{jk} &#x3D; - \eta { \partial E \over {v_{jk}}} &#x3D; - \eta { \partial E \over \partial net_k} \ { \partial net_k \over \partial v_{jk}} ​$$</p>
+<h3 id="对于隐藏层-上式可写成"><a href="#对于隐藏层-上式可写成" class="headerlink" title="对于隐藏层, 上式可写成:"></a>对于隐藏层, 上式可写成:</h3><p>$$ \Delta w_{ij} &#x3D; - \eta { \partial E \over {w_{ij}}} &#x3D; - \eta { \partial E \over \partial net_j} \ { \partial net_j \over \partial w_{ij}} ​$$</p>
+<h3 id="对于输出层和隐藏层各定义一个误差信号-令"><a href="#对于输出层和隐藏层各定义一个误差信号-令" class="headerlink" title="对于输出层和隐藏层各定义一个误差信号, 令"></a>对于输出层和隐藏层各定义一个误差信号, 令</h3><p>$$ \delta_k^y &#x3D; - {\partial E \over \partial net_k } $$<br>$$ \delta_j^h &#x3D; - {\partial E \over \partial net_j } $$</p>
+<h3 id="代入上式可得到"><a href="#代入上式可得到" class="headerlink" title="代入上式可得到"></a>代入上式可得到</h3><p>$$ \Delta v_{jk} &#x3D; \eta \ \delta_k^y \ h_j$$</p>
+<p>$$ \Delta w_{ij} &#x3D; \eta \ \delta_j^h \ x_i$$</p>
+<h3 id="对于输出层-delta-y-可以展开为"><a href="#对于输出层-delta-y-可以展开为" class="headerlink" title="对于输出层, $\delta^y$可以展开为"></a>对于输出层, $\delta^y$可以展开为</h3><p>$$\delta_k^y &#x3D; - { \partial E \over \partial net_k} &#x3D; - { \partial E \over \partial y_k} { \partial y_k \over \partial net_k} &#x3D;  -  { \partial E \over \partial y_k} f’(net_k)​$$</p>
+<h3 id="对于隐藏层-delta-h-可以展开为"><a href="#对于隐藏层-delta-h-可以展开为" class="headerlink" title="对于隐藏层, $\delta^h$可以展开为"></a>对于隐藏层, $\delta^h$可以展开为</h3><p>$$\delta_k^y &#x3D; - { \partial E \over \partial net_j} &#x3D; - { \partial E \over \partial h_j} { \partial h_j \over \partial net_j} &#x3D;  -  { \partial E \over \partial h_j} f’(net_j)$$</p>
+<h3 id="对于输出层-利用误差公式-E-1-over-2-sum-k-1-l-d-k-y-k-2-可得"><a href="#对于输出层-利用误差公式-E-1-over-2-sum-k-1-l-d-k-y-k-2-可得" class="headerlink" title="对于输出层, 利用误差公式 $E &#x3D; {1 \over 2} \sum_{k&#x3D;1}^l(d_k-y_k)^2$, 可得"></a>对于输出层, 利用误差公式 $E &#x3D; {1 \over 2} \sum_{k&#x3D;1}^l(d_k-y_k)^2$, 可得</h3><p>$$<br>{\partial E \over \partial y_k} &#x3D; -(d_k - y_k)<br>$$</p>
+<h3 id="对于隐藏层-利用误差公式-E-1-over-2-sum-k-1-l-d-k-f-sum-j-0-mv-jk-h-j-2-可得"><a href="#对于隐藏层-利用误差公式-E-1-over-2-sum-k-1-l-d-k-f-sum-j-0-mv-jk-h-j-2-可得" class="headerlink" title="对于隐藏层, 利用误差公式 $E  &#x3D; {1 \over 2} \sum_{k&#x3D;1}^l[d_k-f(\sum_{j&#x3D;0}^mv_{jk}h_j)]^2$, 可得"></a>对于隐藏层, 利用误差公式 $E  &#x3D; {1 \over 2} \sum_{k&#x3D;1}^l[d_k-f(\sum_{j&#x3D;0}^mv_{jk}h_j)]^2$, 可得</h3><p>$$<br>{\partial E \over \partial y_k} &#x3D; - \sum_{k&#x3D;1}^l(d_k-y_k)f’(net_k)v_{jk}<br>$$</p>
+<h3 id="将Sigmoid激活函数代入-可以得到"><a href="#将Sigmoid激活函数代入-可以得到" class="headerlink" title="将Sigmoid激活函数代入, 可以得到"></a>将Sigmoid激活函数代入, 可以得到</h3><p>$$\delta_k^y &#x3D; (d_k-y_k)y_k(1-y_k)​$$</p>
+<p>$$\delta_j^h &#x3D; \sum_{k&#x3D;1}^l(d_k-y_k)f’(net_k)v_{jk}]f’(net_j) &#x3D; (\sum_{k&#x3D;1}^l \delta_k^y v_{jk})h_j(1-h_j)$$</p>
+<h3 id="所以得到三层前馈网络的BP学习算法权值调整计算公式为"><a href="#所以得到三层前馈网络的BP学习算法权值调整计算公式为" class="headerlink" title="所以得到三层前馈网络的BP学习算法权值调整计算公式为"></a>所以得到三层前馈网络的BP学习算法权值调整计算公式为</h3><p>$$<br>\Delta v_{jk} &#x3D; \eta \delta_k^y h_j &#x3D; \eta \ (d_k-y_k)y_k(1-y_k) \ h_j<br>$$</p>
+<p>$$<br>\Delta w_{ij} &#x3D; \eta \delta_j^h x_i &#x3D; \eta \  (\sum_{k&#x3D;1}^l \delta_k^y v_{jk})h_j(1-h_j) \  x_i<br>$$</p>
+<p>##作业: 在此例中</p>
+<h3 id="输入层有4个-隐藏层有3个-输出有1个-因此有"><a href="#输入层有4个-隐藏层有3个-输出有1个-因此有" class="headerlink" title="输入层有4个, 隐藏层有3个, 输出有1个, 因此有"></a>输入层有4个, 隐藏层有3个, 输出有1个, 因此有</h3><h3 id="n-4-m-3-l-1-即为"><a href="#n-4-m-3-l-1-即为" class="headerlink" title="n&#x3D;4, m&#x3D;3, l&#x3D;1, 即为:"></a>n&#x3D;4, m&#x3D;3, l&#x3D;1, 即为:</h3><p>$$<br>\boldsymbol{X} &#x3D;<br>\left[<br> \begin{matrix}<br>   x_1 &amp; x_2 &amp; x_3 &amp; x_4<br>  \end{matrix}<br>\right]^T​<br>$$</p>
+<p>$$<br>\boldsymbol{W}&#x3D;<br>\left[<br> \begin{matrix}<br>   w_{11} &amp; w_{12} &amp; w_{13}\<br>   w_{21} &amp; w_{22} &amp; w_{23}\<br>   w_{31} &amp; w_{32} &amp; w_{33}\<br>   w_{41} &amp; w_{42} &amp; w_{43}\<br>  \end{matrix}<br>\right]^T ​<br>$$</p>
+<p>$$<br>\boldsymbol{H}<br>&#x3D;\left[<br> \begin{matrix}<br>   h_1 &amp; h_2 &amp; h_3<br>  \end{matrix}<br>\right]^T<br>$$</p>
+<p>$$<br>\boldsymbol{V}<br>&#x3D;\left[<br> \begin{matrix}<br>   v_{11} \ v_{21} \ v_{31}<br>  \end{matrix}<br>\right]^T ​<br>$$</p>
+<p>$$<br>\boldsymbol{Y} &#x3D; y​<br>$$</p>
+<p>$$<br>\boldsymbol{D} &#x3D; d​<br>$$</p>
+<h3 id="正向推导"><a href="#正向推导" class="headerlink" title="正向推导"></a>正向推导</h3><p>$$<br>h_1 &#x3D; w_{11}x_1 + w_{21}x_2 + w_{31}x_3 + w_{41}x_4 &#x3D; W_{t_1}X<br>$$ </p>
+<p>$$<br>h_2 &#x3D; w_{12}x_1 + w_{22}x_2 + w_{32}x_3 + w_{42}x_4 &#x3D; W_{t_2}X<br>$$</p>
+<p>$$<br>h_3 &#x3D; w_{13}x_1 + w_{23}x_2 + w_{33}x_3 + w_{43}x_4 &#x3D; W_{t_3}X ​<br>$$</p>
+<p>$$<br>Y &#x3D; y &#x3D; v_{11}h_1 + v_{21}h_2 + v_{31}h_3 &#x3D; V \ \left[<br> \begin{matrix}<br>   W_{t_1}X \ W_{t_2}X \ W_{t_3}X<br>  \end{matrix}<br>\right] &#x3D; V \ W \ X​<br>$$</p>
+<h3 id="误差反向传播"><a href="#误差反向传播" class="headerlink" title="误差反向传播"></a>误差反向传播</h3><p>$$<br>E &#x3D; {1 \over 2} \sum_{k&#x3D;1}^1{d_k-f[\sum_{j&#x3D;1}^mv_{jk}f(net_j)]}^2 &#x3D;  {1 \over 2} \sum_{k&#x3D;1}^l{d_k-f[\sum_{j&#x3D;1}^mv_{jk}f(\sum_{i&#x3D;1}^nw_{ij}x_i)]}^2<br>$$</p>
+<h4 id="代入n-m-l具体数值"><a href="#代入n-m-l具体数值" class="headerlink" title="代入n,m,l具体数值"></a>代入n,m,l具体数值</h4><p>$$<br>E &#x3D; {1 \over 2} \sum_{k&#x3D;1}^1{d_k-f[\sum_{j&#x3D;1}^3v_{jk}f(net_j)]}^2 &#x3D;  {1 \over 2} \sum_{k&#x3D;1}^1{d_k-f[\sum_{j&#x3D;1}^3v_{jk}f(\sum_{i&#x3D;1}^4w_{ij}x_i)]}^2<br>$$</p>
+<p>$$<br>E &#x3D; {1 \over 2} {d_1-f[\sum_{j&#x3D;1}^3v_{j1}f(\sum_{i&#x3D;1}^4w_{ij}x_i)]}^2<br>$$</p>
+<p>####误差为:</p>
+<p>$$<br>\Delta v_{j1} &#x3D; \eta \delta^y h_j &#x3D; \eta \ (d_1-y_1)y_1(1-y_1) \ h_j<br>$$</p>
+<p>$$<br> \Delta v_{11} &#x3D; \eta \ (d_1-y_1)y_1(1-y_1) \ h_1 ​<br>$$<br>$$<br> \Delta v_{21} &#x3D; \eta \ (d_1-y_1)y_1(1-y_1) \ h_2<br>$$<br>$$<br> \Delta v_{31} &#x3D; \eta \ (d_1-y_1)y_1(1-y_1) \ h_3<br>$$</p>
+<p>$$<br>\Delta w_{ij} &#x3D; \eta \delta_j^h x_i &#x3D; \eta \  \delta^y v_{j1}h_j(1-h_j) \  x_i<br>$$</p>
+<p>$$<br> \Delta w_{11} &#x3D;  \eta \  \delta^y v_{j1}h_1(1-h_1) \  x_1<br>$$</p>
+<p>$$<br> \Delta w_{12} &#x3D;  \eta \  \delta^y v_{j1}h_2(1-h_2) \  x_1 ​<br>$$</p>
+<p>$$<br> \Delta w_{13} &#x3D;  \eta \  \delta^y v_{j1}h_3(1-h_3) \  x_1<br>$$</p>
+<p>$$<br> \Delta w_{21} &#x3D;  \eta \  \delta^y v_{j3}h_1(1-h_1) \  x_2 ​<br>$$</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/neural-networks/" rel="tag"># neural networks</a>
+              <a href="/tags/deep-learning/" rel="tag"># deep learning</a>
+              <a href="/tags/back-propagation/" rel="tag"># back propagation</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2018/05/14/cs231n-study-note-2/" rel="prev" title="cs231n study note 2">
+                  <i class="fa fa-angle-left"></i> cs231n study note 2
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2019/04/05/spicyStripsPAN/" rel="next" title="一根辣条的前世今生">
+                  一根辣条的前世今生 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">godshen</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

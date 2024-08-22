@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.ico">
+  <link rel="mask-icon" href="/images/favicon-16x16-next.ico" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"godshen.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="#一、学习内容  Data Driven Approach 数据驱动的方法 KNN K最近邻算法 Linear classifiers 线性分类器 Loss function 损失函数 Optimization 优化 Back propagation 反向传播 Neural Networks 神经网络  ##1. 数据驱动###1.1 思路dataset: labels –&gt; train –">
+<meta property="og:type" content="article">
+<meta property="og:title" content="cs231n study note 1">
+<meta property="og:url" content="https://godshen.github.io/2018/05/14/cs231n-study-note-1/index.html">
+<meta property="og:site_name" content="中好好不能困">
+<meta property="og:description" content="#一、学习内容  Data Driven Approach 数据驱动的方法 KNN K最近邻算法 Linear classifiers 线性分类器 Loss function 损失函数 Optimization 优化 Back propagation 反向传播 Neural Networks 神经网络  ##1. 数据驱动###1.1 思路dataset: labels –&gt; train –">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://godshen.github.io/cifar10.png">
+<meta property="og:image" content="https://godshen.github.io/same.jpg">
+<meta property="og:image" content="https://godshen.github.io/knnCrash.jpg">
+<meta property="og:image" content="https://godshen.github.io/linearCla.jpg">
+<meta property="og:image" content="https://godshen.github.io/hardTodo.jpg">
+<meta property="og:image" content="https://godshen.github.io/lossfun.jpg">
+<meta property="og:image" content="https://godshen.github.io/compuGraph.jpg">
+<meta property="og:image" content="https://godshen.github.io/complex.jpg">
+<meta property="og:image" content="https://godshen.github.io/cnn0.jpg">
+<meta property="og:image" content="https://godshen.github.io/cnn1.jpg">
+<meta property="og:image" content="https://godshen.github.io/active.jpg">
+<meta property="og:image" content="https://godshen.github.io/archt.jpg">
+<meta property="og:image" content="https://godshen.github.io/bbs.jpg">
+<meta property="article:published_time" content="2018-05-13T19:29:41.000Z">
+<meta property="article:modified_time" content="2024-08-20T07:45:48.000Z">
+<meta property="article:author" content="godshen">
+<meta property="article:tag" content="machine learning">
+<meta property="article:tag" content="cs231n">
+<meta property="article:tag" content="knn">
+<meta property="article:tag" content="loss function">
+<meta property="article:tag" content="neural networks">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://godshen.github.io/cifar10.png">
+
+
+<link rel="canonical" href="https://godshen.github.io/2018/05/14/cs231n-study-note-1/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://godshen.github.io/2018/05/14/cs231n-study-note-1/","path":"2018/05/14/cs231n-study-note-1/","title":"cs231n study note 1"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>cs231n study note 1 | 中好好不能困</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">中好好不能困</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">stay hungry stay foolish</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">10</span></a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">27</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">6</span></a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">godshen</p>
+  <div class="site-description" itemprop="description">Dangge Chihuo Zuoge Shabi</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/godshen" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;godshen" rel="noopener me" target="_blank"><i class="github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:shenzh0713@gmail.com" title="E-Mail → mailto:shenzh0713@gmail.com" rel="noopener me" target="_blank"><i class="envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/1805733597" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;1805733597" rel="noopener me" target="_blank"><i class="weibo fa-fw"></i>Weibo</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://godshen.github.io/2018/05/14/cs231n-study-note-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="godshen">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="中好好不能困">
+      <meta itemprop="description" content="Dangge Chihuo Zuoge Shabi">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="cs231n study note 1 | 中好好不能困">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          cs231n study note 1
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-05-14 03:29:41" itemprop="dateCreated datePublished" datetime="2018-05-14T03:29:41+08:00">2018-05-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-08-20 15:45:48" itemprop="dateModified" datetime="2024-08-20T15:45:48+08:00">2024-08-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>#一、学习内容</p>
+<ol>
+<li>Data Driven Approach 数据驱动的方法</li>
+<li>KNN K最近邻算法</li>
+<li>Linear classifiers 线性分类器</li>
+<li>Loss function 损失函数</li>
+<li>Optimization 优化</li>
+<li>Back propagation 反向传播</li>
+<li>Neural Networks 神经网络</li>
+</ol>
+<p>##1. 数据驱动<br>###1.1 思路<br>dataset: labels –&gt; train –&gt; predict<br>###1.2 CIFAR-10数据集<br>该数据集共有60000张彩色图像，这些图像是32*32，分为10个类，每类6000张图。这里面有50000张用于训练，构成了5个训练批，每一批10000张图；另外10000用于测试，单独构成一批。测试批的数据里，取自10类中的每一类，每一类随机取1000张。抽剩下的就随机排列组成了训练批。注意一个训练批中的各类图像并不一定数量相同，总的来看训练批，每一类都有5000张图。<br><img src="/cifar10.png"></p>
+<ul>
+<li><p>Data</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">一个10000*3072的numpy数组, 数据类型是无符号整形uint8. 这个数组的每一行存储了32*32大小的彩色图像(32*32*3通道=3072). </span><br><span class="line">按1024分组, 分别是red,green,blue通道. 图像是以行的顺序存储, 即前32个数是该图的像素矩阵的第一行.</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Labels</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">一个范围在0-9的含有10000个数的列表（一维的数组）。第i个数就是第i个图像的类标.</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>##2. K最近邻算法</p>
+<ul>
+<li>分类器中最简单的例子</li>
+<li>在dataset中寻找与input最相似的</li>
+</ul>
+<p>###2.1 L1 distance &#x2F; Manhatton distance<br>$$<br>d_1(I_1, I_2) &#x3D; \sum_p|I_1^p - I_2^p|<br>$$</p>
+<p>###2.2 复杂度分析<br>Train 		– O(1)<br>Predict 		– O(n)<br><code>结论: 不理想 (VS CNN)</code></p>
+<p>###2.3 图像之间的视觉判断<br><code>不同的图片, 使用KNN可以得到的结论是相同 PS某种情况下也是优势</code><br><img src="/same.jpg"></p>
+<p>###2.4 维度灾难<br><code>随着维度的上升, 复杂度指数级增长</code><br><img src="/knnCrash.jpg"></p>
+<p>##3. 线性分类器<br>###3.1 参数模型中最简单的实例<br>###3.2 简单表达式:<br>$$<br>f(x,W) &#x3D; Wx + b<br>$$</p>
+<p>###3.3 示例图<br><img src="/linearCla.jpg" alt="CIFAR-10数据集实例"></p>
+<p>###3.4 线性分类器的劣势<br><img src="/hardTodo.jpg"></p>
+<p>###3.4 两种解释方法</p>
+<ol>
+<li>每个种类的学习模板</li>
+<li>学习像素在高纬度空间的一个线性决策边界</li>
+</ol>
+<p>##4. 损失函数</p>
+<ul>
+<li>dataset.  $ \langle x_i,y_i \rangle  _i^N &#x3D; 1 $</li>
+<li>$ L &#x3D; \frac{1}{N} \sum_iL_i(f(x_i,W),y_i) $<br><code>目的是寻找一个合适的W, 使得L最小</code> find:<br>$$ L_{min} $$</li>
+</ul>
+<p>###4.1 multiclass SVN loss<br>$$ L_i &#x3D; \sum_{j \neq y} max(0,s_j-s_{yj}+1) $$</p>
+<ol>
+<li>$L_i  \in (0, +\infty)$</li>
+<li>$ s\approx0 &#x3D;&gt; L &#x3D; c - 1 $</li>
+<li>如果求和中不排除相当的情况, 则L++</li>
+<li>使得L&#x3D;0(L最小)的情况的W并不唯一, exp:2W</li>
+<li>如何在诸多使得L&#x3D;0的W中选择最合适的</li>
+</ol>
+<ul>
+<li>最简约</li>
+<li>奥卡姆剃须刀</li>
+<li>Regularization: model should be simple so it works on test data</li>
+<li>正则化<br>$$<br>L(W) &#x3D; \frac{1}{N} \sum_{i&#x3D;1}^N L_i (f(x_i,W),y_i) + \lambda R(W)<br>$$</li>
+<li>R(W)分类</li>
+</ul>
+<ol>
+<li>L2  &#x3D;&#x3D;&gt; $$ R(W) &#x3D; \sum_k \sum_l W_{k,l}^2 $$</li>
+<li>L1  &#x3D;&#x3D;&gt; $$ R(W) &#x3D; \sum_k \sum_l |W_{k,l}| $$</li>
+<li>Elastic net (L1+L2)</li>
+<li>Max norm</li>
+<li>Dropout</li>
+</ol>
+<p>###4.2 multinormial logistic regression<br>###多项逻辑斯蒂回归<br>###softmax loss</p>
+<p>$$<br>P(Y&#x3D;k|X&#x3D;x_i) &#x3D; \frac{e^{sk}}{\sum_j e^{sj}} where s&#x3D;f(x_i;W)<br>$$</p>
+<p>$$<br>L &#x3D; -log P(Y&#x3D;k|X&#x3D;x_i)<br>$$<br><img src="/lossfun.jpg"></p>
+<p>##5. 优化<br>###5.1 梯度下降 Gradient Descent</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">while true:</span><br><span class="line">	weights_grad = evaluate_gradient(loss_fun, data, weights)</span><br><span class="line">	weights += -step_size * weights_grad</span><br></pre></td></tr></table></figure>
+<p>step_size <code>步长</code> <code>学习率</code> <code>超参数</code> <code>优化第一步</code></p>
+<p>###5.2 Stochastic Gradient Descent(SGD)<br>$$<br>\nabla w L(W) &#x3D; \frac{1}{N} \sum_{i&#x3D;1}^N \nabla w L_i (f(x_i,W),y_i) + \lambda \nabla w R(W)<br>$$<br><code>随机</code> <code>minibatch小批量</code> <code>蒙特卡洛估计</code></p>
+<ol>
+<li>数值计算 – 反向传播</li>
+<li>解析计算</li>
+</ol>
+<p>##6. 反向传播<br>###6.1 导数&#x2F;梯度过于复杂无法计算<br>###6.2 链式法则<br>###6.3 计算图<br><img src="/compuGraph.jpg"><br>###6.4 例证<br>$$ f(x,y,z) &#x3D; (x+y)z $$<br>VS<br>$$ f(w,x) &#x3D; \frac{1}{1+e^{-w_0x_0+w_1x_1+w_2}} $$<br><img src="/complex.jpg"><br>###6.5 向量-雅可比矩阵</p>
+<p>##7. 神经网络初步<br>###多阶段分层计算<br>###多个W</p>
+<p><img src="/cnn0.jpg"><br><img src="/cnn1.jpg"><br>###层数叠加 – deep xxx<br>###activation function(类比神经元)<br><img src="/active.jpg"></p>
+<p>###neural networks architectures<br><img src="/archt.jpg"></p>
+<p>###code</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">class Neuron:</span><br><span class="line">	def neuron_tick(inputs):</span><br><span class="line">	cell_body_sum = np.sum(inputs * selt.weights) + self.bias</span><br><span class="line">	firing_rate = 1.0 / (1.0 + math.exp(-cell_body_sum))</span><br><span class="line">	return firing_rate</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p>#二、工作相关</p>
+<p><img src="/bbs.jpg"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">使用了python对每个帐号的封号进行机器学习</span><br><span class="line">通过分析1个人的封号情况，分析所有人的封号情况</span><br><span class="line">建立每个帐号自己的封号模型和总封号模型</span><br><span class="line"></span><br><span class="line">如果被封了，那么这个时间段的封号数据模型就有了</span><br><span class="line">接下来就是之前介绍的概率递归方案，所以，助手会越用越精准</span><br><span class="line">所以不用反馈被封的问题，距离建模完成至少再封3次，距离精细模型完成至少还要7次</span><br><span class="line">只有大家的模型基本上完成了，我们才能根据大家的封号模型来建立总的防封模型，才能get到被制裁的原理</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/machine-learning/" rel="tag"># machine learning</a>
+              <a href="/tags/cs231n/" rel="tag"># cs231n</a>
+              <a href="/tags/knn/" rel="tag"># knn</a>
+              <a href="/tags/loss-function/" rel="tag"># loss function</a>
+              <a href="/tags/neural-networks/" rel="tag"># neural networks</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2017/11/19/ioslatingAdmin/" rel="prev" title="hexo前后端分离并存git仓库">
+                  <i class="fa fa-angle-left"></i> hexo前后端分离并存git仓库
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2018/05/14/cs231n-study-note-2/" rel="next" title="cs231n study note 2">
+                  cs231n study note 2 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">godshen</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
