@@ -1232,7 +1232,7 @@ pre code {
     vertical-align: middle;
   }
   .links-of-author a::before {
-    background: #c8b36e;
+    background: #5ec677;
     display: inline-block;
     margin-right: 3px;
     transform: translateY(-2px);
@@ -2721,7 +2721,7 @@ header.header {
   opacity: 1;
 }
 .bilibili {
-  background-image: url("/images/bilibili.svg");
+  background-image: url("/images/bilibili-fill.svg");
   background-size: 1em 1em;
   opacity: 0.55;
   background-position: 0.05rem 0.2rem;
