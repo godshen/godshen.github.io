@@ -1232,7 +1232,7 @@ pre code {
     vertical-align: middle;
   }
   .links-of-author a::before {
-    background: #9f136f;
+    background: #ff9583;
     display: inline-block;
     margin-right: 3px;
     transform: translateY(-2px);
@@ -2679,4 +2679,57 @@ header.header {
   .sidebar {
     display: none;
   }
+}
+/* sidebar social icon */
+.github {
+  background-image: url("/images/github.svg");
+  background-size: 1em 1em;
+  opacity: 0.55;
+  background-position: 0.05rem 0.2rem;
+  background-repeat: no-repeat;
+  height: 1rem;
+  width: 1rem;
+  border-radius: 0rem;
+}
+.github:hover {
+  opacity: 1;
+}
+.gmail {
+  background-image: url("/images/gmail.svg");
+  background-size: 1em 1em;
+  opacity: 0.55;
+  background-position: 0.05rem 0.2rem;
+  background-repeat: no-repeat;
+  height: 1rem;
+  width: 1rem;
+  border-radius: 0rem;
+}
+.gmail:hover {
+  opacity: 1;
+}
+.weibo {
+  background-image: url("/images/weibo.svg");
+  background-size: 1em 1em;
+  opacity: 0.55;
+  background-position: 0.05rem 0.2rem;
+  background-repeat: no-repeat;
+  height: 1rem;
+  width: 1rem;
+  border-radius: 0rem;
+}
+.weibo:hover {
+  opacity: 1;
+}
+.bilibili {
+  background-image: url("/images/bilibili.svg");
+  background-size: 1em 1em;
+  opacity: 0.55;
+  background-position: 0.05rem 0.2rem;
+  background-repeat: no-repeat;
+  height: 1rem;
+  width: 1rem;
+  border-radius: 0rem;
+}
+.bilibili:hover {
+  opacity: 1;
 }
