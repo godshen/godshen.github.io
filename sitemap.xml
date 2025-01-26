@@ -2,6 +2,33 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://godshen.github.io/schedule/index.html</loc>
+    
+    <lastmod>2025-01-26</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://godshen.github.io/categories/index.html</loc>
+    
+    <lastmod>2025-01-26</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://godshen.github.io/tags/index.html</loc>
+    
+    <lastmod>2025-01-26</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://godshen.github.io/2025/01/26/rec_interview_2/</loc>
     
     <lastmod>2025-01-26</lastmod>
@@ -163,14 +190,7 @@
   </url>
   
   <url>
-    <loc>https://godshen.github.io/tags/deep-learning/</loc>
-    <lastmod>2025-01-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://godshen.github.io/tags/back-propagation/</loc>
+    <loc>https://godshen.github.io/tags/%E5%BB%BA%E7%AB%99/</loc>
     <lastmod>2025-01-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -198,7 +218,14 @@
   </url>
   
   <url>
-    <loc>https://godshen.github.io/tags/%E5%BB%BA%E7%AB%99/</loc>
+    <loc>https://godshen.github.io/tags/cnn/</loc>
+    <lastmod>2025-01-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://godshen.github.io/tags/activation-function/</loc>
     <lastmod>2025-01-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -220,20 +247,6 @@
   
   <url>
     <loc>https://godshen.github.io/tags/hexo%E7%AE%A1%E7%90%86/</loc>
-    <lastmod>2025-01-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://godshen.github.io/tags/cnn/</loc>
-    <lastmod>2025-01-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://godshen.github.io/tags/activation-function/</loc>
     <lastmod>2025-01-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -268,7 +281,49 @@
   </url>
   
   <url>
+    <loc>https://godshen.github.io/tags/%E6%AF%94%E7%89%B9%E5%B8%81/</loc>
+    <lastmod>2025-01-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://godshen.github.io/tags/bitcoin/</loc>
+    <lastmod>2025-01-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://godshen.github.io/tags/deep-learning/</loc>
+    <lastmod>2025-01-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://godshen.github.io/tags/back-propagation/</loc>
+    <lastmod>2025-01-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://godshen.github.io/tags/%E7%82%AB%E6%8A%80/</loc>
+    <lastmod>2025-01-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://godshen.github.io/tags/%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95/</loc>
+    <lastmod>2025-01-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://godshen.github.io/tags/%E9%9D%A2%E7%BB%8F/</loc>
     <lastmod>2025-01-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -297,34 +352,6 @@
   
   <url>
     <loc>https://godshen.github.io/tags/%E9%BB%91%E4%BA%A7/</loc>
-    <lastmod>2025-01-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://godshen.github.io/tags/%E6%AF%94%E7%89%B9%E5%B8%81/</loc>
-    <lastmod>2025-01-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://godshen.github.io/tags/bitcoin/</loc>
-    <lastmod>2025-01-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://godshen.github.io/tags/%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95/</loc>
-    <lastmod>2025-01-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://godshen.github.io/tags/%E9%9D%A2%E7%BB%8F/</loc>
     <lastmod>2025-01-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -361,14 +388,14 @@
   </url>
   
   <url>
-    <loc>https://godshen.github.io/categories/%E5%B7%A5%E4%BD%9C%E6%80%BB%E7%BB%93/</loc>
+    <loc>https://godshen.github.io/categories/%E9%9D%A2%E7%BB%8F/</loc>
     <lastmod>2025-01-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://godshen.github.io/categories/%E9%9D%A2%E7%BB%8F/</loc>
+    <loc>https://godshen.github.io/categories/%E5%B7%A5%E4%BD%9C%E6%80%BB%E7%BB%93/</loc>
     <lastmod>2025-01-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
