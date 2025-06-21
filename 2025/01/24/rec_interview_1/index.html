@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.ico">
+  <link rel="mask-icon" href="/images/favicon-16x16-next.ico" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"godshen.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.22.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="1、描述一下推荐系统的整个流程(架构)推荐系统负责从海量的内容池中选择用户感兴趣的内容进行展示。整体上分为召回和排序两部分。整体上可以划分为召回、业务过滤、粗排、精排、重排混排、业务逻辑、最终展示这一流程。在召回阶段通过多路召回从海量数据池中得到小规模的候选数据；然后通过策略对部分内容进行过滤后传入排序阶段；粗排对召回数据进行初步排序筛选，是一个中和步骤，将候选集降低量级；精排对粗排结果使用更加精">
+<meta property="og:type" content="article">
+<meta property="og:title" content="推荐算法面经-1">
+<meta property="og:url" content="https://godshen.github.io/2025/01/24/rec_interview_1/index.html">
+<meta property="og:site_name" content="好好行于当下">
+<meta property="og:description" content="1、描述一下推荐系统的整个流程(架构)推荐系统负责从海量的内容池中选择用户感兴趣的内容进行展示。整体上分为召回和排序两部分。整体上可以划分为召回、业务过滤、粗排、精排、重排混排、业务逻辑、最终展示这一流程。在召回阶段通过多路召回从海量数据池中得到小规模的候选数据；然后通过策略对部分内容进行过滤后传入排序阶段；粗排对召回数据进行初步排序筛选，是一个中和步骤，将候选集降低量级；精排对粗排结果使用更加精">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-01-24T09:57:11.000Z">
+<meta property="article:modified_time" content="2025-01-26T16:57:11.504Z">
+<meta property="article:author" content="godshen">
+<meta property="article:tag" content="推荐算法">
+<meta property="article:tag" content="面经">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://godshen.github.io/2025/01/24/rec_interview_1/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://godshen.github.io/2025/01/24/rec_interview_1/","path":"2025/01/24/rec_interview_1/","title":"推荐算法面经-1"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>推荐算法面经-1 | 好好行于当下</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-W3F2R84HRB"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-W3F2R84HRB","only_pageview":false,"measure_protocol_api_secret":null}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?7b07e05c353cd6549c08313f8b46ffdb"></script>
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">好好行于当下</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">stay hungry stay foolish</p>
+      <img class="custom-logo-image" src="/images/common-long.png" alt="好好行于当下">
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">13</span></a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">31</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">7</span></a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-schedule"><a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81%E6%8F%8F%E8%BF%B0%E4%B8%80%E4%B8%8B%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E7%9A%84%E6%95%B4%E4%B8%AA%E6%B5%81%E7%A8%8B-%E6%9E%B6%E6%9E%84"><span class="nav-number">1.</span> <span class="nav-text">1、描述一下推荐系统的整个流程(架构)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF%E5%A4%9A%E8%B7%AF%E5%8F%AC%E5%9B%9E%EF%BC%8C%E5%B8%B8%E8%A7%81%E7%9A%84%E5%8F%AC%E5%9B%9E%E8%B7%AF%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="nav-number">2.</span> <span class="nav-text">2、什么是多路召回，常见的召回路有哪些？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%E3%80%81%E5%8F%AC%E5%9B%9E%E5%92%8C%E7%B2%97%E6%8E%92%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">3.</span> <span class="nav-text">3、召回和粗排的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4%E3%80%81%E4%B8%BA%E4%BB%80%E4%B9%88%E6%8E%92%E5%BA%8F%E8%A6%81%E5%88%86%E4%B8%BA%E7%B2%97%E6%8E%92%E5%92%8C%E7%B2%BE%E6%8E%92%EF%BC%9F"><span class="nav-number">4.</span> <span class="nav-text">4、为什么排序要分为粗排和精排？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5%E3%80%81DSSM%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%8E%9F%E7%90%86%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">5.</span> <span class="nav-text">5、DSSM模型的原理是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6%E3%80%81DSSM%E6%80%8E%E6%A0%B7%E8%A7%A3%E5%86%B3OOV%E9%97%AE%E9%A2%98%E7%9A%84%EF%BC%9F"><span class="nav-number">6.</span> <span class="nav-text">6、DSSM怎样解决OOV问题的？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7%E3%80%81DSSM%E6%A8%A1%E5%9E%8B%E5%9C%A8%E5%8F%AC%E5%9B%9E%E5%92%8C%E7%B2%97%E6%8E%92%E5%BA%94%E7%94%A8%E4%B8%AD%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">7.</span> <span class="nav-text">7、DSSM模型在召回和粗排应用中的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8%E3%80%81%E5%B8%B8%E8%A7%81%E7%9A%84%E5%90%91%E9%87%8F%E5%8F%AC%E5%9B%9E%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="nav-number">8.</span> <span class="nav-text">8、常见的向量召回有哪些？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9%E3%80%81%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E7%9A%84PV%E5%92%8CUV%E4%BB%A3%E8%A1%A8%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">9.</span> <span class="nav-text">9、推荐系统的PV和UV代表什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10%E3%80%81%E5%8D%8F%E5%90%8C%E8%BF%87%E6%BB%A4%E6%8E%A8%E8%8D%90%E5%92%8C%E5%9F%BA%E4%BA%8E%E5%86%85%E5%AE%B9%E7%9A%84%E6%8E%A8%E8%8D%90%E7%9A%84%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">10.</span> <span class="nav-text">10、协同过滤推荐和基于内容的推荐的区别是什么？</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="godshen"
+      src="/images/profile1.jpg">
+  <p class="site-author-name" itemprop="name">godshen</p>
+  <div class="site-description" itemprop="description">it's me, not me, merely named me</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">31</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/godshen" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;godshen" rel="noopener me" target="_blank"><i class="fab github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:shenzh0713@gmail.com" title="E-Mail → mailto:shenzh0713@gmail.com" rel="noopener me" target="_blank"><i class="fab gmail fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/1805733597" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;1805733597" rel="noopener me" target="_blank"><i class="fab weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://space.bilibili.com/49984653/" title="bilibili → https:&#x2F;&#x2F;space.bilibili.com&#x2F;49984653&#x2F;" rel="noopener me" target="_blank"><i class="fab bilibili fa-fw"></i>bilibili</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://godshen.github.io/2025/01/24/rec_interview_1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/profile1.jpg">
+      <meta itemprop="name" content="godshen">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="好好行于当下">
+      <meta itemprop="description" content="it's me, not me, merely named me">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="推荐算法面经-1 | 好好行于当下">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          推荐算法面经-1
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-01-24 17:57:11" itemprop="dateCreated datePublished" datetime="2025-01-24T17:57:11+08:00">2025-01-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-01-27 00:57:11" itemprop="dateModified" datetime="2025-01-27T00:57:11+08:00">2025-01-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%9D%A2%E7%BB%8F/" itemprop="url" rel="index"><span itemprop="name">面经</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>2.5k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>2 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h3 id="1、描述一下推荐系统的整个流程-架构"><a href="#1、描述一下推荐系统的整个流程-架构" class="headerlink" title="1、描述一下推荐系统的整个流程(架构)"></a>1、描述一下推荐系统的整个流程(架构)</h3><p>推荐系统负责从海量的内容池中选择用户感兴趣的内容进行展示。整体上分为召回和排序两部分。整体上可以划分为召回、业务过滤、粗排、精排、重排混排、业务逻辑、最终展示这一流程。在召回阶段通过多路召回从海量数据池中得到小规模的候选数据；然后通过策略对部分内容进行过滤后传入排序阶段；粗排对召回数据进行初步排序筛选，是一个中和步骤，将候选集降低量级；精排对粗排结果使用更加精准的网络结构进行排序计算，圈定到目标范围的内容；为了符合一些多业务场景，还可以在精排后重排序，起到打散的作用；最后可以加入一些业务逻辑完成位次排列。</p>
+<h3 id="2、什么是多路召回，常见的召回路有哪些？"><a href="#2、什么是多路召回，常见的召回路有哪些？" class="headerlink" title="2、什么是多路召回，常见的召回路有哪些？"></a>2、什么是多路召回，常见的召回路有哪些？</h3><p>多路召回指采用不同的策略、特征或简单模型，分别召回一部分候选集，然后把候选集混合在一起供后续排序模型使用，“多路召回策略”是在“计算速度”和“召回率”之间进行权衡的结果，多路召回就像是一种集成学习，通过多条召回路平衡准确和全面。</p>
+<p>常见的召回方式有基于内容的策略召回、协同过滤、图召回、深度网路召回等。基于内容的召回通常依赖NLP和CV等模型，深度神经网络以DeepFM、DSSM双塔等经典模型为主，图召回则可以构造社交网络或者依赖GNN模型。</p>
+<span id="more"></span>
+
+<h3 id="3、召回和粗排的区别"><a href="#3、召回和粗排的区别" class="headerlink" title="3、召回和粗排的区别"></a>3、召回和粗排的区别</h3><p>粗排是在召回和精排之中做的一种“折中”选择，区别主要有以下几点：</p>
+<p>首先，理念上不同。召回要做到不遗漏，所以面向全库计算，需要考虑多种召回路；而粗排作为排序要做到的是准确，在候选集上开展更为精细的排序计算。</p>
+<p>基于理念上的不同，二者在负样本构造上不同。召回的负样本是从全库item中采样，比如热度最高的TopN作为负样本；粗排则可以采用线上曝光作为负样本。</p>
+<p>这样的设计出发点是作为召回和排序的平衡，在广度和精度上做一个中和。多样性召回保障推荐可以跳出某一类别，粗排在多样性间做初步的筛选交给精排计算。</p>
+<h3 id="4、为什么排序要分为粗排和精排？"><a href="#4、为什么排序要分为粗排和精排？" class="headerlink" title="4、为什么排序要分为粗排和精排？"></a>4、为什么排序要分为粗排和精排？</h3><p>排序拆分为粗排和精排是面对数据量暴涨的解决方案。粗排可以缓解精排的计算压力，使用较小的代价进行推理，比如在几千个量级的内容上进行排序，最终输出几百量级的精排候选集。精排则使用更多的特征、更复杂的模型结构进行计算，推理代价较高但更加准确，直接生成最终展示的TopN内容。</p>
+<h3 id="5、DSSM模型的原理是什么？"><a href="#5、DSSM模型的原理是什么？" class="headerlink" title="5、DSSM模型的原理是什么？"></a>5、DSSM模型的原理是什么？</h3><p>DSSM的全称是Deep Structured Semantic Model，从结构上由两个独立的前向网络和最终拼接后的前向网络组成，因此也称为双塔模型。两个独立的前向网络的输出层维度相同，可以实现对文本等信息的向量化转变，最终用于相似度匹配场景。</p>
+<p>我们可以统泛的将两个网络的原始输入称为Query和Key，通过神经网络，Q、K的原始特征信息分别生成为低纬度的语义向量，也就是常说的Embedding向量。当Q、K在真实环境中关系密切时，两个Embedding向量在空间中应该相邻，使用向量内积计算即可满足这一条件。</p>
+<p>DSSM模型在推荐系统中使用普遍，通常我们以用户的曝光&#x2F;点击作为训练集，在此情景下，可以在模型末端引入sigmoid函数进行0-1预测，此时模型的双塔变为user和item，因为两个DNN相互独立，无论是计算Embedding还是模型迭代，都非常容易。生成的Embedding向量通常用于召回中。</p>
+<h3 id="6、DSSM怎样解决OOV问题的？"><a href="#6、DSSM怎样解决OOV问题的？" class="headerlink" title="6、DSSM怎样解决OOV问题的？"></a>6、DSSM怎样解决OOV问题的？</h3><p>OOV是out of vocabulary的简称，OOV问题中实际数据在训练过程中没有出现，因此可能导致无法计算或计算效果很差。常见的解决方式有以下几种：</p>
+<p>(1)哈希处理，这也是论文中所采用的方法，无论是直接哈希还是n-gram，都可以避免OOV问题的出现，当然哈希冲突也是该方法的弊端。</p>
+<p>(2)在训练过程中，人为的随机加入负样本，可以随机将特征转化为[unknown]形式，同时也可以借鉴YouTube的思路，随机的将最热门Item加入训练集中。</p>
+<p>(3)对于英文这样的语言，所有构成都由26个字母组成，我们可以使用subword的方法查找训练中出现过的子串。</p>
+<h3 id="7、DSSM模型在召回和粗排应用中的区别"><a href="#7、DSSM模型在召回和粗排应用中的区别" class="headerlink" title="7、DSSM模型在召回和粗排应用中的区别"></a>7、DSSM模型在召回和粗排应用中的区别</h3><p>从正负样本的定义上：在召回阶段，面向整个内容池，我们可以认为还没有与前端产生交互，可以人为成功曝光的就是正样本，负样本通常用TopN的热门item。在粗排过程中，排序结果直接影响展示，我们使用真实的曝光点击作为正负样本，点击作为正样本，曝光未点击作为负样本。</p>
+<p>在特征选择上：召回阶段更多使用一些抽象特征，排序可以使用标题等直接特征。</p>
+<p>使用方式上：召回模型最终使用双塔顶处的向量作为user和item的Embedding，在召回阶段进行检索。排序模型使用模型本身的输出进行打分。</p>
+<h3 id="8、常见的向量召回有哪些？"><a href="#8、常见的向量召回有哪些？" class="headerlink" title="8、常见的向量召回有哪些？"></a>8、常见的向量召回有哪些？</h3><p>FM的二阶部分，Item2Vec，图网络Embedding，双塔，图谱，LLM</p>
+<h3 id="9、推荐系统的PV和UV代表什么？"><a href="#9、推荐系统的PV和UV代表什么？" class="headerlink" title="9、推荐系统的PV和UV代表什么？"></a>9、推荐系统的PV和UV代表什么？</h3><p>PV是Page View的缩写，是页面访问量，页面每获得一次点击PV便会加一。PV反映的是网页总的访问次数，每刷新一次也算，PV与用户点击进入的次数成正比，但PV不代表用户数量，同一用户点击N次会让PV增加N。</p>
+<p>UV是Unique Visitor的缩写。是访问的用户总数，可以理解为终端数量，根据IP和cookies进行统计更新。UV不同于PV，可以反映真实的用户数量。但同一个用户点击N次只会使UV增加1。</p>
+<h3 id="10、协同过滤推荐和基于内容的推荐的区别是什么？"><a href="#10、协同过滤推荐和基于内容的推荐的区别是什么？" class="headerlink" title="10、协同过滤推荐和基于内容的推荐的区别是什么？"></a>10、协同过滤推荐和基于内容的推荐的区别是什么？</h3><p>(1)两者的数据维度不同。协同过滤所购建的共现矩阵基于用户的历史点击行为开展后续分析计算，基于内容的推荐则侧重于用户和Item的属性信息。在协同过滤中，用户的属性便是点击过的物品，物品的属性是点击过的用户。在基于内容的推荐中，用户和物品的属性是年龄、性别、颜色等特征。</p>
+<p>(2)两者在思想的切入点上不同。协同过滤试图通过大量用户喜欢的物品之间的数据发现用户的潜在兴趣，而基于内容的推荐则希望通过不同特征的挖掘判断用户兴趣。</p>
+<p>(3)两者实现的技术上不同。协同过滤基于矩阵计算和矩阵分解展开，而基于内容的推荐将特征作为输入传入分类器中完成判断，比如逻辑回归。</p>
+<p>(4)两者在开发过程中对性能提升时的侧重点不同。协同过滤侧重于商品交互记录的完整与广泛，基于内容的推荐很多情况下侧重于特征的挖掘与特征的处理手段。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95/" rel="tag"># 推荐算法</a>
+              <a href="/tags/%E9%9D%A2%E7%BB%8F/" rel="tag"># 面经</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/08/21/name/" rel="prev" title="百花齐放">
+                  <i class="fa fa-angle-left"></i> 百花齐放
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2025/01/26/rec_interview_2/" rel="next" title="推荐算法面经-2">
+                  推荐算法面经-2 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">godshen</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">26k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">24 分钟</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>
