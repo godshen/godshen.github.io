@@ -337,7 +337,7 @@
 <p>空间共享也就是卷积神经网络所引入的先验知识。</p>
 </blockquote>
 <h3 id="输出表达"><a href="#输出表达" class="headerlink" title="输出表达"></a>输出表达</h3><p>如先前在图像表达中提到的，图片不用向量去表示是为了保留图片平面结构的信息。 同样的，卷积后的输出若用上图的排列方式则丢失了平面结构信息。 所以我们依然用矩阵的方式排列它们，就得到了下图所展示的连接。<br><img src="/images/cs231n-study-note-2/output1.jpg"><br>这也就是你们在网上所看到的下面这张图。在看这张图的时候请结合上图的连接一起理解，即输入（绿色）的每九个节点连接到输出（粉红色）的一个节点上的。<br><img src="/images/cs231n-study-note-2/output2.gif"></p>
-<p>经过一个feature detector计算后得到的粉红色区域也叫做一个<strong>“Convolved Feature”</strong> 或 <strong>“Activation Map” <strong>或</strong> “Feature Map”</strong>。</p>
+<p>经过一个feature detector计算后得到的粉红色区域也叫做一个**“Convolved Feature”** 或 <strong>“Activation Map” <strong>或</strong> “Feature Map”</strong>。</p>
 <h3 id="Depth维的处理"><a href="#Depth维的处理" class="headerlink" title="Depth维的处理"></a>Depth维的处理</h3><p>现在我们已经知道了depth维度只有1的灰度图是如何处理的。 但前文提过，图片的普遍表达方式是下图这样有3个channels的RGB颜色模型。 当depth为复数的时候，每个feature detector是如何卷积的？<br><img src="/images/cs231n-study-note-2/depth1.jpg"></p>
 <p>现象：2x2所表达的filter size中，一个2表示width维上的局部连接数，另一个2表示height维上的局部连接数，并却没有depth维上的局部连接数，是因为depth维上并非局部，而是全部连接的。</p>
 <p>在2D卷积中，filter在张量的width维, height维上是局部连接，在depth维上是贯串全部channels的。</p>
@@ -358,8 +358,8 @@
 </blockquote>
 <h3 id="Zero-padding"><a href="#Zero-padding" class="headerlink" title="Zero padding"></a>Zero padding</h3><p>4x4的图片被2x2的filter卷积后变成了3x3的图片，每次卷积后都会小一圈的话，经过若干层后岂不是变的越来越小？ Zero padding就可以在这时帮助控制Feature Map的输出尺寸，同时避免了边缘信息被一步步舍弃的问题。</p>
 <p>例如：下面4x4的图片在边缘Zero padding一圈后，再用3x3的filter卷积后，得到的Feature Map尺寸依然是4x4不变。<br><img src="/images/cs231n-study-note-2/zero1.jpg"><br>通常大家都想要在卷积时保持图片的原始尺寸。 选择3x3的filter和1的zero padding，或5x5的filter和2的zero padding可以保持图片的原始尺寸。 这也是为什么大家多选择3x3和5x5的filter的原因。 另一个原因是3x3的filter考虑到了像素与其距离为1以内的所有其他像素的关系，而5x5则是考虑像素与其距离为2以内的所有其他像素的关系。</p>
-<p><strong>尺寸：</strong>Feature Map的尺寸等于(input_size + 2 * padding_size − filter_size)&#x2F;stride+1。</p>
-<p><strong>注意：</strong>上面的式子是计算width或height一维的。padding_size也表示的是单边补零的个数。例如(4+2-3)&#x2F;1+1 &#x3D; 4，保持原尺寸。</p>
+<p>**尺寸：**Feature Map的尺寸等于(input_size + 2 * padding_size − filter_size)&#x2F;stride+1。</p>
+<p>**注意：**上面的式子是计算width或height一维的。padding_size也表示的是单边补零的个数。例如(4+2-3)&#x2F;1+1 &#x3D; 4，保持原尺寸。</p>
 <p>不用背这个式子。其中(input_size + 2 * padding_size)是经过Zero padding扩充后真正要卷积的尺寸。 减去 filter_size后表示可以滑动的范围。 再除以可以一次滑动（stride）多少后得到滑动了多少次，也就意味着得到了多少个输出节点。 再加上第一个不需要滑动也存在的输出节点后就是最后的尺寸。</p>
 <h3 id="形状、概念抓取"><a href="#形状、概念抓取" class="headerlink" title="形状、概念抓取"></a>形状、概念抓取</h3><p>知道了每个filter在做什么之后，我们再来思考这样的一个filter会抓取到什么样的信息。</p>
 <p>我们知道不同的形状都可由细小的“零件”组合而成的。比如下图中，用2x2的范围所形成的16种形状可以组合成格式各样的“更大”形状。</p>
